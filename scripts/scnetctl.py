@@ -365,7 +365,7 @@ def status(as_json: bool) -> dict[str, Any]:
         echo HEALTH_END
         """
     ).strip()
-    proc = ssh_cmd(CONFIG["worker_alias"], worker_cmd, check=False, timeout=20)
+    proc = worker_run(worker_cmd, check=False, timeout=20)
     state["worker"] = {
         "returncode": proc.returncode,
         "stdout": proc.stdout,
@@ -800,6 +800,9 @@ def main(argv: list[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
     CONFIG = load_json(expand_path(args.config))
+    generated = expand_path(CONFIG["generated_ssh_config"])
+    if generated.exists():
+        CONFIG["_generated_ssh_config"] = str(generated)
     try:
         args.func(args)
     except ScnetError as exc:
