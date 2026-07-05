@@ -1,0 +1,1 @@
+Each reproduced build gets a subdirectory: `snapshots/<id>/` containing `HEAD.sha`, `wheel.fingerprint`, and `README.md` describing the build. Wheel files themselves live in the container at `/public/home/xdzs2026_c166/vllm_cscc[_competition]/dist/` — never committed here.

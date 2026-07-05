@@ -1,0 +1,3 @@
+Each experiment gets its own subdirectory: `experiments/<YYYYMMDD>-<slug>/` containing at least `README.md` (intent / method / diff / metrics / verdict), plus any small text artifacts (logs, json). Wheels and weights never committed — store paths/SHAs in README.
+
+Refer to `../snapshots/` for wheel fingerprints.

@@ -1,0 +1,29 @@
+# No wheels, no model weights, no large artifacts in git.
+*.whl
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.gguf
+*.tar.gz
+*.zip
+*.log.zip
+
+# Python / build junk
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Keep placeholders
+!**/.gitkeep
