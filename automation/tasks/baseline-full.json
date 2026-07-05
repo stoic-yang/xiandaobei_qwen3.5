@@ -1,0 +1,8 @@
+{
+  "name": "baseline-full",
+  "description": "Install the baseline wheel, start vLLM, run all three local throughput buckets, and collect artifacts.",
+  "repo": "baseline",
+  "throughput_dataset": "all",
+  "num_prompts": 10,
+  "accuracy": "none"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "baseline-smoke",
+  "description": "Fast end-to-end baseline check with one prompt per throughput bucket.",
+  "repo": "baseline",
+  "throughput_dataset": "all",
+  "num_prompts": 1,
+  "accuracy": "none"
+}
