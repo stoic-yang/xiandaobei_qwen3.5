@@ -1,0 +1,55 @@
+(APIServer pid=2235) INFO 07-06 01:05:54 [utils.py:297] 
+(APIServer pid=2235) INFO 07-06 01:05:54 [utils.py:297]        █     █     █▄   ▄█
+(APIServer pid=2235) INFO 07-06 01:05:54 [utils.py:297]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.18.1
+(APIServer pid=2235) INFO 07-06 01:05:54 [utils.py:297]   █▄█▀ █     █     █     █  model   /root/Qwen3.5-27B
+(APIServer pid=2235) INFO 07-06 01:05:54 [utils.py:297]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀
+(APIServer pid=2235) INFO 07-06 01:05:54 [utils.py:297] 
+(APIServer pid=2235) INFO 07-06 01:05:54 [utils.py:233] non-default args: {'model_tag': '/root/Qwen3.5-27B', 'default_chat_template_kwargs': {'enable_thinking': False}, 'enable_auto_tool_choice': True, 'tool_call_parser': 'qwen3_coder', 'port': 8001, 'model': '/root/Qwen3.5-27B', 'trust_remote_code': True, 'dtype': 'bfloat16', 'served_model_name': ['Qwen3.5-27B'], 'reasoning_parser': 'qwen3', 'gpu_memory_utilization': 0.95, 'max_num_batched_tokens': 4096, 'max_num_seqs': 128}
+(APIServer pid=2235) Traceback (most recent call last):
+(APIServer pid=2235)   File "/usr/local/lib/python3.10/dist-packages/transformers/utils/hub.py", line 422, in cached_files
+(APIServer pid=2235)     hf_hub_download(
+(APIServer pid=2235)   File "/usr/local/lib/python3.10/dist-packages/huggingface_hub/utils/_validators.py", line 84, in _inner_fn
+(APIServer pid=2235)     validate_repo_id(arg_value)
+(APIServer pid=2235)   File "/usr/local/lib/python3.10/dist-packages/huggingface_hub/utils/_validators.py", line 132, in validate_repo_id
+(APIServer pid=2235)     raise HFValidationError(
+(APIServer pid=2235) huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/root/Qwen3.5-27B'. Use `repo_type` argument if needed.
+(APIServer pid=2235) 
+(APIServer pid=2235) The above exception was the direct cause of the following exception:
+(APIServer pid=2235) 
+(APIServer pid=2235) Traceback (most recent call last):
+(APIServer pid=2235)   File "/usr/local/bin/vllm", line 6, in <module>
+(APIServer pid=2235)     sys.exit(main())
+(APIServer pid=2235)   File "/usr/local/lib/python3.10/dist-packages/vllm/entrypoints/cli/main.py", line 75, in main
+(APIServer pid=2235)     args.dispatch_function(args)
+(APIServer pid=2235)   File "/usr/local/lib/python3.10/dist-packages/vllm/entrypoints/cli/serve.py", line 118, in cmd
+(APIServer pid=2235)     uvloop.run(run_server(args))
+(APIServer pid=2235)   File "/usr/local/lib/python3.10/dist-packages/uvloop/__init__.py", line 69, in run
+(APIServer pid=2235)     return loop.run_until_complete(wrapper())
+(APIServer pid=2235)   File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+(APIServer pid=2235)   File "/usr/local/lib/python3.10/dist-packages/uvloop/__init__.py", line 48, in wrapper
+(APIServer pid=2235)     return await main
+(APIServer pid=2235)   File "/usr/local/lib/python3.10/dist-packages/vllm/entrypoints/openai/api_server.py", line 656, in run_server
+(APIServer pid=2235)     await run_server_worker(listen_address, sock, args, **uvicorn_kwargs)
+(APIServer pid=2235)   File "/usr/local/lib/python3.10/dist-packages/vllm/entrypoints/openai/api_server.py", line 670, in run_server_worker
+(APIServer pid=2235)     async with build_async_engine_client(
+(APIServer pid=2235)   File "/usr/lib/python3.10/contextlib.py", line 199, in __aenter__
+(APIServer pid=2235)     return await anext(self.gen)
+(APIServer pid=2235)   File "/usr/local/lib/python3.10/dist-packages/vllm/entrypoints/openai/api_server.py", line 103, in build_async_engine_client
+(APIServer pid=2235)     async with build_async_engine_client_from_engine_args(
+(APIServer pid=2235)   File "/usr/lib/python3.10/contextlib.py", line 199, in __aenter__
+(APIServer pid=2235)     return await anext(self.gen)
+(APIServer pid=2235)   File "/usr/local/lib/python3.10/dist-packages/vllm/entrypoints/openai/api_server.py", line 129, in build_async_engine_client_from_engine_args
+(APIServer pid=2235)     vllm_config = engine_args.create_engine_config(usage_context=usage_context)
+(APIServer pid=2235)   File "/usr/local/lib/python3.10/dist-packages/vllm/engine/arg_utils.py", line 1499, in create_engine_config
+(APIServer pid=2235)     maybe_override_with_speculators(
+(APIServer pid=2235)   File "/usr/local/lib/python3.10/dist-packages/vllm/transformers_utils/config.py", line 572, in maybe_override_with_speculators
+(APIServer pid=2235)     config_dict, _ = PretrainedConfig.get_config_dict(
+(APIServer pid=2235)   File "/usr/local/lib/python3.10/dist-packages/transformers/configuration_utils.py", line 667, in get_config_dict
+(APIServer pid=2235)     config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+(APIServer pid=2235)   File "/usr/local/lib/python3.10/dist-packages/transformers/configuration_utils.py", line 722, in _get_config_dict
+(APIServer pid=2235)     resolved_config_file = cached_file(
+(APIServer pid=2235)   File "/usr/local/lib/python3.10/dist-packages/transformers/utils/hub.py", line 278, in cached_file
+(APIServer pid=2235)     file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+(APIServer pid=2235)   File "/usr/local/lib/python3.10/dist-packages/transformers/utils/hub.py", line 473, in cached_files
+(APIServer pid=2235)     raise OSError(f"{e}") from e
+(APIServer pid=2235) OSError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/root/Qwen3.5-27B'. Use `repo_type` argument if needed.

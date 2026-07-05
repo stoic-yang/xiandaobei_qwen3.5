@@ -29,3 +29,10 @@ Thumbs.db
 
 # Keep placeholders
 !**/.gitkeep
+
+# Keep experiment logs/diffs under meta/experiments/ even though *.log ignored globally
+!experiments/**
+!meta/experiments/**
+experiments/**/*.whl
+experiments/**/*.safetensors
+experiments/**/*.bin
