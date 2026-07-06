@@ -1,0 +1,23 @@
+{
+  "run_id": "r0-ssh-mux-20260706-2239",
+  "status": "pass",
+  "change": "scripts/scnetctl.py generated SSH config adds ControlMaster auto, ControlPath ~/.ssh/cm-xiandaobei-%C, ControlPersist 10m to login and worker Host blocks",
+  "generated_config": "/Users/keynary/.ssh/xiandaobei.generated.conf",
+  "job_id": "655597",
+  "node": "e03r2n07",
+  "container_ip": "173.0.148.8",
+  "compile": {
+    "command": "python3 -m py_compile scripts/scnetctl.py",
+    "status": "pass"
+  },
+  "checks": {
+    "worker_master_check": {
+      "command": "ssh -F /Users/keynary/.ssh/xiandaobei.generated.conf -O check xiandaobei-worker-auto",
+      "stdout": "Master running (pid=77554)"
+    },
+    "first_true_seconds": 15.69,
+    "second_true_seconds": 0.05,
+    "second_under_1s": true
+  },
+  "note": "Bare ssh -O check xiandaobei-worker-auto does not load the generated config on this machine; project commands should use -F /Users/keynary/.ssh/xiandaobei.generated.conf or scnetctl helpers. Worker master was prewarmed after validation with ssh -F /Users/keynary/.ssh/xiandaobei.generated.conf -MNf xiandaobei-worker-auto."
+}

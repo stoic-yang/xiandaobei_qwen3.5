@@ -315,6 +315,9 @@ Host {CONFIG['login_alias']}
   User {CONFIG['user']}
   IdentityFile {login_identity}
   IdentitiesOnly yes
+  ControlMaster auto
+  ControlPath ~/.ssh/cm-xiandaobei-%C
+  ControlPersist 10m
   StrictHostKeyChecking accept-new
   UserKnownHostsFile {known_hosts}
   HostKeyAlias xiandaobei-login-{CONFIG['login_port']}
@@ -325,6 +328,9 @@ Host {CONFIG['auto_worker_alias']}
   User root
   IdentityFile {worker_identity}
   IdentitiesOnly yes
+  ControlMaster auto
+  ControlPath ~/.ssh/cm-xiandaobei-%C
+  ControlPersist 10m
   StrictHostKeyChecking accept-new
   UserKnownHostsFile {known_hosts}
   HostKeyAlias xiandaobei-worker-{resolved['job_id']}
