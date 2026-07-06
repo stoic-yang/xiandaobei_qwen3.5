@@ -181,6 +181,55 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
           python3 -m pip install --no-deps "$WHEEL"
         fi
 
+        python3 - "$RUN_DIR" "$WHEEL" <<'PY'
+        import hashlib, json, pathlib, sys, zipfile
+
+        run_dir = pathlib.Path(sys.argv[1])
+        wheel = pathlib.Path(sys.argv[2])
+        files = [
+            "vllm/model_executor/models/qwen3_5.py",
+            "vllm/model_executor/models/qwen3_next.py",
+            "vllm/model_executor/layers/activation.py",
+            "vllm/model_executor/layers/fla/ops/chunk.py",
+            "vllm/model_executor/layers/fla/ops/chunk_o.py",
+            "vllm/v1/attention/ops/triton_unified_attention.py",
+            "vllm/version.py",
+        ]
+
+        def sha(data: bytes) -> str:
+            return hashlib.sha256(data).hexdigest()
+
+        site_root = None
+        try:
+            import vllm
+
+            site_root = pathlib.Path(vllm.__file__).resolve().parent
+        except Exception:
+            site_root = None
+
+        out = {{
+            "wheel": {{"path": str(wheel), "sha256": sha(wheel.read_bytes())}},
+            "site_root": str(site_root) if site_root else None,
+            "files": {{}},
+        }}
+        with zipfile.ZipFile(wheel) as zf:
+            names = set(zf.namelist())
+            for file in files:
+                item = {{"wheel_sha256": None, "site_sha256": None, "site_path": None}}
+                if file in names:
+                    item["wheel_sha256"] = sha(zf.read(file))
+                if site_root:
+                    site_path = site_root / file.removeprefix("vllm/")
+                    if site_path.exists():
+                        item["site_path"] = str(site_path)
+                        item["site_sha256"] = sha(site_path.read_bytes())
+                out["files"][file] = item
+        (run_dir / "runtime_fingerprints.json").write_text(
+            json.dumps(out, indent=2, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
+        PY
+
         health_ok() {{
           curl -fsS http://127.0.0.1:8001/health >/dev/null 2>&1
         }}
@@ -336,6 +385,7 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
                 "log_path": str(run_dir / "repo_log.txt"),
             }},
             "wheel": {{"path": wheel, "sha256": wheel_sha}},
+            "runtime_fingerprints_path": str(run_dir / "runtime_fingerprints.json") if (run_dir / "runtime_fingerprints.json").exists() else None,
             "model_dir": model_dir,
             "protocol": {{
                 "warmup": "run_throughput.sh 4-8K 1",
@@ -362,7 +412,7 @@ def collect_artifacts(args: argparse.Namespace, cfg: dict[str, Any], local_dir: 
     alias = cfg.get("auto_worker_alias", "xiandaobei-worker-auto")
     remote_dir = f"{cfg['remote_runs_dir']}/{args.run_id}"
     local_dir.mkdir(parents=True, exist_ok=True)
-    for item in ("summary.json", "driver.log", "repo_status.txt", "repo_log.txt", "raw", "throughput"):
+    for item in ("summary.json", "runtime_fingerprints.json", "driver.log", "repo_status.txt", "repo_log.txt", "raw", "throughput"):
         target = local_dir / item
         if target.exists():
             continue

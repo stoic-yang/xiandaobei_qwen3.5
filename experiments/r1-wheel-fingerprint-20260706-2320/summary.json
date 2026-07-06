@@ -1,0 +1,127 @@
+{
+  "run_id": "r1-wheel-fingerprint-20260706-2320",
+  "status": "pass",
+  "repo_head": "d29e9db3ffa01b701346445c6e62fe963f6c17b1",
+  "repo_branch": "contest-p1-ffn-pool-20260621",
+  "wheel": {
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl",
+    "sha256": "a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde"
+  },
+  "site_root": "/usr/local/lib/python3.10/dist-packages/vllm",
+  "key_findings": [
+    "competition repo HEAD is d29e9db3, but dist wheel and installed site-packages do not contain d29e9db3 triton_unified_attention.py",
+    "triton_unified_attention.py in wheel/site matches 33323a1..a55f3c3 and differs from d29e9db3",
+    "qwen3_next.py in wheel/site matches a55f3c3/d29e9db3; qwen3_5.py matches fde463d/a55f3c3/d29e9db3",
+    "therefore prior guard-d29e9db3 throughput should be interpreted as competition wheel content, effectively a55-equivalent for the d29 attention path"
+  ],
+  "files": [
+    {
+      "file": "vllm/model_executor/models/qwen3_5.py",
+      "wheel_matches": [
+        "fde463da8",
+        "a55f3c316",
+        "d29e9db3f"
+      ],
+      "site_matches": [
+        "fde463da8",
+        "a55f3c316",
+        "d29e9db3f"
+      ],
+      "wheel_sha256": "dd9889671c88b783ce5385627ee61e67898b96889b828534760fb69d37ab6cce",
+      "site_sha256": "dd9889671c88b783ce5385627ee61e67898b96889b828534760fb69d37ab6cce"
+    },
+    {
+      "file": "vllm/model_executor/models/qwen3_next.py",
+      "wheel_matches": [
+        "a55f3c316",
+        "d29e9db3f"
+      ],
+      "site_matches": [
+        "a55f3c316",
+        "d29e9db3f"
+      ],
+      "wheel_sha256": "b33617ce76f0eac9f9ec18681e52035525efdfe80c7f706665329a4319d6cf43",
+      "site_sha256": "b33617ce76f0eac9f9ec18681e52035525efdfe80c7f706665329a4319d6cf43"
+    },
+    {
+      "file": "vllm/model_executor/layers/activation.py",
+      "wheel_matches": [
+        "293566c3b",
+        "fde463da8",
+        "a55f3c316",
+        "d29e9db3f"
+      ],
+      "site_matches": [
+        "293566c3b",
+        "fde463da8",
+        "a55f3c316",
+        "d29e9db3f"
+      ],
+      "wheel_sha256": "5488b2fd4b41062cd8d649d9021d79cb733a097e66b65a28ef2b530954f351ae",
+      "site_sha256": "5488b2fd4b41062cd8d649d9021d79cb733a097e66b65a28ef2b530954f351ae"
+    },
+    {
+      "file": "vllm/model_executor/layers/fla/ops/chunk.py",
+      "wheel_matches": [
+        "293566c3b",
+        "fde463da8",
+        "a55f3c316",
+        "d29e9db3f"
+      ],
+      "site_matches": [
+        "293566c3b",
+        "fde463da8",
+        "a55f3c316",
+        "d29e9db3f"
+      ],
+      "wheel_sha256": "2d216415631650c76246470a8f27e069008fb26f9e2e863b7d99496ffe3262d1",
+      "site_sha256": "2d216415631650c76246470a8f27e069008fb26f9e2e863b7d99496ffe3262d1"
+    },
+    {
+      "file": "vllm/model_executor/layers/fla/ops/chunk_o.py",
+      "wheel_matches": [
+        "293566c3b",
+        "fde463da8",
+        "a55f3c316",
+        "d29e9db3f"
+      ],
+      "site_matches": [
+        "293566c3b",
+        "fde463da8",
+        "a55f3c316",
+        "d29e9db3f"
+      ],
+      "wheel_sha256": "16903ee8486a2e7a1ea5cf10e04d38ccf5529f04fa19549c467a8809e762cbf7",
+      "site_sha256": "16903ee8486a2e7a1ea5cf10e04d38ccf5529f04fa19549c467a8809e762cbf7"
+    },
+    {
+      "file": "vllm/v1/attention/ops/triton_unified_attention.py",
+      "wheel_matches": [
+        "33323a1d4",
+        "993a9444e",
+        "0ba4953d9",
+        "293566c3b",
+        "fde463da8",
+        "a55f3c316"
+      ],
+      "site_matches": [
+        "33323a1d4",
+        "993a9444e",
+        "0ba4953d9",
+        "293566c3b",
+        "fde463da8",
+        "a55f3c316"
+      ],
+      "wheel_sha256": "8e8d393c4d551547de397859462ad7c3750230841458e658d73381dbf3f59005",
+      "site_sha256": "8e8d393c4d551547de397859462ad7c3750230841458e658d73381dbf3f59005"
+    },
+    {
+      "file": "vllm/version.py",
+      "wheel_matches": [],
+      "site_matches": [],
+      "wheel_sha256": "1c2fe608d932e3c38dab7e4fc617c60fadb86f5ccabb205795deac63417fdc33",
+      "site_sha256": "1c2fe608d932e3c38dab7e4fc617c60fadb86f5ccabb205795deac63417fdc33"
+    }
+  ],
+  "verdict": "R1 A/B must fingerprint the installed runtime, not only repo HEAD; d29e9db3 source change was not present in the measured competition wheel."
+}

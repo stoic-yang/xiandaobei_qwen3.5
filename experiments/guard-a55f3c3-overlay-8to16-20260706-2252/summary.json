@@ -1,0 +1,77 @@
+{
+  "run_id": "guard-a55f3c3-overlay-8to16-20260706-2252",
+  "status": "pass",
+  "finished_at": "2026-07-06T23:14:24+0800",
+  "method": "site-packages overlay screening, not full guard protocol",
+  "overlay_rev": "a55f3c316b9c88aae957555f8b3994cfc32bee9a",
+  "wheel": "/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl",
+  "throughput": {
+    "8-16K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-a55f3c3-overlay-8to16-20260706-2252/throughput/8-16K_rep1.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 7.072538256643354,
+          "p99_ttft_ms": 15645.945755653083,
+          "p99_tpot_ms": 70.37042753843745,
+          "duration": 241.78024040997843
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-a55f3c3-overlay-8to16-20260706-2252/throughput/8-16K_rep2.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 7.245884239619943,
+          "p99_ttft_ms": 15615.290797106281,
+          "p99_tpot_ms": 70.38343387498888,
+          "duration": 235.99604181500035
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-a55f3c3-overlay-8to16-20260706-2252/throughput/8-16K_rep3.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 7.245977759527166,
+          "p99_ttft_ms": 15620.898723687278,
+          "p99_tpot_ms": 70.30287753197706,
+          "duration": 235.99299594201148
+        }
+      ],
+      "median": {
+        "output_throughput": 7.245884239619943,
+        "p99_ttft_ms": 15620.898723687278,
+        "p99_tpot_ms": 70.37042753843745,
+        "duration": 235.99604181500035
+      }
+    }
+  },
+  "accuracy_smoke": {
+    "hotpotqa": {
+      "metric": "score",
+      "score": 100.0,
+      "rows": 1
+    },
+    "gov_report": {
+      "metric": "score",
+      "score": 30.51,
+      "rows": 1
+    },
+    "retrieval_multi_point": {
+      "metric": "recalculated_acc",
+      "score": 100.0,
+      "ok": 1,
+      "total": 1
+    },
+    "aggregation_keyword_aggregation": {
+      "metric": "recalculated_acc",
+      "score": 100.0,
+      "ok": 1,
+      "total": 1
+    }
+  },
+  "verdict": "screening only; compare 8-16K median against d29e9db3 guard and rerun full three-bucket guard in a fresh window",
+  "runtime_fingerprint_correction": {
+    "source": "experiments/r1-wheel-fingerprint-20260706-2320/",
+    "finding": "competition wheel already matches a55f3c3 for d29 attention file; this overlay was effectively a no-op for that file",
+    "interpretation": "8-16K delta vs guard-d29e9db3 should be treated as noise/screening, not a validated commit effect"
+  }
+}

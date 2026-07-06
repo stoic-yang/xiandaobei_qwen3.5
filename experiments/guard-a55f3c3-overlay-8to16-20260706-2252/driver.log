@@ -1,0 +1,106 @@
+=== a55 overlay 8-16K screening ===
+run_id=guard-a55f3c3-overlay-8to16-20260706-2252
+started_at=2026-07-06T22:51:38+08:00
+source_repo=/public/home/xdzs2026_c166/vllm_cscc_competition
+overlay_rev=a55f3c316b9c88aae957555f8b3994cfc32bee9a
+a55f3c316 perf(qwen3.5): replace hot rearranges with views
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reset site-packages from competition wheel
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+Installing collected packages: vllm
+  Attempting uninstall: vllm
+    Found existing installation: vllm 0.18.1+das.dtk2604
+    Uninstalling vllm-0.18.1+das.dtk2604:
+      Successfully uninstalled vllm-0.18.1+das.dtk2604
+Successfully installed vllm-0.18.1+das.dtk2604
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+site_packages_vllm=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_file=vllm/model_executor/models/qwen3_5.py
+overlay_file=vllm/model_executor/models/qwen3_next.py
+overlay_file=vllm/model_executor/layers/activation.py
+overlay_file=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_file=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_file=vllm/version.py
+import_vllm 0.18.1 /usr/local/lib/python3.10/dist-packages/vllm/__init__.py
+starting vLLM server
+server_ready_at=2026-07-06T22:55:22+08:00 pid=22382
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== throughput bucket=8-16K rep=3 ===
+=== accuracy smoke all 1 ===
+{
+  "run_id": "guard-a55f3c3-overlay-8to16-20260706-2252",
+  "status": "pass",
+  "finished_at": "2026-07-06T23:14:24+0800",
+  "method": "site-packages overlay screening, not full guard protocol",
+  "overlay_rev": "a55f3c316b9c88aae957555f8b3994cfc32bee9a",
+  "wheel": "/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl",
+  "throughput": {
+    "8-16K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-a55f3c3-overlay-8to16-20260706-2252/throughput/8-16K_rep1.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 7.072538256643354,
+          "p99_ttft_ms": 15645.945755653083,
+          "p99_tpot_ms": 70.37042753843745,
+          "duration": 241.78024040997843
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-a55f3c3-overlay-8to16-20260706-2252/throughput/8-16K_rep2.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 7.245884239619943,
+          "p99_ttft_ms": 15615.290797106281,
+          "p99_tpot_ms": 70.38343387498888,
+          "duration": 235.99604181500035
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-a55f3c3-overlay-8to16-20260706-2252/throughput/8-16K_rep3.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 7.245977759527166,
+          "p99_ttft_ms": 15620.898723687278,
+          "p99_tpot_ms": 70.30287753197706,
+          "duration": 235.99299594201148
+        }
+      ],
+      "median": {
+        "output_throughput": 7.245884239619943,
+        "p99_ttft_ms": 15620.898723687278,
+        "p99_tpot_ms": 70.37042753843745,
+        "duration": 235.99604181500035
+      }
+    }
+  },
+  "accuracy_smoke": {
+    "hotpotqa": {
+      "metric": "score",
+      "score": 100.0,
+      "rows": 1
+    },
+    "gov_report": {
+      "metric": "score",
+      "score": 30.51,
+      "rows": 1
+    },
+    "retrieval_multi_point": {
+      "metric": "recalculated_acc",
+      "score": 100.0,
+      "ok": 1,
+      "total": 1
+    },
+    "aggregation_keyword_aggregation": {
+      "metric": "recalculated_acc",
+      "score": 100.0,
+      "ok": 1,
+      "total": 1
+    }
+  },
+  "verdict": "screening only; compare 8-16K median against d29e9db3 guard and rerun full three-bucket guard in a fresh window"
+}
+completed_at=2026-07-06T23:14:24+08:00

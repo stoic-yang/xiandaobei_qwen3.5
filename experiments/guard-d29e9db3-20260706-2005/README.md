@@ -8,6 +8,10 @@
 - Raw logs: `raw/`
 - Throughput result JSONs: `throughput/`
 
+## Runtime Fingerprint Correction
+
+Later R1 fingerprinting in `experiments/r1-wheel-fingerprint-20260706-2320/` showed the installed competition wheel does **not** contain the `d29e9db3` `triton_unified_attention.py` source change. For that file, wheel/site-packages match `a55f3c3` and earlier, while source `d29e9db3` has a different SHA256. Interpret this run as a measurement of the installed competition wheel, not as proof of d29 source performance.
+
 ## Median Throughput
 
 | bucket | output tok/s | TTFT-P99 ms | TPOT-P99 ms |

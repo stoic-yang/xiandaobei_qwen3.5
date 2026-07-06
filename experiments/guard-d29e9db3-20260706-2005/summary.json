@@ -162,5 +162,10 @@
       "total": 1
     },
     "note": "smoke only; not a substitute for full accuracy delta"
+  },
+  "runtime_fingerprint_correction": {
+    "source": "experiments/r1-wheel-fingerprint-20260706-2320/",
+    "finding": "installed competition wheel does not contain d29e9db3 triton_unified_attention.py; wheel/site match a55f3c3 or earlier for that file",
+    "interpretation": "this run measures installed competition wheel content, not source HEAD d29 attention path"
   }
 }
