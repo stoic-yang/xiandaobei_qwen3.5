@@ -13,8 +13,10 @@ Last updated: 2026-07-06 by opencode (initial seed from Claude memories + Codex 
 ## Plans
 
 - [../plans/roadmap.md](../plans/roadmap.md) — 分轮次优化计划书（R0探针→R1止损→R2普惠→R3算子→R4量化→R5合规）
+- [../plans/infra-pool.md](../plans/infra-pool.md) — 容器池/预热/并行加速基础设施（L0 骨架 scripts/pool_manager.py + sbatch 命门）
 
 ## Changelog
 
 - 2026-07-06 seed: migrated from `~/.claude/projects/-Users-keynary-Code-xiandaobei/memory/*` + Codex rollout summaries.
 - 2026-07-06 Claude: add 50-arch-bottleneck.md（混合GDN架构与prefill瓶颈判断）+ plans/roadmap.md（分轮次计划书）。
+- 2026-07-06 Claude: add plans/infra-pool.md + scripts/pool_manager.py（L0 容器池热备骨架，登录节点运行，create_container 命门待 Codex 填）。
