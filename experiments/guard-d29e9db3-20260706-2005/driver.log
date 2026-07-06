@@ -1,0 +1,195 @@
+=== guard benchmark ===
+run_id=guard-d29e9db3-20260706-2005
+host=worker-0
+started_at=2026-07-06T20:01:19+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 accuracy=full accuracy_rows=
+copying model to local disk: /public/home/xdzs2026_c166/Qwen3.5-27B -> /root/Qwen3.5-27B
+model_copy_done_at=2026-07-06T20:15:57+08:00
+model_dir_source=local MODEL_DIR=/root/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+Installing collected packages: vllm
+Successfully installed vllm-0.18.1+das.dtk2604
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+starting vLLM server
+server_ready_at=2026-07-06T20:24:40+08:00 pid=706
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== throughput bucket=8-16K rep=3 ===
+=== throughput bucket=16-32K rep=1 ===
+=== throughput bucket=16-32K rep=2 ===
+=== throughput bucket=16-32K rep=3 ===
+=== accuracy full ===
+=== summary ===
+{
+  "run_id": "guard-d29e9db3-20260706-2005",
+  "status": "pass",
+  "finished_at": "2026-07-06T21:50:57+0800",
+  "repo": {
+    "kind": "competition",
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition",
+    "branch": "contest-p1-ffn-pool-20260621",
+    "head": "d29e9db3ffa01b701346445c6e62fe963f6c17b1",
+    "status_path": "/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-20260706-2005/repo_status.txt",
+    "log_path": "/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-20260706-2005/repo_log.txt"
+  },
+  "wheel": {
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl",
+    "sha256": "a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde"
+  },
+  "model_dir": "/root/Qwen3.5-27B",
+  "protocol": {
+    "warmup": "run_throughput.sh 4-8K 1",
+    "repetitions": 3,
+    "num_prompts": 10,
+    "accuracy": "full"
+  },
+  "throughput": {
+    "4-8K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-20260706-2005/throughput/4-8K_rep1.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 12.214105590174142,
+          "p99_ttft_ms": 4536.953713037656,
+          "p99_tpot_ms": 69.30482997385258,
+          "duration": 210.73994988799677
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-20260706-2005/throughput/4-8K_rep2.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 12.227836135186612,
+          "p99_ttft_ms": 4532.662542313628,
+          "p99_tpot_ms": 69.2703085187442,
+          "duration": 210.50331158700283
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-20260706-2005/throughput/4-8K_rep3.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 12.229843720993106,
+          "p99_ttft_ms": 4535.41559881298,
+          "p99_tpot_ms": 69.26274901266271,
+          "duration": 210.4687564880005
+        }
+      ],
+      "median": {
+        "output_throughput": 12.227836135186612,
+        "p99_ttft_ms": 4535.41559881298,
+        "p99_tpot_ms": 69.2703085187442,
+        "duration": 210.50331158700283
+      }
+    },
+    "8-16K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-20260706-2005/throughput/8-16K_rep1.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 6.5437333321344475,
+          "p99_ttft_ms": 33030.621091093926,
+          "p99_tpot_ms": 70.57356717874902,
+          "duration": 261.31871719201445
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-20260706-2005/throughput/8-16K_rep2.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 7.231537917317897,
+          "p99_ttft_ms": 15625.239983256615,
+          "p99_tpot_ms": 70.5287506131917,
+          "duration": 236.46422373101814
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-20260706-2005/throughput/8-16K_rep3.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 7.229916457303268,
+          "p99_ttft_ms": 15629.511014902091,
+          "p99_tpot_ms": 70.71271481687852,
+          "duration": 236.51725577999605
+        }
+      ],
+      "median": {
+        "output_throughput": 7.229916457303268,
+        "p99_ttft_ms": 15629.511014902091,
+        "p99_tpot_ms": 70.57356717874902,
+        "duration": 236.51725577999605
+      }
+    },
+    "16-32K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-20260706-2005/throughput/16-32K_rep1.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 4.651636500424924,
+          "p99_ttft_ms": 28698.031482534425,
+          "p99_tpot_ms": 72.11267558514837,
+          "duration": 393.4099321459944
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-20260706-2005/throughput/16-32K_rep2.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 4.651397961489154,
+          "p99_ttft_ms": 28692.612377618207,
+          "p99_tpot_ms": 72.13767553460595,
+          "duration": 393.43010749699897
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-20260706-2005/throughput/16-32K_rep3.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 4.650779124812389,
+          "p99_ttft_ms": 28709.610039094405,
+          "p99_tpot_ms": 72.14896053997411,
+          "duration": 393.48245764602325
+        }
+      ],
+      "median": {
+        "output_throughput": 4.651397961489154,
+        "p99_ttft_ms": 28698.031482534425,
+        "p99_tpot_ms": 72.13767553460595,
+        "duration": 393.43010749699897
+      }
+    }
+  },
+  "weighted_output_throughput": 7.455944844135703,
+  "accuracy": {
+    "hotpotqa": {
+      "version": "fece4a",
+      "metric": "score",
+      "mode": "gen",
+      "score": "77.96"
+    },
+    "gov_report": {
+      "version": "52bd7a",
+      "metric": "score",
+      "mode": "gen",
+      "score": "32.77"
+    },
+    "retrieval_multi_point": {
+      "metric": "recalculated_acc",
+      "score": "100.00",
+      "count": "30/30"
+    },
+    "aggregation_keyword_aggregation": {
+      "metric": "recalculated_acc",
+      "score": "100.00",
+      "count": "30/30"
+    }
+  }
+}
+completed_at=2026-07-06T21:50:57+08:00
+keep_server=1
