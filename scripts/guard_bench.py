@@ -69,6 +69,13 @@ def now_run_id() -> str:
 
 
 def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
+    bucket_list = [item.strip() for item in args.buckets.split(",") if item.strip()]
+    valid_buckets = {"4-8K", "8-16K", "16-32K"}
+    invalid = [item for item in bucket_list if item not in valid_buckets]
+    if not bucket_list or invalid:
+        raise SystemExit(f"--buckets must be comma-separated from {sorted(valid_buckets)}, got {args.buckets!r}")
+    bucket_words = " ".join(bucket_list)
+
     dcu_env = {
         "DTKROOT": "/opt/dtk",
         "HIP_PATH": "/opt/dtk/hip",
@@ -113,7 +120,9 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
         COPY_MODEL_LOCAL={1 if args.copy_model_local else 0}
         NUM_PROMPTS={q(args.num_prompts)}
         REPETITIONS={q(args.repetitions)}
+        BUCKETS={q(bucket_words)}
         REPO_KIND={q(args.repo)}
+        OVERLAY_REV={q(args.overlay_rev)}
         ACCURACY={q(args.accuracy)}
         ACCURACY_ROWS={q(accuracy_rows)}
         REUSE_SERVER={1 if args.reuse_server else 0}
@@ -121,7 +130,7 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
         STOP_EXISTING={1 if args.stop_existing else 0}
         INSTALL_WHEEL={0 if args.no_install else 1}
         SERVER_START_TIMEOUT={q(args.server_start_timeout)}
-        export NUM_PROMPTS REPETITIONS REPO_KIND
+        export NUM_PROMPTS REPETITIONS BUCKETS REPO_KIND OVERLAY_REV
 
         mkdir -p "$RUN_DIR/raw" "$RUN_DIR/throughput" "$RUN_DIR/accuracy"
         exec > >(tee -a "$RUN_DIR/driver.log") 2>&1
@@ -132,7 +141,7 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
         echo "started_at=$(date -Is)"
         echo "repo_kind={args.repo}"
         echo "repo_path=$REPO_PATH"
-        echo "num_prompts=$NUM_PROMPTS repetitions=$REPETITIONS accuracy=$ACCURACY accuracy_rows=$ACCURACY_ROWS"
+        echo "num_prompts=$NUM_PROMPTS repetitions=$REPETITIONS buckets=$BUCKETS accuracy=$ACCURACY accuracy_rows=$ACCURACY_ROWS overlay_rev=$OVERLAY_REV"
 
         unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY ALL_PROXY all_proxy
         export no_proxy=127.0.0.1,localhost
@@ -181,6 +190,33 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
           python3 -m pip install --no-deps "$WHEEL"
         fi
 
+        if [ -n "$OVERLAY_REV" ]; then
+          echo "overlay_rev=$OVERLAY_REV"
+          git -C "$REPO_PATH" cat-file -e "$OVERLAY_REV^{{commit}}"
+          SITE_ROOT="$(python3 -c 'import pathlib, vllm; print(pathlib.Path(vllm.__file__).resolve().parent)')"
+          echo "overlay_site_root=$SITE_ROOT"
+          : > "$RUN_DIR/overlay_manifest.txt"
+          for file in \
+            vllm/model_executor/models/qwen3_5.py \
+            vllm/model_executor/models/qwen3_next.py \
+            vllm/model_executor/layers/activation.py \
+            vllm/model_executor/layers/fla/ops/chunk.py \
+            vllm/model_executor/layers/fla/ops/chunk_o.py \
+            vllm/v1/attention/ops/triton_unified_attention.py \
+            vllm/version.py
+          do
+            if git -C "$REPO_PATH" cat-file -e "$OVERLAY_REV:$file" 2>/dev/null; then
+              dest="$SITE_ROOT/${{file#vllm/}}"
+              mkdir -p "$(dirname "$dest")"
+              git -C "$REPO_PATH" show "$OVERLAY_REV:$file" > "$dest"
+              printf '%s  %s\\n' "$(sha256sum "$dest" | awk '{{print $1}}')" "$file" >> "$RUN_DIR/overlay_manifest.txt"
+              echo "overlay_file=$file"
+            else
+              echo "overlay_missing=$file"
+            fi
+          done
+        fi
+
         python3 - "$RUN_DIR" "$WHEEL" <<'PY'
         import hashlib, json, pathlib, sys, zipfile
 
@@ -225,7 +261,7 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
                         item["site_sha256"] = sha(site_path.read_bytes())
                 out["files"][file] = item
         (run_dir / "runtime_fingerprints.json").write_text(
-            json.dumps(out, indent=2, ensure_ascii=False) + "\n",
+            json.dumps(out, indent=2, ensure_ascii=False) + "\\n",
             encoding="utf-8",
         )
         PY
@@ -288,7 +324,7 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
         echo "=== warmup ==="
         ./run_throughput.sh 4-8K 1 > "$RUN_DIR/raw/warmup_4-8K.log" 2>&1
 
-        for bucket in 4-8K 8-16K 16-32K; do
+        for bucket in $BUCKETS; do
           for rep in $(seq 1 "$REPETITIONS"); do
             echo "=== throughput bucket=$bucket rep=$rep ==="
             rm -f "./test/${{bucket}}_throughput/result.json"
@@ -313,7 +349,7 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
 
         run_dir = Path(sys.argv[1])
         run_id, repo_head, repo_branch, repo_path, wheel, wheel_sha, model_dir, accuracy_mode = sys.argv[2:]
-        buckets = ("4-8K", "8-16K", "16-32K")
+        buckets = tuple(os.environ.get("BUCKETS", "4-8K 8-16K 16-32K").split())
         weights = {{"4-8K": 0.2, "8-16K": 0.5, "16-32K": 0.3}}
 
         def metric(data, key):
@@ -369,7 +405,7 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
                     accuracy[m.group(1)] = {{"metric": "recalculated_acc", "score": m.group(2), "count": m.group(3) or ""}}
 
         weighted = None
-        if all(throughput[b]["median"].get("output_throughput") is not None for b in buckets):
+        if set(buckets) == set(weights) and all(throughput[b]["median"].get("output_throughput") is not None for b in buckets):
             weighted = sum(weights[b] * throughput[b]["median"]["output_throughput"] for b in buckets)
 
         summary = {{
@@ -386,9 +422,14 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
             }},
             "wheel": {{"path": wheel, "sha256": wheel_sha}},
             "runtime_fingerprints_path": str(run_dir / "runtime_fingerprints.json") if (run_dir / "runtime_fingerprints.json").exists() else None,
+            "overlay": {{
+                "rev": os.environ.get("OVERLAY_REV", ""),
+                "manifest_path": str(run_dir / "overlay_manifest.txt") if (run_dir / "overlay_manifest.txt").exists() else None,
+            }},
             "model_dir": model_dir,
             "protocol": {{
                 "warmup": "run_throughput.sh 4-8K 1",
+                "buckets": list(buckets),
                 "repetitions": int(os.environ.get("REPETITIONS", "0") or 0),
                 "num_prompts": int(os.environ.get("NUM_PROMPTS", "0") or 0),
                 "accuracy": accuracy_mode,
@@ -412,7 +453,7 @@ def collect_artifacts(args: argparse.Namespace, cfg: dict[str, Any], local_dir: 
     alias = cfg.get("auto_worker_alias", "xiandaobei-worker-auto")
     remote_dir = f"{cfg['remote_runs_dir']}/{args.run_id}"
     local_dir.mkdir(parents=True, exist_ok=True)
-    for item in ("summary.json", "runtime_fingerprints.json", "driver.log", "repo_status.txt", "repo_log.txt", "raw", "throughput"):
+    for item in ("summary.json", "runtime_fingerprints.json", "overlay_manifest.txt", "driver.log", "repo_status.txt", "repo_log.txt", "raw", "throughput"):
         target = local_dir / item
         if target.exists():
             continue
@@ -437,6 +478,8 @@ def collect_artifacts(args: argparse.Namespace, cfg: dict[str, Any], local_dir: 
 
                 - Intent: fixed warm-container guard protocol for Round 0 / Round 1 comparisons.
                 - Method: warmup once, then three throughput buckets x {args.repetitions} repetitions, median summary, plus accuracy mode `{args.accuracy}`.
+                - Buckets: `{args.buckets}`
+                - Overlay rev: `{args.overlay_rev or ""}`
                 - Remote run dir: `{remote_dir}`
                 - Local summary: `summary.json`
                 - Raw logs: `raw/`
@@ -459,6 +502,8 @@ def main() -> None:
     parser.add_argument("--copy-model-local", action="store_true")
     parser.add_argument("--num-prompts", type=int, default=10)
     parser.add_argument("--repetitions", type=int, default=3)
+    parser.add_argument("--buckets", default="4-8K,8-16K,16-32K", help="Comma-separated throughput buckets to run")
+    parser.add_argument("--overlay-rev", help="Overlay selected Python files from this remote git revision after installing the wheel")
     parser.add_argument("--accuracy", choices=["none", "smoke", "full"], default="full")
     parser.add_argument("--accuracy-rows", type=int)
     parser.add_argument("--server-start-timeout", type=int, default=900)

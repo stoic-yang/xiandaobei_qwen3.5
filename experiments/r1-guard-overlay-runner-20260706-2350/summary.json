@@ -1,0 +1,16 @@
+{
+  "run_id": "r1-guard-overlay-runner-20260706-2350",
+  "status": "pass",
+  "changes": [
+    "guard_bench.py supports --overlay-rev",
+    "guard_bench.py supports --buckets",
+    "future guard runs collect runtime_fingerprints.json and overlay_manifest.txt"
+  ],
+  "verification": {
+    "py_compile": "python3 -m py_compile scripts/guard_bench.py passed",
+    "dry_run": "raw/dryrun_overlay_8to16.sh",
+    "bash_n": "bash -n raw/dryrun_overlay_8to16.sh passed"
+  },
+  "next_use": "Run full R1 by invoking guard_bench.py per commit with --overlay-rev <sha> --buckets 4-8K,8-16K,16-32K --repetitions 3 --accuracy smoke/full in a fresh container window.",
+  "created_at": "2026-07-06T23:30:02+0800"
+}
