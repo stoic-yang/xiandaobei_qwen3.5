@@ -64,3 +64,4 @@ fresh 容器装基线或优化任一 wheel，`start_vllm.sh` 都在 model loader
 
 ## Changelog
 - 2026-07-06 seed（合并 Claude memory 与 Codex 提炼；修正 activation_p1.patch 状态为已合入；明确 loader 假阳性阻塞）。
+- 2026-07-06 live correction（Codex SCNet job 655597）：`vllm_cscc_competition` is currently clean on `contest-p1-ffn-pool-20260621` at `d29e9db3f` (`perf(attention): add qwen35 rocm gqa attention path`), not `a55f3c3`; current competition wheel sha256 is `a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde`. Baseline repo still has only build-noise `M vllm/version.py`.

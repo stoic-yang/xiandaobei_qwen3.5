@@ -51,3 +51,4 @@
 
 ## Changelog
 - 2026-07-06 create（Claude 读 baseline 实验 + vllm_server.log 得出混合GDN架构与prefill瓶颈判断；推翻"KV量化是主战场"的纯文档预判）。
+- 2026-07-06 R0.1/R0.2 correction（Codex live probe on SCNet job 655597）：`config.json` confirms 64 text layers = 48 `linear_attention` + 16 `full_attention`, `full_attention_interval=4`, **not MoE** (`num_experts`/`num_experts_per_tok` absent), `head_dim=256`, `num_attention_heads=24`, `num_key_value_heads=4`, `hidden_size=5120`; DCU is `BW`/`gfx936:sramecc+:xnack-`, 80 CU, 64 GiB class VRAM, wavefront 64, HIP 6.3 runtime; DTK exposes `du_mma` FP8 fragments/conversion builtins, but `hy-smi` did not print peak memory bandwidth or peak TFLOPS directly.

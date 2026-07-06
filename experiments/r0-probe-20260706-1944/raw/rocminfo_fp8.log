@@ -1,0 +1,140 @@
+  Name:                    gfx936                             
+  Uuid:                    GPU-00158c2b784a3121               
+  Marketing Name:          BW                                 
+  Vendor Name:             C-3000                             
+  Feature:                 KERNEL_DISPATCH                    
+  Profile:                 BASE_PROFILE                       
+  Float Round Mode:        NEAR                               
+  Max Queue Number:        128(0x80)                          
+  Queue Min Size:          64(0x40)                           
+  Queue Max Size:          131072(0x20000)                    
+  Queue Type:              MULTI                              
+  Node:                    8                                  
+  Device Type:             HCU                                
+  Cache Info:              
+    L1:                      32(0x20) KB                        
+    L2:                      8192(0x2000) KB                    
+  Chip ID:                 25376(0x6320)                      
+  ASIC Revision:           1(0x1)                             
+  Cacheline Size:          64(0x40)                           
+  Max Clock Freq. (MHz):   1500                               
+  BDFID:                   62720                              
+  Internal Node ID:        8                                  
+  Compute Unit:            80                                 
+  SIMDs per CU:            4                                  
+  Shader Engines:          8                                  
+  Shader Arrs. per Eng.:   1                                  
+  WatchPts on Addr. Ranges:4                                  
+  Features:                KERNEL_DISPATCH 
+  Fast F16 Operation:      TRUE                               
+  Wavefront Size:          64(0x40)                           
+  Workgroup Max Size:      1024(0x400)                        
+  Workgroup Max Size per Dimension:
+    x                        1024(0x400)                        
+    y                        1024(0x400)                        
+    z                        1024(0x400)                        
+  Max Waves Per CU:        40(0x28)                           
+  Max Work-item Per CU:    2560(0xa00)                        
+  Grid Max Size:           4294967295(0xffffffff)             
+  Grid Max Size per Dimension:
+    x                        4294967295(0xffffffff)             
+    y                        4294967295(0xffffffff)             
+    z                        4294967295(0xffffffff)             
+  Max fbarriers/Workgrp:   32                                 
+  Packet Processor uCode:: 50                                 
+  SDMA engine uCode::      12                                 
+  IOMMU Support::          None                               
+  Pool Info:               
+    Pool 1                   
+      Segment:                 GLOBAL; FLAGS: COARSE GRAINED      
+      Size:                    67092480(0x3ffc000) KB             
+      Allocatable:             TRUE                               
+      Alloc Granule:           4KB                                
+      Alloc Alignment:         4KB                                
+      Accessible by all:       FALSE                              
+    Pool 2                   
+      Segment:                 GLOBAL; FLAGS:                     
+      Size:                    67092480(0x3ffc000) KB             
+      Allocatable:             TRUE                               
+      Alloc Granule:           4KB                                
+      Alloc Alignment:         4KB                                
+      Accessible by all:       FALSE                              
+    Pool 3                   
+      Segment:                 GLOBAL; FLAGS: FINE GRAINED        
+      Size:                    67092480(0x3ffc000) KB             
+      Allocatable:             TRUE                               
+      Alloc Granule:           4KB                                
+      Alloc Alignment:         4KB                                
+      Accessible by all:       FALSE                              
+    Pool 4                   
+      Segment:                 GROUP                              
+      Size:                    64(0x40) KB                        
+      Allocatable:             FALSE                              
+      Alloc Granule:           0KB                                
+      Alloc Alignment:         0KB                                
+      Accessible by all:       FALSE                              
+  ISA Info:                
+    ISA 1                    
+      Name:                    amdgcn-amd-amdhsa--gfx936:sramecc+:xnack-
+      Machine Models:          HSA_MACHINE_MODEL_LARGE            
+      Profiles:                HSA_PROFILE_BASE                   
+      Default Rounding Mode:   NEAR                               
+      Default Rounding Mode:   NEAR                               
+      Fast f16:                TRUE                               
+      Workgroup Max Size:      1024(0x400)                        
+      Workgroup Max Size per Dimension:
+        x                        1024(0x400)                        
+        y                        1024(0x400)                        
+        z                        1024(0x400)                        
+      Grid Max Size:           4294967295(0xffffffff)             
+      Grid Max Size per Dimension:
+        x                        4294967295(0xffffffff)             
+        y                        4294967295(0xffffffff)             
+        z                        4294967295(0xffffffff)             
+      FBarrier Max Size:       32                                 
+*** Done ***             
+TARGETS
+gfx906
+gfx926
+gfx928
+gfx936
+gfx938
+FP8_DUMMA
+253:template<> class DUFragment<matrix_a, 16, 16, 32, __hip_fp8_e4m3, row_major> : public DUFragmentBase<__hip_fp8_e4m3, 8> {};
+254:template<> class DUFragment<matrix_a, 16, 16, 32, __hip_fp8_e4m3, col_major> : public DUFragmentBase<__hip_fp8_e4m3, 8> {};
+255:template<> class DUFragment<matrix_b, 16, 16, 32, __hip_fp8_e4m3, row_major> : public DUFragmentBase<__hip_fp8_e4m3, 8> {};
+256:template<> class DUFragment<matrix_b, 16, 16, 32, __hip_fp8_e4m3, col_major> : public DUFragmentBase<__hip_fp8_e4m3, 8> {};
+258:template<> class DUFragment<matrix_a, 16, 16, 32, __hip_fp8_e5m2, row_major> : public DUFragmentBase<__hip_fp8_e5m2, 8> {};
+259:template<> class DUFragment<matrix_a, 16, 16, 32, __hip_fp8_e5m2, col_major> : public DUFragmentBase<__hip_fp8_e5m2, 8> {};
+260:template<> class DUFragment<matrix_b, 16, 16, 32, __hip_fp8_e5m2, row_major> : public DUFragmentBase<__hip_fp8_e5m2, 8> {};
+261:template<> class DUFragment<matrix_b, 16, 16, 32, __hip_fp8_e5m2, col_major> : public DUFragmentBase<__hip_fp8_e5m2, 8> {};
+334:__DU_MMA_DEVICE_DECL__ void du_load_matrix_sync(DUFragment<matrix_a, 16, 16, 32, __hip_fp8_e4m3, row_major>& a, const __hip_fp8_e4m3* p, unsigned ldm);
+335:__DU_MMA_DEVICE_DECL__ void du_load_matrix_sync(DUFragment<matrix_a, 16, 16, 32, __hip_fp8_e4m3, col_major>& a, const __hip_fp8_e4m3* p, unsigned ldm);
+336:__DU_MMA_DEVICE_DECL__ void du_load_matrix_sync(DUFragment<matrix_b, 16, 16, 32, __hip_fp8_e4m3, row_major>& a, const __hip_fp8_e4m3* p, unsigned ldm);
+337:__DU_MMA_DEVICE_DECL__ void du_load_matrix_sync(DUFragment<matrix_b, 16, 16, 32, __hip_fp8_e4m3, col_major>& a, const __hip_fp8_e4m3* p, unsigned ldm);
+339:__DU_MMA_DEVICE_DECL__ void du_load_matrix_sync(DUFragment<matrix_a, 16, 16, 32, __hip_fp8_e5m2, row_major>& a, const __hip_fp8_e5m2* p, unsigned ldm);
+340:__DU_MMA_DEVICE_DECL__ void du_load_matrix_sync(DUFragment<matrix_a, 16, 16, 32, __hip_fp8_e5m2, col_major>& a, const __hip_fp8_e5m2* p, unsigned ldm);
+341:__DU_MMA_DEVICE_DECL__ void du_load_matrix_sync(DUFragment<matrix_b, 16, 16, 32, __hip_fp8_e5m2, row_major>& a, const __hip_fp8_e5m2* p, unsigned ldm);
+342:__DU_MMA_DEVICE_DECL__ void du_load_matrix_sync(DUFragment<matrix_b, 16, 16, 32, __hip_fp8_e5m2, col_major>& a, const __hip_fp8_e5m2* p, unsigned ldm);
+382:__DU_MMA_DEVICE_DECL__ void du_mma_sync(DUFragment<accumulator, 16, 16, 4, float>& d,
+390:__DU_MMA_DEVICE_DECL__ void du_mma_sync(DUFragment<accumulator, 16, 16, 4, double>& d,
+398:__DU_MMA_DEVICE_DECL__ void du_mma_sync(DUFragment<accumulator, 16, 16, 8, float>& d,
+404:__DU_MMA_DEVICE_DECL__ void du_mma_sync(DUFragment<accumulator, 16, 16, 8, float>& d,
+410:__DU_MMA_DEVICE_DECL__ void du_mma_sync(DUFragment<accumulator, 16, 16, 16, float>& d,
+416:__DU_MMA_DEVICE_DECL__ void du_mma_sync(DUFragment<accumulator, 16, 16, 16, float>& d,
+422:__DU_MMA_DEVICE_DECL__ void du_mma_sync(DUFragment<accumulator, 16, 16, 32, int>& d,
+428:__DU_MMA_DEVICE_DECL__ void du_mma_sync(DUFragment<accumulator, 16, 16, 32, int>& d,
+436:__DU_MMA_DEVICE_DECL__ void du_mma_sync(DUFragment<accumulator, 16, 16, 32, float>& d,
+437:                                        const DUFragment<matrix_a, 16, 16, 32, __hip_fp8_e4m3, LayoutA>& a, 
+438:                                        const DUFragment<matrix_b, 16, 16, 32, __hip_fp8_e4m3, LayoutB>& b,
+442:__DU_MMA_DEVICE_DECL__ void du_mma_sync(DUFragment<accumulator, 16, 16, 32, float>& d,
+443:                                        const DUFragment<matrix_a, 16, 16, 32, __hip_fp8_e5m2, LayoutA>& a, 
+444:                                        const DUFragment<matrix_b, 16, 16, 32, __hip_fp8_e5m2, LayoutB>& b,
+448:__DU_MMA_DEVICE_DECL__ void du_mma_sync(DUFragment<accumulator, 16, 16, 32, float>& d,
+449:                                        const DUFragment<matrix_a, 16, 16, 32, __hip_fp8_e4m3, LayoutA>& a, 
+450:                                        const DUFragment<matrix_b, 16, 16, 32, __hip_fp8_e5m2, LayoutB>& b,
+454:__DU_MMA_DEVICE_DECL__ void du_mma_sync(DUFragment<accumulator, 16, 16, 32, float>& d,
+455:                                        const DUFragment<matrix_a, 16, 16, 32, __hip_fp8_e5m2, LayoutA>& a, 
+456:                                        const DUFragment<matrix_b, 16, 16, 32, __hip_fp8_e4m3, LayoutB>& b,
+462:__DU_MMA_DEVICE_DECL__ void du_mma_sync(DUFragment<accumulator, 16, 16, 64, int>& d,
+468:__DU_MMA_DEVICE_DECL__ void du_mma_sync(DUFragment<accumulator, 16, 16, 64, int>& d,

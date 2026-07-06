@@ -1,0 +1,23 @@
+_CudaDeviceProperties(name='BW', major=9, minor=3, gcnArchName='gfx936:sramecc+:xnack-', total_memory=65520MB, multi_processor_count=80, uuid=30303135-3863-3262-3738-346133313231, pci_bus_id=245, pci_device_id=0, pci_domain_id=0, L2_cache_size=8MB)
+{
+  "L2_cache_size": 8388608,
+  "gcnArchName": "gfx936:sramecc+:xnack-",
+  "is_integrated": 0,
+  "is_multi_gpu_board": 0,
+  "major": 9,
+  "max_threads_per_block": 1024,
+  "max_threads_per_multi_processor": 2560,
+  "minor": 3,
+  "multi_processor_count": 80,
+  "name": "BW",
+  "pci_bus_id": 245,
+  "pci_device_id": 0,
+  "pci_domain_id": 0,
+  "regs_per_multiprocessor": 196608,
+  "shared_memory_per_block": 65536,
+  "total_memory": 68702699520,
+  "warp_size": 64
+}
+torch.version.cuda None
+torch.version.hip 6.3.26093
+is_available True device_count 1
