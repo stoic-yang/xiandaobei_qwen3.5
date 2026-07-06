@@ -1,0 +1,110 @@
+# 优化路线图 · roadmap
+
+> 面向 Codex / GLM / OpenCode 的可执行计划书。Claude 任设计，其余 agent 任实现。
+> 读本文件前先读 [`memory/50-arch-bottleneck.md`](../memory/50-arch-bottleneck.md)（架构与瓶颈事实）
+> 与 [`memory/10-project.md`](../memory/10-project.md)（规则红线/绿区/评分）。
+> 截止：初赛 2026-07-15 12:00。
+
+## 一句话现状
+当前提交 `d29e9db3` 官方 **59.0018 = 净负优化**（baseline 保底 60）。瓶颈是**长上下文 Prefill/TTFT**（占 80% 权重的两档时间大头 + prefill 仅 ~758 tok/s），**不是** decode、**不是** KV Cache。
+
+## 优化优先级（按收益）
+1. 长上下文 **Prefill 算子**（full-attn + GDN chunked-prefill + GEMM）——最大肥肉。
+2. **执行路径 / CUDA graph 覆盖度**——decode 若 launch 受限则直接收益。
+3. 条件性：decode GEMM/GEMV、低精度 GEMM——看 R0 profile。
+4. **KV Cache 量化排在最后甚至跳过**——本架构 KV 仅 6.76GB，收益有限。
+
+---
+
+## 全局纪律（每一轮都适用）
+
+- **守门员协议（R0.3 产出）是唯一验收口径**：固定同一热容器 → warm-up → 同数据 → 每档跑 3 次取中位数 → 记录【三档 output_throughput + TTFT-P99 + TPOT-P99 + 四类精度】。任何改动合入前必须过这个门。
+- **一个改动 = 一个开关**（config-gated 或 env-gated）：关掉即回退到原路径，且与原路径**数值等价**。这是止损底线，也直接产出参赛要交的消融表。
+- **受控对比**：A/B 必须同容器、同 warm 状态、同数据。禁止拿冷启动数字和热启动数字比较（历史教训：正负号被冷热差异淹没）。
+- **红线自查**（详见 10-project.md）：不改模型结构/权重/持久化量化/剪枝/跳层/投机解码；不改 batch scheduler 代码；不动锁定 CLI 参数（`--max-model-len=32768`、`--max-num-seqs`、`--max-num-batched-tokens=4096`、`temperature=0` 等）。
+- **每个实验 = 一个 `experiments/<id>/` 目录 + 一次 commit**（intent/method/diff/logs/metrics/verdict），见 AGENTS.md。
+- **不动队友未提交的工作副本**（`vllm_cscc_competition` 有未 commit 改动）；需要隔离时用 worktree。
+
+---
+
+## Round 0 — 探针与诊断（不改默认行为，只测量）
+
+> 目的：建"瓶颈地图"+"守门员协议"。所有后续决策的地基。**先做，不写 kernel。**
+
+- **R0.1 架构体检**（~5 min）：`cat $MODEL_DIR/config.json`。报出：总层数、GDN/线性层与 full-attn 层各几层、**是否 MoE**（`num_experts`/`num_experts_per_tok`/激活参数量）、`head_dim`、KV heads、`hidden_size`。→ 写入 `memory/50` 待确认项。**决定 decode 是带宽还是 launch 受限。第一个做。**
+- **R0.2 设备体检**（~2 min）：`python -c "import torch; print(torch.cuda.get_device_properties(0))"` + `hy-smi -a`。报出显存带宽、算力、gfx 架构名、是否支持 FP8。→ 定 roofline 上限 + R4 可行性。
+- **R0.3 守门员脚本**（~半天）：把上面的测量协议固化成一个脚本，一次跑出三档吞吐/TTFT-P99/TPOT-P99 + 四类精度的中位数报告。**本轮最重要产出。** 之后每个改动都用它验收。
+- **R0.4 时间分解 profile**（~半天）：hipprof 或 torch profiler 分别抓**一次 prefill** 与**一段 decode** 的 kernel 时间线，量化 full-attn / GDN / GEMM /(MoE)/ launch-gap 各占百分比。→ 直接点名 R3 先重写哪个 kernel。**先找队友 `maoym`（已用 hipprof 跑过）要现成结果，避免重复。**
+
+**R0 出口标准**：产出一张表——"prefill 里最慢 kernel = X 占 Y%；decode = 带宽/launch 受限"。没这张表不进 R3。
+
+---
+
+## Round 1 — 止损回退（可与 R0 并行，目标：站稳 ≥60）
+
+> 目的：把 59 分的负优化找出来回退，拿到"净效应≥0"的安全提交垫底。
+
+- **R1.1 逐 commit 体检**：对 competition 分支 6 个 commit（`a55f3c3`/`fde463d`/`293566c`/`0ba4953`/`993a944`/`33323a1`）+ 已提交的 `d29e9db3`，逐个用 R0.3 协议做 A/B，标真实符号。已知负嫌疑：`33323a1 GDN chunk`、`d29e9db3 rocm gqa path`。
+- **R1.2 分离"功能必需"vs"性能优化"**：保留让模型能加载的必需修复（`torch.empty+flatten`，见 `experiments/20260706-loader-fix/`）；回退确认为负的性能改动。
+- **R1.3 产出 `baseline-safe` 提交候选**：净效应相对"能跑起来的最干净版本"≥0，先提上去锁定基本盘。
+
+**R1 出口标准**：三档吞吐全部 ≥ 当前 competition 分支且无一档倒退；四类精度 Δ 均 <1%。
+
+---
+
+## Round 2 — 低风险普惠优化（不写 kernel，执行路径+配置）
+
+> 指数评分下这段性价比最高。每项单独开关、单独测，产出消融表 + 环境变量文档。
+
+- **R2.1 CUDA graph 覆盖度**：日志显示 capture 被 Mamba blocks 限到 136。确认 **bs=1 的 decode 是否全程 full graph**、有无掉回逐 kernel launch。对 launch 受限的 decode 是直接收益。
+- **R2.2 显存再分配**：KV 只用 6.76GB、有余量。研究把余量用于改善 prefill 分块/locality（`784-token attention block` 是被 mamba page size 逼出的妥协，值得查）。
+- **R2.3 Host 开销**：detokenize / 采样 / 流式返回路径的 Python 开销削减。
+- **R2.4 DTK/HIP 环境层**：GEMM autotune、库算法选择、环境变量（进环境变量说明文档）。
+
+**R2 出口标准**：每项有独立 A/B 数字，正向的进默认、负向的关掉留档。
+
+---
+
+## Round 3 — 算子重写（主攻，最大收益）
+
+> 针对 R0.4 profile 点名的最慢 kernel 写 DCU 定制实现。**做哪个由 profile 决定，不预设。**
+
+- **R3.1 Prefill 侧（优先）**：长上下文 prefill 的 full-attn kernel（flash-attention 式 DCU 适配）+ GDN chunked-prefill kernel + 热点 GEMM。目标把 ~758 tok/s 拉上去。
+- **R3.2 Decode 侧**：GDN 状态更新 kernel + full-attn decode kernel + GEMM/GEMV 融合。
+- **R3.3 条件性 KV FP8**：仅当 profile 证明 full-attn KV 读取是 decode 瓶颈才做，否则跳过。
+- 纪律：每个 kernel 先小张量**数值等价单测**（关掉=原路径）→ 单档 A/B → 精度回归 → 全档回归。
+
+**R3 出口标准**：目标 kernel 相对原实现有明确正向且数值等价；全档不倒退。
+
+---
+
+## Round 4 — 精度换速度（条件性，白名单内）
+
+> 仅当 R0.2 确认 DCU 有对应低精度算力时才做。
+
+- 激活值动态量化 / 低精度 GEMM（规则白名单允许，非持久化）。每步守精度：目标 Δ<1%（k=1）；**红线：任何单类不得掉过 10%**（该类系数归零 = 亏 25% 总分）。
+
+---
+
+## Round 5 — 收尾与合规
+
+- 全量三档 + **32k 稳定性压测**（完成率>99%、P99 长尾、防 OOM）——SLA 熔断真正风险在这。
+- 三份必交文档：优化方案说明（含各项贡献消融表）、环境变量说明、README 头部**第三方代码 + AI 辅助声明**（章程 7.4 硬性）。
+- 平台离线编译验证 + 留返修缓冲。
+
+---
+
+## 待确认问题（阻塞相应轮次）
+| # | 问题 | 阻塞 | 负责渠道 |
+|---|---|---|---|
+| 1 | 精度指标 EM vs F1 | R4 量化激进程度 | 选手 QQ 群 795757156 |
+| 2 | throughput 数据集 max_tokens | prefill/decode 投入比 | 官方群/调试文档 |
+| 3 | 是否 MoE + 层配比 | decode 瓶颈定性 | R0.1（config.json） |
+| 4 | 干净 baseline 在本容器的官方分 | 确认 59 负多少 | 队友对齐 |
+| 5 | maoym 的 hipprof profile 可否复用 | 省 R0.4 | 队友对齐 |
+
+## 建议执行顺序
+**先只做 Round 0 + Round 1**（一天）：把守门员协议和瓶颈地图建起来、把 59 分的负优化止损掉、锁定基本盘。地基不牢，Round 3 写再多 kernel 也是流沙盖楼。R0.1 是最快见效的一步（`cat config.json`），第一个做。
+
+## Changelog
+- 2026-07-06 create（Claude 设计，基于 memory/50 瓶颈画像）。
