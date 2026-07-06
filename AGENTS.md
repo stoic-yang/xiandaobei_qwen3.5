@@ -40,3 +40,49 @@ Codex / Claude Code / OpenCode and any human teammate.
 7. Each agent may still keep its native private memory (e.g.
    `~/.claude/projects/.../memory/`), but it must only point to
    `memory/00-index.md` here, not duplicate facts.
+
+## Efficient execution (all agents)
+
+Rollout analysis (2026-07-06) found the biggest time sink is the SSH layer:
+with no connection reuse, every remote command re-handshakes the 3-hop tunnel,
+which is slow and randomly drops (`exit 255: Connection ... closed by remote`),
+which then triggers retry loops, per-session re-discovery of connect flags, and
+long re-planning. One session alone: 933 commands, 1142 reasoning turns, ~4.4h
+of command wall-time, 65 independent `ssh xiandaobei-worker` calls. Follow these
+so no agent re-walks that path.
+
+1. **Reuse ONE SSH connection (biggest win).** Multiplex the 3-hop tunnel.
+   Put in `~/.ssh/config` (or the `scnetctl.py`-generated config) for the login
+   and worker hosts:
+   ```
+   ControlMaster auto
+   ControlPath ~/.ssh/cm-xiandaobei-%C
+   ControlPersist 10m
+   ```
+   or pass `-o ControlMaster=auto -o ControlPath=~/.ssh/cm-xiandaobei-%C -o ControlPersist=10m`
+   on every ssh. First call opens the tunnel (~5s); the rest reuse it (<0.5s).
+   Never open a fresh `ssh xiandaobei-worker …` per command.
+2. **Batch remote steps into one session.** Multiple remote steps go in a single
+   heredoc script over one ssh (or `scnetctl.py attach` + one script), not N
+   separate ssh calls.
+3. **One fixed connect recipe — do not re-discover it.** The working recipe is
+   in `memory/20-env.md` + `scnetctl.py` (alias `xiandaobei-worker-auto`). Do
+   not burn a session permuting BatchMode / ConnectTimeout / ServerAlive / `-i`.
+   Same for env prerequisites (unset proxy, competition wheel not baseline,
+   `MODEL_DIR`): read them from memory, don't rediscover.
+4. **Validate in batches, not per edit.** Do not `py_compile` / `node --check` /
+   `git status` after every micro-change (seen 10–24× on one file). Edit a
+   batch, validate once.
+5. **This laptop is macOS.** No GNU `timeout` (use `gtimeout`, or a background
+   PID + `sleep`+`kill` fallback). New worktrees have no upstream
+   (`git push -u` / `git pull origin <branch>`). Read paths from memory instead
+   of guessing (dead-path `find`s waste a turn).
+6. **Background long jobs; poll.** vLLM start / compile / bench take minutes.
+   Launch with `nohup … &` (or the existing `job_ready_hook` / Feishu callback)
+   and poll, instead of blocking the session in the foreground.
+7. **Stop when the acceptance criterion is met.** Do not re-run repo-check /
+   dry-runs to self-reassure (seen 12×). Hit the stated exit criterion, record
+   the anchor, move on.
+
+Root cause: fixing rule 1 removes most of rules 2–3 and the retry / re-plan
+churn. Fix the connection first.
