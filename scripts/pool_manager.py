@@ -1,122 +1,101 @@
 #!/usr/bin/env python3
 """
-容器池管理器 —— L0：单容器热备预热（warm standby）
+容器池管理器 —— 维持型池（maintain K running + B pending）
 
 目标
 ----
-消除每 4 小时 Slurm wall-clock 到期后 ~12min 的"重建税"空窗。在当前容器
-（primary）到期前，提前创建并预热一个接班容器（standby），等它 vllm health
-通过、READY 待命；primary 到期时无缝切换 —— 新容器的启动开销被藏在旧容器的
-工作期背后（双缓冲）。
+在竞争性集群上"持续保有热容器"，一箭双雕：
+  1. 抗抢卡：始终在 Slurm 队列里挂着 B 个 pending 请求，晚高峰有卡释放立刻拿到，
+     而不是临时要用才提交、结果排长队。（pending 排队不占卡、不烧机时）
+  2. 天然预热：池里始终维持 K 个 running 热容器，某个 4h 到期时本就有别的热容器顶上
+     —— 不再需要专门的"到期前预热接班"逻辑。
 
-运行位置
---------
-登录节点（tmux / nohup），例如：
+运行位置：登录节点（tmux/nohup）。squeue/scontrol/sbatch 本地可用，不受 mac 睡眠影响。
     ssh xiandaobei-login
-    tmux new -s pool 'python3 /public/home/xdzs2026_c166/meta/scripts/pool_manager.py'
-squeue / scontrol / sbatch 都在登录节点本地可用，且不受本地 mac 睡眠影响。
+    tmux new -s pool 'POOL_K=1 POOL_B=2 python3 ~/meta/scripts/pool_manager.py'
 
-设计解耦（关键）
-----------------
-本骨架不依赖"容器怎么创建"。创建被隔离在 create_container() 后面，由 Codex 填：
-  - 若网页"创建容器"背后是一条 sbatch（大概率，因为容器就是 Slurm 作业）→
-    填 sbatch 命令，全自动。探查清单见 plans/infra-pool.md。
-  - 若只能网页/chrome → 在 create_container() 里触发通知让人工创建（降级路径）。
+⚠️ 别囤积（重要）
+  - pending 不烧机时 → 放心多挂 B 个当缓冲，这是纯赚。
+  - running 烧机时 → 空占 running 是浪费（6 容器 7×24 空转 ≈ 144 机时/天，几天烧光 1000）。
+  - 所以 K（维持的 running 数）按负载走：有候选并行筛时调高 POOL_K，平时=1。
+    "多排 pending、少空转 running"是既抗抢卡又省机时的姿势。MAX 帽再兜底防塞爆队列。
 
-范围
-----
-L0 = 1 主 + 最多 1 备。并行池（K>1）+ 候选队列调度是 L1，命门通过后再扩。
-与 guard_bench.py / scnetctl.py 配合：池负责"永远有热容器"，那两个负责在热容器上
-跑测量。本脚本只管容器生命周期，不跑 benchmark。
+设计解耦：不依赖"容器怎么创建"。submit_job() 由 Codex 填（命门：能否命令行 sbatch）。
+维持型池**强依赖 sbatch** —— chrome 点击没法持续自动排队。见 plans/infra-pool.md。
 
-⚠️ 骨架说明：远程命令的多级引用/转义、docker 网络名、health 返回码判定，均按
-实际环境由 Codex 校准；状态机与预热/切换逻辑是设计意图，保持不变。
+配合：与 guard_bench.py / scnetctl.py 分工——池只管"永远有热容器"，那两个在热容器上
+跑测量。主动释放空闲 running（超 K 时 scancel）需与调度器协调 busy 状态，留 L1，本骨架
+不做，以免误杀正在跑候选的容器。
+
+⚠️ 骨架说明：远程命令转义、docker 网络名、health 判定按实际由 Codex 校准；维持逻辑
+（补 pending 到 K+B、首次 running 预热、health 转 READY、回收清理）是设计意图，保持不变。
 """
 from __future__ import annotations
-import json, subprocess, time, shlex, datetime, os, re
+import json, subprocess, time, shlex, datetime, os
 from dataclasses import dataclass, asdict
 
 # ---------------- 配置 ----------------
 USER = os.environ.get("USER", "xdzs2026_c166")
-DRAIN_THRESHOLD_S = 20 * 60          # primary 剩余寿命 < 20min → 预热 standby
-                                     #   ≈ 启动耗时(~12min) + 安全余量(~8min)
+TARGET_RUNNING = int(os.environ.get("POOL_K", "1"))    # K：维持的 running 数，按负载调（有候选=高，平时=1）
+PENDING_BUFFER = int(os.environ.get("POOL_B", "2"))    # B：常驻 pending 缓冲，抗晚高峰抢卡（不烧机时）
+MAX_TOTAL      = int(os.environ.get("POOL_MAX", "8"))  # 安全帽：running+pending 上限，防囤积/塞爆队列
 HEALTH_PORT = 8001
 TICK_S = 60
 STATE_FILE = os.path.expanduser("~/pool_state.json")
 MODEL_DIR = "/public/home/xdzs2026_c166/Qwen3.5-27B"
 WHEEL_GLOB = "/public/home/xdzs2026_c166/vllm_cscc_competition/dist/*.whl"
-TESTDATA_DIR = "/public/home/xdzs2026_c166/testdata"   # start_vllm.sh 所在
+TESTDATA_DIR = "/public/home/xdzs2026_c166/testdata"
 
-# 容器状态：CREATING → WARMING → READY → DRAINING → DEAD
+# 容器状态：WARMING(已 RUNNING，正装 wheel/起 vllm) → READY(health 通过，可派活)
 @dataclass
 class Container:
     job_id: str
-    state: str = "CREATING"
+    state: str = "WARMING"
     node: str = ""
     ip: str = ""
 
-def now() -> datetime.datetime:
-    return datetime.datetime.now()
+def now(): return datetime.datetime.now()
+def log(m): print(f"[{now():%m-%d %H:%M:%S}] {m}", flush=True)
 
-def log(msg: str) -> None:
-    print(f"[{now():%m-%d %H:%M:%S}] {msg}", flush=True)
-
-def sh(cmd: str, timeout: int = 30) -> str:
-    """在登录节点本地执行；到计算节点/容器由调用方在 cmd 里显式 ssh <node> / docker exec。"""
+def sh(cmd, timeout=30):
     try:
-        return subprocess.run(cmd, shell=True, capture_output=True, text=True,
-                              timeout=timeout).stdout.strip()
+        return subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=timeout).stdout.strip()
     except subprocess.TimeoutExpired:
         return ""
 
-# ---------------- 原语 ----------------
-def list_running_jobs() -> list[str]:
-    out = sh(f'squeue -u {USER} -h -t RUNNING -o "%i"')
-    return [l.strip() for l in out.splitlines() if l.strip()]
+# ---------------- 原语（登录节点本地跑 squeue/sbatch；到节点用 ssh <node>）----------------
+def classify_jobs():
+    """本用户作业按 Slurm 状态分类：(running_ids, pending_ids)。"""
+    running = sh(f'squeue -u {USER} -h -t RUNNING -o "%i"').split()
+    pending = sh(f'squeue -u {USER} -h -t PENDING -o "%i"').split()
+    return running, pending
 
-def node_of(job_id: str) -> str:
+def node_of(job_id):
     return sh(f'squeue -u {USER} -h -j {job_id} -o "%N"')
 
-def job_remaining_s(job_id: str) -> int:
-    """scontrol EndTime - now，单位秒；拿不到返回 -1。"""
-    out = sh(f"scontrol show job {job_id} 2>/dev/null")
-    m = re.search(r"EndTime=(\S+)", out)
-    if not m or m.group(1) in ("Unknown", "N/A"):
-        return -1
-    try:
-        end = datetime.datetime.strptime(m.group(1), "%Y-%m-%dT%H:%M:%S")
-        return int((end - now()).total_seconds())
-    except ValueError:
-        return -1
-
-def container_ip(job_id: str, node: str) -> str:
-    """计算节点上 docker inspect 拿容器 IP。容器名格式 <jobid>_<node>（见 memory/20-env.md）。"""
-    if not node:
-        return ""
+def container_ip(job_id, node):
+    if not node: return ""
     name = f"{job_id}_{node}"
-    # NOTE(codex): 网络名/模板按实际调整；曾见 IP 173.0.59.x
+    # NOTE(codex): docker 网络名/模板按实际调整；曾见 IP 173.0.59.x
     return sh(f"ssh {node} \"docker inspect -f '{{{{.NetworkSettings.IPAddress}}}}' {name}\"").strip()
 
-def check_health(c: Container) -> bool:
-    if not (c.node and c.ip):
-        return False
+def check_health(c: Container):
+    if not (c.node and c.ip): return False
     url = f"http://{c.ip}:{HEALTH_PORT}/health"
     code = sh(f"ssh {c.node} 'curl -s -o /dev/null -w \"%{{http_code}}\" -m 5 --noproxy \"*\" {url}'", 20)
     return code.strip() == "200"
 
-def create_container() -> str:
+def submit_job() -> str:
     """
-    ⚠️ 命门 —— 由 Codex 填，返回新容器的 Slurm job_id。
-
-    先探明网页"创建容器"背后的 sbatch 等价（见 plans/infra-pool.md 探查清单）：
-        job = sh("sbatch --parsable <partition/image/wall/gres 参数> <submit.sh>")
-        return job.strip()
-    若确实只能网页/chrome，则在此发通知并返回 ""（降级为人工创建）。
+    ⚠️ 命门 —— 由 Codex 填，提交一个容器作业进 Slurm 队列，返回 job_id（失败返回 ""）。
+    维持型池强依赖此为命令行 sbatch：
+        return sh("sbatch --parsable <partition/image/wall/gres 参数> <submit.sh>").strip()
+    探明网页"创建容器"背后的 sbatch，见 plans/infra-pool.md 探查清单。
     """
-    raise NotImplementedError("Codex: fill sbatch (or chrome bridge) — see plans/infra-pool.md")
+    raise NotImplementedError("Codex: fill sbatch here — see plans/infra-pool.md")
 
-def warm_container(c: Container) -> None:
-    """新容器里装 wheel + 后台起 vllm。复用 start_vllm.sh（见 memory/20-env.md 最小前置）。"""
+def warm_container(c: Container):
+    """新 RUNNING 容器里装 wheel + 后台起 vllm（每容器首次一次）。"""
     name = f"{c.job_id}_{c.node}"
     remote = (
         "unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY; "
@@ -125,79 +104,62 @@ def warm_container(c: Container) -> None:
         f"cd {TESTDATA_DIR} && nohup ./start_vllm.sh >/tmp/pool_vllm.log 2>&1 &"
     )
     sh(f"ssh {c.node} \"docker exec {name} bash -lc {shlex.quote(remote)}\"", 120)
-    c.state = "WARMING"
-    log(f"standby {c.job_id} 开始预热（装 wheel + 起 vllm）")
+    log(f"{c.job_id} 开始预热（装 wheel + 起 vllm）")
 
 # ---------------- 状态持久化（防管理器重启失忆）----------------
-def load_state() -> dict:
-    if os.path.exists(STATE_FILE):
-        return json.load(open(STATE_FILE))
-    return {"primary": None, "standby": None}
+def load_state():
+    if os.path.exists(STATE_FILE): return json.load(open(STATE_FILE))
+    return {"containers": {}}   # job_id -> Container dict
 
-def save_state(s: dict) -> None:
-    json.dump(s, open(STATE_FILE, "w"), indent=2)
+def save_state(s): json.dump(s, open(STATE_FILE, "w"), indent=2)
 
-def _c(d): return Container(**d) if d else None
+# ---------------- 维持循环 ----------------
+def tick(s):
+    running, pending = classify_jobs()
+    conts = s["containers"]
 
-# ---------------- 主循环（L0）----------------
-def tick(s: dict) -> dict:
-    primary = _c(s.get("primary"))
-    standby = _c(s.get("standby"))
+    # 1) 持续补齐到 K+B（一直排队，抗抢卡）；MAX 帽防囤积/塞爆队列
+    target_total = min(TARGET_RUNNING + PENDING_BUFFER, MAX_TOTAL)
+    deficit = target_total - (len(running) + len(pending))
+    for _ in range(max(0, deficit)):
+        try:
+            jid = submit_job()          # ⚠️ 命门
+            if jid: log(f"提交作业 {jid} 进队列（排队抗抢卡）")
+        except NotImplementedError as e:
+            log(f"submit_job 未实现，需人工创建：{e}"); break
 
-    # 0) 冷启动/恢复：没有 primary 就把当前 RUNNING 作业认作 primary
-    if primary is None:
-        jobs = list_running_jobs()
-        if jobs:
-            primary = Container(job_id=jobs[0], state="READY", node=node_of(jobs[0]))
-            log(f"认领 primary = {primary.job_id}")
+    # 2) 新 RUNNING 容器：首次预热一次
+    for jid in running:
+        if jid not in conts:
+            c = Container(jid, "WARMING", node_of(jid))
+            warm_container(c)
+            conts[jid] = asdict(c)
 
-    # 1) primary 剩余寿命低 且 无备 → 预热 standby
-    if primary and standby is None:
-        rem = job_remaining_s(primary.job_id)
-        if 0 < rem < DRAIN_THRESHOLD_S:
-            primary.state = "DRAINING"
-            log(f"primary {primary.job_id} 剩 {rem//60}min → 预热接班容器")
-            try:
-                jid = create_container()          # ⚠️ 命门
-                if jid:
-                    standby = Container(job_id=jid, state="CREATING")
-            except NotImplementedError as e:
-                log(f"create_container 未实现，需人工创建：{e}")
+    # 3) WARMING → health 通过 → READY
+    for jid, d in list(conts.items()):
+        c = Container(**d)
+        if c.state == "WARMING":
+            c.ip = c.ip or container_ip(jid, c.node)
+            if check_health(c):
+                c.state = "READY"; log(f"{jid} READY（可派活）")
+            conts[jid] = asdict(c)
 
-    # 2) standby 分到节点 → 预热；health 通过 → READY
-    if standby:
-        if standby.state == "CREATING" and job_remaining_s(standby.job_id) > 0:
-            standby.node = node_of(standby.job_id)
-            if standby.node:
-                warm_container(standby)
-        if standby.state == "WARMING":
-            standby.ip = container_ip(standby.job_id, standby.node)
-            if check_health(standby):
-                standby.state = "READY"
-                log(f"standby {standby.job_id} READY 待命")
+    # 4) 已回收（到期/消失）的容器：移出池记录
+    alive = set(running) | set(pending)
+    for jid in [j for j in conts if j not in alive]:
+        log(f"{jid} 已回收，移出池"); del conts[jid]
 
-    # 3) primary 到期 → 备转正，无缝接手
-    if primary and job_remaining_s(primary.job_id) <= 0:
-        log(f"primary {primary.job_id} 到期")
-        if standby and standby.state == "READY":
-            log(f"standby {standby.job_id} 转正为 primary（无缝接手）")
-            primary, standby = standby, None
-        else:
-            primary = None   # 没备好，下个 tick 重认（退化为普通重建）
-
-    s["primary"] = asdict(primary) if primary else None
-    s["standby"] = asdict(standby) if standby else None
+    ready = sum(1 for d in conts.values() if d["state"] == "READY")
+    log(f"池：running={len(running)} pending={len(pending)} ready={ready} (K={TARGET_RUNNING} B={PENDING_BUFFER})")
     save_state(s)
     return s
 
 def main():
-    log("pool_manager L0 启动（单容器热备预热）")
+    log(f"pool_manager 维持型启动（维持 K={TARGET_RUNNING} running + B={PENDING_BUFFER} pending，MAX={MAX_TOTAL}）")
     s = load_state()
     while True:
-        try:
-            s = tick(s)
-        except Exception as e:
-            log(f"tick 异常：{e}")
+        try: s = tick(s)
+        except Exception as e: log(f"tick 异常：{e}")
         time.sleep(TICK_S)
 
 if __name__ == "__main__":
