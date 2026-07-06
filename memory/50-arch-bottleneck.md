@@ -8,7 +8,7 @@
 ## 架构：混合 Gated-DeltaNet 线性注意力（非普通 dense transformer）
 
 `Qwen3.5-27B` = **GDN(Gated DeltaNet) 线性注意力层 + 少量标准 full-attention 层的混合体**
-（Qwen3-Next 那一路的放大版），很可能还带 **MoE**。**是否 MoE / 层配比 待 R0.1 用 config.json 确认。**
+（Qwen3-Next 那一路的放大版）。**已由 codex R0.1 确认（见 changelog）**：64 文本层 = **48 GDN 线性层 + 16 full-attention 层**（`full_attention_interval=4`），**非 MoE**，head_dim=256 / num_kv_heads=4 / hidden=5120。
 
 证据链（均出自 vLLM 启动日志）：
 - `Resolved architecture: Qwen3_5ForConditionalGeneration`
@@ -43,14 +43,35 @@
 4. **当前提交 `d29e9db3` 官方 59.0018 = 净负优化**（baseline 保底 60）。`fast GQA`/`tile-64`/`GDN chunk` 已知让 8-16K 变慢。⚠️ "前9名反推的 baseline 数字"来自强队非基准，不可当锚点；唯一确定锚点是"自己 59 < 保底 60"。
 5. **止损有坑**：baseline wheel 在本容器 model-loader strict-fail 装不起来，competition 分支某改动（`torch.empty+flatten`）才修好加载。回退时必须分清"功能必需"与"性能优化"，不能整体退回 baseline。见 `experiments/20260706-loader-fix/`。
 
+## 硬件 roofline 与合规交互（外部 gfx936 实测 + 规则红线）
+> 来源：选手/外部分享的 gfx936 微基准（expA / dbocc.hip）。架构与 codex R0.1 **完全吻合**
+> （64层=48GDN+16full、gfx936、非MoE）→ 可信度高；但绝对 TTFT 与本仓不一致（作业 32K=11.4s
+> vs 本仓 16-32K p99≈28.7s）→ **定性用它、绝对值用自家实测**。
+
+- **硬件峰值（补 codex R0.2 未拿到的）**：HBM ≈ **1206 GB/s**、bf16 ≈ **395 TFLOPS**、roofline 拐点 ≈ **327 FLOP/byte**。
+- **decode = 权重带宽受限，合规下已到物理顶**：实测 GEMV 无双缓冲已达 HBM 峰值 **92–101%**；
+  双缓冲/提占用率/调 VGPR **全无效**（占用率已高、硬件自藏延迟）。权重 IO 54GB÷1.2TB/s ≈ **45ms/tok**
+  = TPOT 下限。codex R0.4 印证：decode GDN kernel 全 trace 仅 0.67%。→ **decode 的 GEMV/双缓冲别再碰。**
+- **🔴 量化红线交互（关键，别抄）**：减 decode 时间的唯一路径 = 权重低精度**驻留 HBM** = **持久化量化 = 红线**。
+  白名单"kernel 内临时低精度矩阵乘"权重仍以 bf16 读入、不减 IO，对带宽受限 decode **无效**。
+  **规则实际封死了 decode 的量化捷径**；外部作业靠权重量化把 TPOT 49→40，**我方不能抄（违规清零风险）**。
+- **prefill = 唯一胜负手**：投影 GEMM O(S) 已贴算力峰值（无肉）；注意力 O(S²) 是长档主力
+  （S 翻倍 attn ×3.2–4；8192 时单层 attn 23.7ms = 投影 3.6ms 的 6.5×）。混合架构仅 16 层 full-attn 救了长档。
+  codex R0.4 印证：`unified_attention` 38.82% + `chunk_fwd`(GDN prefill) 22.65% = prefill 大头。
+  → **R3 靶心 = flash-attention on gfx936；投影 GEMM 交 rocBLAS/hipBLASLt + Matrix Core。**
+- decode 合规下唯一剩余空间 = **host 侧**（图捕获消 launch + 算子融合，Amdahl：每 tok 几十个小算子+launch），**不是带宽侧**。
+
 ## 待 R0 确认
-- 是否 MoE、GDN/full-attn 层配比、激活参数量、head_dim、KV heads（config.json）。
-- DCU 带宽/算力/gfx/是否支持 FP8（`torch.cuda.get_device_properties` + `hy-smi -a`）。
+- ~~是否 MoE / 层配比 / head_dim / KV heads~~ → codex R0.1 已确认（非 MoE，64=48+16）。
+- ~~DCU gfx / 是否 FP8~~ → gfx936 确认、FP8 支持确认（`du_mma`）；峰值带宽/算力由外部作业补（1206 GB/s / 395 TFLOPS）。
 - throughput 数据集 max_tokens（输出长度）→ 定 prefill/decode 投入比。
 - 精度口径 EM vs F1（官方群）→ 定量化激进程度。
+- **运行时非持久权重量化是否违规**（每前向临时量化、不落盘、复用显存缓存）→ 决定 decode 有无空间；
+  我方判断更可能**不允许**（复用显存量化缓存 ≈ 红线"可复用量化权重缓存"）。这是 decode 唯一可能翻盘点，值得群里问。
 
 ## Changelog
 - 2026-07-06 create（Claude 读 baseline 实验 + vllm_server.log 得出混合GDN架构与prefill瓶颈判断；推翻"KV量化是主战场"的纯文档预判）。
+- 2026-07-06 Claude 沉淀外部 gfx936 实测作业：补硬件峰值（HBM 1206 GB/s / 395 TFLOPS / 拐点 327，与 codex R0.1 gfx936 吻合）；**钉死 decode 合规下到物理顶**（GEMV 已达带宽 92–101%、双缓冲无效；减字节=持久化量化=红线，规则封死 decode 量化捷径，外部作业的权重量化不可抄）；**prefill flash-attention 是唯一战场**；新增待问官方"运行时非持久权重量化是否违规"。
 - 2026-07-06 R0.1/R0.2 correction（Codex live probe on SCNet job 655597）：`config.json` confirms 64 text layers = 48 `linear_attention` + 16 `full_attention`, `full_attention_interval=4`, **not MoE** (`num_experts`/`num_experts_per_tok` absent), `head_dim=256`, `num_attention_heads=24`, `num_key_value_heads=4`, `hidden_size=5120`; DCU is `BW`/`gfx936:sramecc+:xnack-`, 80 CU, 64 GiB class VRAM, wavefront 64, HIP 6.3 runtime; DTK exposes `du_mma` FP8 fragments/conversion builtins, but `hy-smi` did not print peak memory bandwidth or peak TFLOPS directly.
 - 2026-07-06 R0.4 profile reuse（`experiments/r0-profile-20260706-2138/`, source `/public/home/xdzs2026_c166/codex_logs/profile_runs/rocprofv2_8_16K_20260622_161546`）：8-16K long-context hot window ranks `kernel_unified_attention_2d.kd` 38.82%, `chunk_fwd_kernel_o.kd` 22.65%, `chunk_gated_delta_rule_fwd_kernel_h_blockdim64.kd` 7.66%, top Tensile GEMM rows about 16.82%; decode GDN kernel is only 0.67% in full trace, so score-limiting path remains prefill/full-attn+GDN+GEMM. Caveat: reused trace is not a clean prefill/decode split; decode bandwidth-vs-launch label still needs a decode-only trace if required.
 - 2026-07-07 R1 guard anchor（`experiments/guard-a55f3c3-overlay-fullsmoke-20260707-0010/`）：a55/runtime-wheel-equivalent warm guard medians are 12.156717 / 7.231679 / 4.655501 output tok/s, weighted 7.443833, TTFT-P99 4.537s / 15.616s / 28.667s, TPOT-P99 69.731ms / 70.654ms / 72.115ms. Compared to `experiments/guard-d29e9db3-20260706-2005/` installed-wheel guard, deltas are -0.58% / +0.02% / +0.09%; this is consistent with the same runtime path plus noise, not proof of a new speedup.

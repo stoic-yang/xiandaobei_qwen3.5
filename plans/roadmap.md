@@ -7,12 +7,15 @@
 
 ## 一句话现状
 当前提交 `d29e9db3` 官方 **59.0018 = 净负优化**（baseline 保底 60）。瓶颈是**长上下文 Prefill/TTFT**（占 80% 权重的两档时间大头 + prefill 仅 ~758 tok/s），**不是** decode、**不是** KV Cache。
+**gfx936 实测 + 规则红线已钉死（见 memory/50）：decode 合规下到带宽物理顶——别碰；prefill flash-attention 是唯一战场。**
 
-## 优化优先级（按收益）
-1. 长上下文 **Prefill 算子**（full-attn + GDN chunked-prefill + GEMM）——最大肥肉。
-2. **执行路径 / CUDA graph 覆盖度**——decode 若 launch 受限则直接收益。
-3. 条件性：decode GEMM/GEMV、低精度 GEMM——看 R0 profile。
-4. **KV Cache 量化排在最后甚至跳过**——本架构 KV 仅 6.76GB，收益有限。
+## 优化优先级（已被 gfx936 实测 + 规则红线钉死，见 memory/50）
+1. **Prefill flash-attention on gfx936 —— 唯一胜负手**。注意力 O(S²) 是长档主力（codex R0.4：
+   `unified_attention` 38.82% + GDN `chunk_fwd` 22.65%）；投影 GEMM 已贴算力峰值，交 rocBLAS/hipBLASLt + Matrix Core，别自己写。
+2. **图捕获消 launch / 算子融合**——decode 合规下的唯一剩余空间在 **host 侧**（Amdahl：每 tok 几十个小算子+launch）。
+3. ❌ **decode 的 GEMV / 双缓冲 / 提占用率——别碰**：实测已达 HBM 带宽 92–101%，到物理顶；减字节（权重量化）
+   = 持久化量化红线，规则封死，外部作业那招不可抄。
+4. **KV Cache 量化最后甚至跳过**——KV 仅 6.76GB。低精度只可能在 prefill 计算侧（收益小、多一步反量化）。
 
 ---
 
@@ -70,8 +73,9 @@
 > 针对 R0.4 profile 点名的最慢 kernel 写 DCU 定制实现。**做哪个由 profile 决定，不预设。**
 
 - **R3.1 Prefill 侧（优先）**：长上下文 prefill 的 full-attn kernel（flash-attention 式 DCU 适配）+ GDN chunked-prefill kernel + 热点 GEMM。目标把 ~758 tok/s 拉上去。
-- **R3.2 Decode 侧**：GDN 状态更新 kernel + full-attn decode kernel + GEMM/GEMV 融合。
-- **R3.3 条件性 KV FP8**：仅当 profile 证明 full-attn KV 读取是 decode 瓶颈才做，否则跳过。
+- **R3.2 Decode 侧（仅 host，别碰带宽侧）**：decode 带宽侧已到物理顶（GEMV 达峰值 92–101%，见 memory/50），
+  **不要写 GEMV/双缓冲**；只做图捕获消 launch + 算子融合（host 开销，Amdahl）。
+- **R3.3 KV FP8 基本跳过**：KV 仅 6.76GB，收益有限；仅当 profile 证明 full-attn KV 读取是瓶颈才考虑。
 - 纪律：每个 kernel 先小张量**数值等价单测**（关掉=原路径）→ 单档 A/B → 精度回归 → 全档回归。
 
 **R3 出口标准**：目标 kernel 相对原实现有明确正向且数值等价；全档不倒退。
@@ -97,14 +101,16 @@
 ## 待确认问题（阻塞相应轮次）
 | # | 问题 | 阻塞 | 负责渠道 |
 |---|---|---|---|
+| ★ | **运行时非持久权重量化是否违规** | decode 有无空间（唯一翻盘点） | 选手 QQ 群 795757156 |
 | 1 | 精度指标 EM vs F1 | R4 量化激进程度 | 选手 QQ 群 795757156 |
 | 2 | throughput 数据集 max_tokens | prefill/decode 投入比 | 官方群/调试文档 |
-| 3 | 是否 MoE + 层配比 | decode 瓶颈定性 | R0.1（config.json） |
+| 3 | ✅ 是否 MoE + 层配比 | — | codex R0.1 已确认（非 MoE，64=48+16） |
 | 4 | 干净 baseline 在本容器的官方分 | 确认 59 负多少 | 队友对齐 |
-| 5 | maoym 的 hipprof profile 可否复用 | 省 R0.4 | 队友对齐 |
+| 5 | ✅ maoym 的 hipprof profile | — | codex R0.4 已复用 |
 
 ## 建议执行顺序
 **先只做 Round 0 + Round 1**（一天）：把守门员协议和瓶颈地图建起来、把 59 分的负优化止损掉、锁定基本盘。地基不牢，Round 3 写再多 kernel 也是流沙盖楼。R0.1 是最快见效的一步（`cat config.json`），第一个做。
 
 ## Changelog
 - 2026-07-06 create（Claude 设计，基于 memory/50 瓶颈画像）。
+- 2026-07-06 Claude 按 gfx936 实测+规则红线更新优先级：**prefill flash-attention 唯一战场**；decode 带宽侧到顶别碰（GEMV 92–101%、权重量化=红线）；decode 仅做 host 侧图融合；新增 ★ 待问"运行时非持久权重量化是否违规"。
