@@ -1,0 +1,49 @@
+{
+  "run_id": "r0-profile-20260706-2138",
+  "status": "partial",
+  "source": "/public/home/xdzs2026_c166/codex_logs/profile_runs/rocprofv2_8_16K_20260622_161546",
+  "local_raw": "raw/official_kernel_summary.md",
+  "profile_kind": "rocprofv2 8-16K mixed long-context trace",
+  "limitations": [
+    "source summary states benchmark main run failed after EngineCore died",
+    "not a clean prefill/decode split",
+    "decode bandwidth-vs-launch attribution remains pending"
+  ],
+  "hot_window": {
+    "window": "last_60s",
+    "summed_kernel_ms": 5891.755,
+    "top_groups": [
+      {
+        "name": "full_attention",
+        "kernels": ["kernel_unified_attention_2d.kd"],
+        "pct": 38.82
+      },
+      {
+        "name": "gdn_chunk",
+        "kernels": [
+          "chunk_fwd_kernel_o.kd",
+          "chunk_gated_delta_rule_fwd_kernel_h_blockdim64.kd",
+          "recompute_w_u_fwd_kernel.kd"
+        ],
+        "pct": 32.91
+      },
+      {
+        "name": "gemm",
+        "kernels": ["top Tensile Cijk rows 4, 6, 7"],
+        "pct": 16.82
+      },
+      {
+        "name": "fill_overhead",
+        "kernels": ["FillFunctor<int>"],
+        "pct": 7.53
+      }
+    ]
+  },
+  "full_trace": {
+    "summed_kernel_ms": 19828.493,
+    "decode_gdn_kernel_pct": 0.67,
+    "flash_full_attention_prefill_pct": 19.49
+  },
+  "verdict": "long-context prefill remains the score-limiting path: full attention first, then GDN chunk kernels, then GEMM"
+}
+
