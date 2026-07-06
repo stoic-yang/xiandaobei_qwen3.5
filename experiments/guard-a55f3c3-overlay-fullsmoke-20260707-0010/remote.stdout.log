@@ -1,0 +1,213 @@
+=== guard benchmark ===
+run_id=guard-a55f3c3-overlay-fullsmoke-20260707-0010
+host=worker-0
+started_at=2026-07-07T00:08:01+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 8-16K 16-32K accuracy=smoke accuracy_rows=1 overlay_rev=a55f3c3
+model_dir_source=local MODEL_DIR=/root/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=a55f3c3
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_file=vllm/model_executor/models/qwen3_5.py
+overlay_file=vllm/model_executor/models/qwen3_next.py
+overlay_file=vllm/model_executor/layers/activation.py
+overlay_file=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_file=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_file=vllm/version.py
+stopping existing server processes
+kill: (373): No such process
+starting vLLM server
+server_ready_at=2026-07-07T00:12:07+08:00 pid=17311
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== throughput bucket=8-16K rep=3 ===
+=== throughput bucket=16-32K rep=1 ===
+=== throughput bucket=16-32K rep=2 ===
+=== throughput bucket=16-32K rep=3 ===
+=== accuracy smoke ===
+=== summary ===
+{
+  "run_id": "guard-a55f3c3-overlay-fullsmoke-20260707-0010",
+  "status": "pass",
+  "finished_at": "2026-07-07T01:08:07+0800",
+  "repo": {
+    "kind": "competition",
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition",
+    "branch": "contest-p1-ffn-pool-20260621",
+    "head": "d29e9db3ffa01b701346445c6e62fe963f6c17b1",
+    "status_path": "/public/home/xdzs2026_c166/codex_runs/guard-a55f3c3-overlay-fullsmoke-20260707-0010/repo_status.txt",
+    "log_path": "/public/home/xdzs2026_c166/codex_runs/guard-a55f3c3-overlay-fullsmoke-20260707-0010/repo_log.txt"
+  },
+  "wheel": {
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl",
+    "sha256": "a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde"
+  },
+  "runtime_fingerprints_path": "/public/home/xdzs2026_c166/codex_runs/guard-a55f3c3-overlay-fullsmoke-20260707-0010/runtime_fingerprints.json",
+  "overlay": {
+    "rev": "a55f3c3",
+    "manifest_path": "/public/home/xdzs2026_c166/codex_runs/guard-a55f3c3-overlay-fullsmoke-20260707-0010/overlay_manifest.txt"
+  },
+  "model_dir": "/root/Qwen3.5-27B",
+  "protocol": {
+    "warmup": "run_throughput.sh 4-8K 1",
+    "buckets": [
+      "4-8K",
+      "8-16K",
+      "16-32K"
+    ],
+    "repetitions": 3,
+    "num_prompts": 10,
+    "accuracy": "smoke"
+  },
+  "throughput": {
+    "4-8K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-a55f3c3-overlay-fullsmoke-20260707-0010/throughput/4-8K_rep1.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 12.156716963509469,
+          "p99_ttft_ms": 4536.340516242199,
+          "p99_tpot_ms": 69.78207291282547,
+          "duration": 211.73479712707922
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-a55f3c3-overlay-fullsmoke-20260707-0010/throughput/4-8K_rep2.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 12.151655276432804,
+          "p99_ttft_ms": 4538.127805192489,
+          "p99_tpot_ms": 69.73111278801431,
+          "duration": 211.82299377699383
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-a55f3c3-overlay-fullsmoke-20260707-0010/throughput/4-8K_rep3.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 12.169995051887872,
+          "p99_ttft_ms": 4536.688351707999,
+          "p99_tpot_ms": 69.63332404523541,
+          "duration": 211.50378361088224
+        }
+      ],
+      "median": {
+        "output_throughput": 12.156716963509469,
+        "p99_ttft_ms": 4536.688351707999,
+        "p99_tpot_ms": 69.73111278801431,
+        "duration": 211.73479712707922
+      }
+    },
+    "8-16K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-a55f3c3-overlay-fullsmoke-20260707-0010/throughput/8-16K_rep1.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 6.538068329691238,
+          "p99_ttft_ms": 33302.44609176181,
+          "p99_tpot_ms": 70.60427067517207,
+          "duration": 261.54514051717706
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-a55f3c3-overlay-fullsmoke-20260707-0010/throughput/8-16K_rep2.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 7.231678621110403,
+          "p99_ttft_ms": 15605.869053169154,
+          "p99_tpot_ms": 70.66257200966388,
+          "duration": 236.4596229440067
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-a55f3c3-overlay-fullsmoke-20260707-0010/throughput/8-16K_rep3.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 7.232047205585089,
+          "p99_ttft_ms": 15616.261911762413,
+          "p99_tpot_ms": 70.65376308320201,
+          "duration": 236.44757167506032
+        }
+      ],
+      "median": {
+        "output_throughput": 7.231678621110403,
+        "p99_ttft_ms": 15616.261911762413,
+        "p99_tpot_ms": 70.65376308320201,
+        "duration": 236.4596229440067
+      }
+    },
+    "16-32K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-a55f3c3-overlay-fullsmoke-20260707-0010/throughput/16-32K_rep1.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 4.6566210811557465,
+          "p99_ttft_ms": 28662.343411063775,
+          "p99_tpot_ms": 72.07911452353999,
+          "duration": 392.9888148738537
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-a55f3c3-overlay-fullsmoke-20260707-0010/throughput/16-32K_rep2.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 4.655482605021967,
+          "p99_ttft_ms": 28687.39223995013,
+          "p99_tpot_ms": 72.11781952424597,
+          "duration": 393.0849184198305
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-a55f3c3-overlay-fullsmoke-20260707-0010/throughput/16-32K_rep3.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 4.655500579885986,
+          "p99_ttft_ms": 28667.305447799154,
+          "p99_tpot_ms": 72.11499476448195,
+          "duration": 393.08340072096325
+        }
+      ],
+      "median": {
+        "output_throughput": 4.655500579885986,
+        "p99_ttft_ms": 28667.305447799154,
+        "p99_tpot_ms": 72.11499476448195,
+        "duration": 393.08340072096325
+      }
+    }
+  },
+  "weighted_output_throughput": 7.443832877222891,
+  "accuracy": {
+    "hotpotqa": {
+      "version": "fece4a",
+      "metric": "score",
+      "mode": "gen",
+      "score": "100.00"
+    },
+    "gov_report": {
+      "version": "52bd7a",
+      "metric": "score",
+      "mode": "gen",
+      "score": "30.51"
+    },
+    "retrieval_multi_point": {
+      "metric": "recalculated_acc",
+      "score": "100.00",
+      "count": "1/1"
+    },
+    "aggregation_keyword_aggregation": {
+      "metric": "recalculated_acc",
+      "score": "100.00",
+      "count": "1/1"
+    }
+  }
+}
+completed_at=2026-07-07T01:08:07+08:00
+stopping server pid=17311
