@@ -1,0 +1,172 @@
+{
+  "run_id": "guard-d29e9db3-hotserver-nooverlay-fullsmoke10-20260707-1011",
+  "status": "pass",
+  "finished_at": "2026-07-07T11:21:55+0800",
+  "repo": {
+    "kind": "competition",
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition",
+    "branch": "contest-p1-ffn-pool-20260621",
+    "head": "d29e9db3ffa01b701346445c6e62fe963f6c17b1",
+    "status_path": "/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-hotserver-nooverlay-fullsmoke10-20260707-1011/repo_status.txt",
+    "log_path": "/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-hotserver-nooverlay-fullsmoke10-20260707-1011/repo_log.txt"
+  },
+  "wheel": {
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl",
+    "sha256": "a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde"
+  },
+  "runtime_fingerprints_path": "/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-hotserver-nooverlay-fullsmoke10-20260707-1011/runtime_fingerprints.json",
+  "overlay": {
+    "rev": "",
+    "manifest_path": null
+  },
+  "model_dir": "/root/Qwen3.5-27B",
+  "protocol": {
+    "warmup": "run_throughput.sh 4-8K 1",
+    "buckets": [
+      "4-8K",
+      "8-16K",
+      "16-32K"
+    ],
+    "repetitions": 3,
+    "num_prompts": 10,
+    "accuracy": "smoke"
+  },
+  "throughput": {
+    "4-8K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-hotserver-nooverlay-fullsmoke10-20260707-1011/throughput/4-8K_rep1.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 12.211258305337191,
+          "p99_ttft_ms": 4539.790094939526,
+          "p99_tpot_ms": 69.36291410835098,
+          "duration": 210.78908787597902
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-hotserver-nooverlay-fullsmoke10-20260707-1011/throughput/4-8K_rep2.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 12.2102948846891,
+          "p99_ttft_ms": 4539.247347242199,
+          "p99_tpot_ms": 69.37909899891353,
+          "duration": 210.80571962497197
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-hotserver-nooverlay-fullsmoke10-20260707-1011/throughput/4-8K_rep3.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 12.214443684943127,
+          "p99_ttft_ms": 4533.605459870305,
+          "p99_tpot_ms": 69.36579681943088,
+          "duration": 210.73411662399303
+        }
+      ],
+      "median": {
+        "output_throughput": 12.211258305337191,
+        "p99_ttft_ms": 4539.247347242199,
+        "p99_tpot_ms": 69.36579681943088,
+        "duration": 210.78908787597902
+      }
+    },
+    "8-16K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-hotserver-nooverlay-fullsmoke10-20260707-1011/throughput/8-16K_rep1.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 6.383943714687452,
+          "p99_ttft_ms": 38805.45474081534,
+          "p99_tpot_ms": 70.73046497754189,
+          "duration": 267.8595044730464
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-hotserver-nooverlay-fullsmoke10-20260707-1011/throughput/8-16K_rep2.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 7.223184691546273,
+          "p99_ttft_ms": 15620.406233863905,
+          "p99_tpot_ms": 70.70652222128047,
+          "duration": 236.73768192599528
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-hotserver-nooverlay-fullsmoke10-20260707-1011/throughput/8-16K_rep3.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 7.22704580809474,
+          "p99_ttft_ms": 15631.96464340901,
+          "p99_tpot_ms": 70.6270139485748,
+          "duration": 236.61120261403266
+        }
+      ],
+      "median": {
+        "output_throughput": 7.223184691546273,
+        "p99_ttft_ms": 15631.96464340901,
+        "p99_tpot_ms": 70.70652222128047,
+        "duration": 236.73768192599528
+      }
+    },
+    "16-32K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-hotserver-nooverlay-fullsmoke10-20260707-1011/throughput/16-32K_rep1.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 4.652619997336556,
+          "p99_ttft_ms": 28672.106097707292,
+          "p99_tpot_ms": 72.2102230622936,
+          "duration": 393.3267709478969
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-hotserver-nooverlay-fullsmoke10-20260707-1011/throughput/16-32K_rep2.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 4.6520632863610825,
+          "p99_ttft_ms": 28708.051843076246,
+          "p99_tpot_ms": 72.16993670969488,
+          "duration": 393.37384024099447
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-hotserver-nooverlay-fullsmoke10-20260707-1011/throughput/16-32K_rep3.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 4.652457314756647,
+          "p99_ttft_ms": 28691.587855521357,
+          "p99_tpot_ms": 72.19916448577935,
+          "duration": 393.34052441397216
+        }
+      ],
+      "median": {
+        "output_throughput": 4.652457314756647,
+        "p99_ttft_ms": 28691.587855521357,
+        "p99_tpot_ms": 72.19916448577935,
+        "duration": 393.34052441397216
+      }
+    }
+  },
+  "weighted_output_throughput": 7.449581201267569,
+  "accuracy": {
+    "hotpotqa": {
+      "version": "fece4a",
+      "metric": "score",
+      "mode": "gen",
+      "score": "67.71"
+    },
+    "gov_report": {
+      "version": "52bd7a",
+      "metric": "score",
+      "mode": "gen",
+      "score": "35.00"
+    },
+    "retrieval_multi_point": {
+      "metric": "recalculated_acc",
+      "score": "100.00",
+      "count": "10/10"
+    },
+    "aggregation_keyword_aggregation": {
+      "metric": "recalculated_acc",
+      "score": "100.00",
+      "count": "10/10"
+    }
+  }
+}

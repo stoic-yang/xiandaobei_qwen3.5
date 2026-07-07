@@ -1,41 +1,42 @@
 # guard-d29e9db3-hotserver-nooverlay-fullsmoke10-20260707-1011
 
-> README stub written by opencode on 2026-07-07 (repo consolidation pass).
-> The run was launched by Codex; Codex owns the final verdict header. This stub
-> only records the partial/as-collected state so the directory is not untracked.
+## Verdict
 
-## Verdict (provisional)
+**PASS — same-container d29 hot-server baseline for the 333 rollback candidate.**
 
-**PARTIAL — remote run was still in progress when this snapshot was collected.**
-No `summary.json` present locally. Final R1 sign-table row not derivable from this
-snapshot alone; Codex should append the completed metrics section once the remote
-benchmark finishes (or mark run-aborted if the container was reclaimed).
+This run reused the already-hot vLLM server started by
+`guard-d29e9db3-overlay-fullsmoke10-20260707-0900`, after that startup had
+installed the competition wheel and overlaid d29's ROCm attention path. The
+guard itself ran with no new overlay to avoid NFS git-object stalls; the runtime
+fingerprint confirms the active site package:
 
-## What is here
+- `vllm/v1/attention/ops/triton_unified_attention.py` site SHA starts
+  `acf4b51ba925`, differing from wheel SHA `8e8d393c4d55`.
+- `vllm/version.py` site SHA starts `984b8316ba5d`.
+- `qwen3_next.py` stayed on the installed wheel/site SHA `b33617ce76f0`.
 
-- `poll.log` — `guard_bench.py` polling transcript. Last observed stage before
-  snapshot ended: `throughput bucket=8-16K rep=3` at `2026-07-07T10:40:46+0800`,
-  remote pid `13496` still alive.
-- `start.stdout.log` / `start.stderr.log` — `start_remote_script` output.
-- `upload.stdout.log` / `upload.stderr.log` — `upload_remote_script` output.
-- No `raw/`, `throughput/`, `accuracy/` directories yet: the remote run had not
-  written its final artifacts to the polled run dir at snapshot time.
+## Metrics
 
-## Run configuration (from poll.log)
+| bucket | median output tok/s | TTFT P99 ms | TPOT P99 ms |
+| --- | ---: | ---: | ---: |
+| 4-8K | 12.211258 | 4539.247 | 69.366 |
+| 8-16K | 7.223185 | 15631.965 | 70.707 |
+| 16-32K | 4.652457 | 28691.588 | 72.199 |
 
-- repo_kind=competition, repo_head=`d29e9db3ffa01b701346445c6e62fe963f6c17b1`
-  branch=`contest-p1-ffn-pool-20260621`
-- wheel=`.../dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl`
-  sha256=`a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde`
-- num_prompts=10 repetitions=3 buckets=4-8K 8-16K 16-32K accuracy=smoke accuracy_rows=10
-- overlay_rev= (empty: this is the no-overlay / installed-wheel baseline path on a
-  hot reused server)
-- reuse_server=1, health=ok
-- model_dir=/root/Qwen3.5-27B
+Weighted output throughput: `7.449581`.
 
-## Intent
+Smoke10 accuracy:
 
-Same-container baseline for the `d29-revert333` and `a55-revert333` stop-loss
-candidates prepared in the 2026-07-07 01:35–09:15 Codex R1 continuation block
-(see `journal/2026-07-07.md`). Without a completed summary it cannot anchor R1
-A/B; Codex needs to either finish it on a fresh container or re-run.
+- hotpotqa: `67.71`
+- gov_report: `35.00`
+- retrieval_multi_point: `100.00 (10/10)`
+- aggregation_keyword_aggregation: `100.00 (10/10)`
+
+## Repro Anchors
+
+- Summary: `summary.json`
+- Runtime fingerprint: `runtime_fingerprints.json`
+- Raw logs: `raw/`
+- Throughput JSONs: `throughput/`
+- Remote run dir:
+  `/public/home/xdzs2026_c166/codex_runs/guard-d29e9db3-hotserver-nooverlay-fullsmoke10-20260707-1011`
