@@ -1,0 +1,4 @@
+interface:
+  display_name: "Xiandaobei Operator"
+  short_description: "SCNet fast iteration, locked RunAI startup, guarded benchmarks, and submission automation"
+  default_prompt: "Use $xiandaobei-operator to attach the SCNet container with SSH reuse, run a locked runai_streamer guarded benchmark, and prepare a safe Xi GitLab submission."

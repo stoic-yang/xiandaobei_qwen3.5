@@ -41,6 +41,19 @@ Codex / Claude Code / OpenCode and any human teammate.
    `~/.claude/projects/.../memory/`), but it must only point to
    `memory/00-index.md` here, not duplicate facts.
 
+## Project skill
+
+Before remote experiments, benchmarks, container-pool work, or submission
+preflight, load `.claude/skills/xiandaobei-operator/SKILL.md` and then
+`.claude/skills/xiandaobei-operator/references/fast-iteration.md`. The
+non-negotiables are: generated SSH config with ControlMaster; locked
+`guard_bench.py --locked-start-script --load-format runai_streamer` when a
+rebuilt container lacks `/root/Qwen3.5-27B`; explicit log verification that
+`max_seq_len=32768`; long jobs in background/logged form; smoke accuracy for
+daily regression and full accuracy only at round close/pre-submit; same-container
+A/B with relative delta only; and pool automation only after the `sbatch` command
+path is proven.
+
 ## Efficient execution (all agents)
 
 Rollout analysis (2026-07-06) found the biggest time sink is the SSH layer:
