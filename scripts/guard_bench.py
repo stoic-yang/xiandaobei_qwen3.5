@@ -126,6 +126,7 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
         OVERLAY_SOURCE_DIR={q(args.overlay_source_dir)}
         ACCURACY={q(args.accuracy)}
         ACCURACY_ROWS={q(accuracy_rows)}
+        COPY_ACCURACY_OUTPUT={1 if args.copy_accuracy_output else 0}
         REUSE_SERVER={1 if args.reuse_server else 0}
         KEEP_SERVER={1 if args.keep_server else 0}
         STOP_EXISTING={1 if args.stop_existing else 0}
@@ -361,7 +362,15 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
           else
             ./run_accuracy.sh all > "$RUN_DIR/raw/accuracy.log" 2>&1
           fi
-          cp -a ./accuracy_debug/output "$RUN_DIR/accuracy/output" 2>/dev/null || true
+          if [ "$COPY_ACCURACY_OUTPUT" = "1" ]; then
+            if command -v timeout >/dev/null 2>&1; then
+              timeout 20 cp -a ./accuracy_debug/output "$RUN_DIR/accuracy/output" 2>/dev/null || true
+            else
+              cp -a ./accuracy_debug/output "$RUN_DIR/accuracy/output" 2>/dev/null || true
+            fi
+          else
+            echo "accuracy_output_copy=skipped"
+          fi
         fi
 
         python3 - "$RUN_DIR" "$RUN_ID" "$REPO_HEAD" "$REPO_BRANCH" "$REPO_PATH" "$WHEEL" "$WHEEL_SHA" "$MODEL_DIR" "$ACCURACY" <<'PY'
@@ -475,7 +484,7 @@ def collect_artifacts(args: argparse.Namespace, cfg: dict[str, Any], local_dir: 
     alias = cfg.get("auto_worker_alias", "xiandaobei-worker-auto")
     remote_dir = f"{cfg['remote_runs_dir']}/{args.run_id}"
     local_dir.mkdir(parents=True, exist_ok=True)
-    for item in (
+    items = [
         "summary.json",
         "runtime_fingerprints.json",
         "overlay_manifest.txt",
@@ -484,11 +493,13 @@ def collect_artifacts(args: argparse.Namespace, cfg: dict[str, Any], local_dir: 
         "repo_log.txt",
         "raw",
         "throughput",
-        "accuracy",
         "guard.pid",
         "guard_remote.sh",
         "launch.log",
-    ):
+    ]
+    if args.copy_accuracy_output:
+        items.append("accuracy")
+    for item in items:
         target = local_dir / item
         if target.exists():
             continue
@@ -646,6 +657,7 @@ def main() -> None:
     parser.add_argument("--overlay-source-dir", help="Overlay selected Python files from this remote directory instead of git show")
     parser.add_argument("--accuracy", choices=["none", "smoke", "full"], default="full")
     parser.add_argument("--accuracy-rows", type=int)
+    parser.add_argument("--copy-accuracy-output", action="store_true")
     parser.add_argument("--server-start-timeout", type=int, default=900)
     parser.add_argument("--reuse-server", action="store_true")
     parser.add_argument("--keep-server", action="store_true")
