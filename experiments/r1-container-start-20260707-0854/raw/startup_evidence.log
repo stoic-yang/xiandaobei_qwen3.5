@@ -1,0 +1,84 @@
+# date
+2026-07-07T09:08:34+08:00
+# squeue
+             JOBID                           NAME PARTITION    STATE       TIME TIME_LIMI NODELIST(REASON)
+            656384 Instances_2607051832494555_5_0 hx1hdexcl  RUNNING      11:21   4:00:00 e03r1n11
+# sacct
+JobID|JobName|Partition|State|Elapsed|Timelimit|Submit|Start|End|NodeList|SubmitLine
+656380|Instances_2607070059422056_0_0|hx1hdexclu08|COMPLETED|00:00:15|04:00:00|2026-07-07T08:54:30|2026-07-07T08:54:31|2026-07-07T08:54:46|e03r1n11|sbatch --parsable -p hx1hdexclu08 /public/home/xdzs2026_c166/SothisAI/instance/ssh/Instances_2607070059422056_0_0/job_xdzs2026_c166_20260707_010007
+656380.batch|batch||COMPLETED|00:00:15||2026-07-07T08:54:31|2026-07-07T08:54:31|2026-07-07T08:54:46|e03r1n11|
+656380.extern|extern||COMPLETED|00:00:15||2026-07-07T08:54:31|2026-07-07T08:54:31|2026-07-07T08:54:46|e03r1n11|
+656384|Instances_2607051832494555_5_0|hx1hdexclu08|RUNNING|00:11:21|04:00:00|2026-07-07T08:57:12|2026-07-07T08:57:13|Unknown|e03r1n11|sbatch -p hx1hdexclu08 /public/home/xdzs2026_c166/SothisAI/instance/ssh/Instances_2607051832494555_5_0/job_xdzs2026_c166_20260707_085712
+656384.batch|batch||RUNNING|00:11:21||2026-07-07T08:57:13|2026-07-07T08:57:13|Unknown|e03r1n11|
+656384.extern|extern||RUNNING|00:11:21||2026-07-07T08:57:13|2026-07-07T08:57:13|Unknown|e03r1n11|
+# 656380.out
+======校验作业信息======
+Tue Jul  7 03:48:23 CST 2026
+用户身份 : xdzs2026_c166
+主目录 : /public/home/xdzs2026_c166
+作业类型 : instance
+作业路径 : /public/home/xdzs2026_c166/SothisAI/instance/ssh/Instances_2607070059422056_0_0
+=======================
+ 
+======开始拉取镜像======
+Tue Jul  7 03:48:30 CST 2026
+docker pull image.ac.com:5000/dcu/xdzs2026_c166/base/qwen3.5-dtk26.04:0509
+======拉取镜像成功======
+ 
+======开始启动容器======
+Tue Jul  7 03:48:31 CST 2026
+656121_e03r1n06 启动完成
+======启动容器成功======
+ 
+========容器日志========
+Tue Jul  7 08:54:31 CST 2026
+未设置初始化容器执行脚本.
+ERROR: /public/home/xdzs2026_c166/SothisAI/instance/ssh/Instances_2607070059422056_0_0/_dockerlist_656380 does not exist or has wrong format
+Error: No such object: 656380_e03r1n11
+Error: No such container: 656380_e03r1n11
+=======================
+ 
+========容器异常========
+Error: No such object: 656380_e03r1n11
+parse error: Invalid numeric literal at line 1, column 11
+获取容器状态异常，5秒后再次获取...
+Error: No such object: 656380_e03r1n11
+parse error: Invalid numeric literal at line 1, column 11
+获取容器状态异常，5秒后再次获取...
+Error: No such object: 656380_e03r1n11
+parse error: Invalid numeric literal at line 1, column 11
+退出作业
+=========================
+# 656384 script
+JobId=656384 JobName=Instances_2607051832494555_5_0
+   UserId=xdzs2026_c166(123718) GroupId=xdzs2026_c166(123718) MCS_label=N/A
+   Priority=155 Nice=0 Account=xdzs2026_c166 QOS=user_xdzs2026_c166
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:11:21 TimeLimit=04:00:00 TimeMin=N/A
+   SubmitTime=2026-07-07T08:57:12 EligibleTime=2026-07-07T08:57:12
+   AccrueTime=2026-07-07T08:57:12
+   StartTime=2026-07-07T08:57:13 EndTime=2026-07-07T12:57:13 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-07-07T08:57:13 Scheduler=Main
+   Partition=hx1hdexclu08 AllocNode:Sid=zz-admin29:1799501
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=e03r1n11
+   BatchHost=e03r1n11
+   StepMgrEnabled=Yes
+   NumNodes=1 NumCPUs=16 NumTasks=16 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=16,mem=62208M,node=1,billing=16,gres/dcu=1
+   AllocTRES=cpu=16,mem=62208M,node=1,billing=16,gres/dcu=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=1 MinMemoryNode=62208M MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/public/home/xdzs2026_c166/SothisAI/instance/ssh/Instances_2607051832494555_5_0/job_xdzs2026_c166_20260707_085712
+   WorkDir=/public/home/xdzs2026_c166
+   Comment={appType:SSH,taskType:CONTAINER,appVersion:,appShopId:,instanceId:e361297e948d4952be3eecda38d5113f} 
+   StdErr=/public/home/xdzs2026_c166/SothisAI/instance/ssh/Instances_2607051832494555_5_0/656384.out
+   StdIn=/dev/null
+   StdOut=/public/home/xdzs2026_c166/SothisAI/instance/ssh/Instances_2607051832494555_5_0/656384.out
+   GresEnforceBind=Yes
+   TresPerNode=gres/dcu:1
+   
+
