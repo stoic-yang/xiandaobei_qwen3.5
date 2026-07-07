@@ -4,6 +4,7 @@
 > 读本文件前先读 [`memory/50-arch-bottleneck.md`](../memory/50-arch-bottleneck.md)（架构与瓶颈事实）
 > 与 [`memory/10-project.md`](../memory/10-project.md)（规则红线/绿区/评分）。
 > 截止：初赛 2026-07-15 12:00。
+> **R0/R1 已完成（R1 按用户决定暂停）；R2 起的实证细化见 [`r2-r5-detail.md`](r2-r5-detail.md)（含战略校准+decode gap 数字锚点+官方分校准动作）。**
 
 ## 一句话现状
 当前提交 `d29e9db3` 官方 **59.0018 = 净负优化**（baseline 保底 60）。瓶颈是**长上下文 Prefill/TTFT**（占 80% 权重的两档时间大头 + prefill 仅 ~758 tok/s），**不是** decode、**不是** KV Cache。
