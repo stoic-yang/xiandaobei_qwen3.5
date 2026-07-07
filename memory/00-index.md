@@ -16,6 +16,9 @@ Last updated: 2026-07-06 by opencode (initial seed from Claude memories + Codex 
 - [../plans/r2-r5-detail.md](../plans/r2-r5-detail.md) — R2–R5 实证细化（decode ~24ms host gap/flash-attn靶心head_dim=256/量化被规则封锁/官方分校准动作）
 - [../plans/infra-pool.md](../plans/infra-pool.md) — 容器池/预热/并行加速基础设施（L0 骨架 scripts/pool_manager.py + sbatch 命门）
 
+### 任务卡（可直接派给实现 agent）
+- [../plans/task-r2.1-cudagraph.md](../plans/task-r2.1-cudagraph.md) — R2.1 CUDA graph 覆盖度（enforce_eager 对照为核心诊断，抢 decode ~20ms host gap）
+
 ## Changelog
 
 - 2026-07-06 seed: migrated from `~/.claude/projects/-Users-keynary-Code-xiandaobei/memory/*` + Codex rollout summaries.
