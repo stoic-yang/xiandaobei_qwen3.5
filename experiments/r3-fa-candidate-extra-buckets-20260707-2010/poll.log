@@ -1,0 +1,883 @@
+=== poll 2026-07-07T20:09:44+0800 rc=0 ===
+status=running pid=2310
+=== poll 2026-07-07T20:10:14+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+=== poll 2026-07-07T20:10:45+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+=== poll 2026-07-07T20:11:15+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+=== poll 2026-07-07T20:11:45+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== poll 2026-07-07T20:12:16+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== poll 2026-07-07T20:12:46+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== poll 2026-07-07T20:13:16+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== poll 2026-07-07T20:13:46+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== poll 2026-07-07T20:14:17+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== poll 2026-07-07T20:14:47+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== poll 2026-07-07T20:15:17+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== poll 2026-07-07T20:15:47+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== poll 2026-07-07T20:16:17+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== poll 2026-07-07T20:16:47+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== poll 2026-07-07T20:17:17+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== poll 2026-07-07T20:17:47+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== poll 2026-07-07T20:18:17+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== poll 2026-07-07T20:18:48+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== poll 2026-07-07T20:19:18+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== poll 2026-07-07T20:19:48+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== poll 2026-07-07T20:20:18+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== poll 2026-07-07T20:20:48+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== poll 2026-07-07T20:21:18+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== poll 2026-07-07T20:21:48+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== poll 2026-07-07T20:22:18+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== poll 2026-07-07T20:22:49+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== poll 2026-07-07T20:23:19+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== poll 2026-07-07T20:23:49+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== poll 2026-07-07T20:24:19+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== poll 2026-07-07T20:24:50+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== throughput bucket=16-32K rep=1 ===
+=== poll 2026-07-07T20:25:20+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== throughput bucket=16-32K rep=1 ===
+=== poll 2026-07-07T20:25:50+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== throughput bucket=16-32K rep=1 ===
+=== poll 2026-07-07T20:26:20+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== throughput bucket=16-32K rep=1 ===
+=== poll 2026-07-07T20:26:50+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== throughput bucket=16-32K rep=1 ===
+=== poll 2026-07-07T20:27:21+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== throughput bucket=16-32K rep=1 ===
+=== poll 2026-07-07T20:27:51+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== throughput bucket=16-32K rep=1 ===
+=== throughput bucket=16-32K rep=2 ===
+=== poll 2026-07-07T20:28:22+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== throughput bucket=16-32K rep=1 ===
+=== throughput bucket=16-32K rep=2 ===
+=== poll 2026-07-07T20:28:52+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== throughput bucket=16-32K rep=1 ===
+=== throughput bucket=16-32K rep=2 ===
+=== poll 2026-07-07T20:29:23+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== throughput bucket=16-32K rep=1 ===
+=== throughput bucket=16-32K rep=2 ===
+=== poll 2026-07-07T20:29:54+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== throughput bucket=16-32K rep=1 ===
+=== throughput bucket=16-32K rep=2 ===
+=== poll 2026-07-07T20:30:25+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== throughput bucket=16-32K rep=1 ===
+=== throughput bucket=16-32K rep=2 ===
+=== poll 2026-07-07T20:30:55+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== throughput bucket=16-32K rep=1 ===
+=== throughput bucket=16-32K rep=2 ===
+=== throughput bucket=16-32K rep=3 ===
+=== poll 2026-07-07T20:31:27+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== throughput bucket=16-32K rep=1 ===
+=== throughput bucket=16-32K rep=2 ===
+=== throughput bucket=16-32K rep=3 ===
+=== poll 2026-07-07T20:31:57+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== throughput bucket=16-32K rep=1 ===
+=== throughput bucket=16-32K rep=2 ===
+=== throughput bucket=16-32K rep=3 ===
+=== poll 2026-07-07T20:32:28+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== throughput bucket=16-32K rep=1 ===
+=== throughput bucket=16-32K rep=2 ===
+=== throughput bucket=16-32K rep=3 ===
+=== poll 2026-07-07T20:32:59+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== throughput bucket=16-32K rep=1 ===
+=== throughput bucket=16-32K rep=2 ===
+=== throughput bucket=16-32K rep=3 ===
+=== poll 2026-07-07T20:33:30+0800 rc=0 ===
+status=running pid=2310
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== throughput bucket=16-32K rep=1 ===
+=== throughput bucket=16-32K rep=2 ===
+=== throughput bucket=16-32K rep=3 ===
+=== poll 2026-07-07T20:34:00+0800 rc=0 ===
+status=done

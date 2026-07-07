@@ -220,6 +220,7 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
             vllm/model_executor/layers/activation.py \
             vllm/model_executor/layers/fla/ops/chunk.py \
             vllm/model_executor/layers/fla/ops/chunk_o.py \
+            vllm/v1/attention/backends/triton_attn.py \
             vllm/v1/attention/ops/triton_unified_attention.py \
             vllm/version.py
           do
@@ -256,6 +257,7 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
             "vllm/model_executor/layers/activation.py",
             "vllm/model_executor/layers/fla/ops/chunk.py",
             "vllm/model_executor/layers/fla/ops/chunk_o.py",
+            "vllm/v1/attention/backends/triton_attn.py",
             "vllm/v1/attention/ops/triton_unified_attention.py",
             "vllm/version.py",
         ]

@@ -1,0 +1,82 @@
+{
+  "run_id": "r3-fa-candidate-accuracy-smoke-20260707-1948",
+  "status": "pass",
+  "finished_at": "2026-07-07T20:07:57+0800",
+  "repo": {
+    "kind": "competition",
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition",
+    "branch": "contest-p1-ffn-pool-20260621",
+    "head": "d29e9db3ffa01b701346445c6e62fe963f6c17b1",
+    "status_path": "/public/home/xdzs2026_c166/codex_runs/r3-fa-candidate-accuracy-smoke-20260707-1948/repo_status.txt",
+    "log_path": "/public/home/xdzs2026_c166/codex_runs/r3-fa-candidate-accuracy-smoke-20260707-1948/repo_log.txt"
+  },
+  "wheel": {
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl",
+    "sha256": "a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde"
+  },
+  "runtime_fingerprints_path": "/public/home/xdzs2026_c166/codex_runs/r3-fa-candidate-accuracy-smoke-20260707-1948/runtime_fingerprints.json",
+  "overlay": {
+    "rev": "",
+    "source_dir": "/root/overlay-r3-fa-20260707",
+    "manifest_path": "/public/home/xdzs2026_c166/codex_runs/r3-fa-candidate-accuracy-smoke-20260707-1948/overlay_manifest.txt"
+  },
+  "model_dir": "/public/home/xdzs2026_c166/Qwen3.5-27B",
+  "protocol": {
+    "warmup": "run_throughput.sh 4-8K 1",
+    "buckets": [
+      "8-16K"
+    ],
+    "repetitions": 1,
+    "num_prompts": 1,
+    "accuracy": "smoke",
+    "locked_start_script": "1",
+    "load_format": "runai_streamer",
+    "enforce_eager": "0"
+  },
+  "throughput": {
+    "8-16K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3-fa-candidate-accuracy-smoke-20260707-1948/throughput/8-16K_rep1.json",
+          "completed": 1,
+          "failed": 0,
+          "output_throughput": 8.625995809007438,
+          "p99_ttft_ms": 3266.982353059575,
+          "p99_tpot_ms": 70.29371547185212,
+          "duration": 10.665435276925564
+        }
+      ],
+      "median": {
+        "output_throughput": 8.625995809007438,
+        "p99_ttft_ms": 3266.982353059575,
+        "p99_tpot_ms": 70.29371547185212,
+        "duration": 10.665435276925564
+      }
+    }
+  },
+  "weighted_output_throughput": null,
+  "accuracy": {
+    "hotpotqa": {
+      "version": "fece4a",
+      "metric": "score",
+      "mode": "gen",
+      "score": "67.71"
+    },
+    "gov_report": {
+      "version": "52bd7a",
+      "metric": "score",
+      "mode": "gen",
+      "score": "34.45"
+    },
+    "retrieval_multi_point": {
+      "metric": "recalculated_acc",
+      "score": "100.00",
+      "count": "10/10"
+    },
+    "aggregation_keyword_aggregation": {
+      "metric": "recalculated_acc",
+      "score": "100.00",
+      "count": "10/10"
+    }
+  }
+}

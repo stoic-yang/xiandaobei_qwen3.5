@@ -1,0 +1,137 @@
+=== guard benchmark ===
+run_id=r3-fa-candidate-extra-buckets-20260707-2010
+host=worker-0
+started_at=2026-07-07T20:09:46+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+reuse_server=1 health=ok
+=== warmup ===
+=== throughput bucket=4-8K rep=1 ===
+=== throughput bucket=4-8K rep=2 ===
+=== throughput bucket=4-8K rep=3 ===
+=== throughput bucket=16-32K rep=1 ===
+=== throughput bucket=16-32K rep=2 ===
+=== throughput bucket=16-32K rep=3 ===
+=== summary ===
+{
+  "run_id": "r3-fa-candidate-extra-buckets-20260707-2010",
+  "status": "pass",
+  "finished_at": "2026-07-07T20:33:45+0800",
+  "repo": {
+    "kind": "competition",
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition",
+    "branch": "contest-p1-ffn-pool-20260621",
+    "head": "d29e9db3ffa01b701346445c6e62fe963f6c17b1",
+    "status_path": "/public/home/xdzs2026_c166/codex_runs/r3-fa-candidate-extra-buckets-20260707-2010/repo_status.txt",
+    "log_path": "/public/home/xdzs2026_c166/codex_runs/r3-fa-candidate-extra-buckets-20260707-2010/repo_log.txt"
+  },
+  "wheel": {
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl",
+    "sha256": "a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde"
+  },
+  "runtime_fingerprints_path": "/public/home/xdzs2026_c166/codex_runs/r3-fa-candidate-extra-buckets-20260707-2010/runtime_fingerprints.json",
+  "overlay": {
+    "rev": "",
+    "source_dir": "",
+    "manifest_path": null
+  },
+  "model_dir": "/public/home/xdzs2026_c166/Qwen3.5-27B",
+  "protocol": {
+    "warmup": "run_throughput.sh 4-8K 1",
+    "buckets": [
+      "4-8K",
+      "16-32K"
+    ],
+    "repetitions": 3,
+    "num_prompts": 10,
+    "accuracy": "none",
+    "locked_start_script": "1",
+    "load_format": "runai_streamer",
+    "enforce_eager": "0"
+  },
+  "throughput": {
+    "4-8K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3-fa-candidate-extra-buckets-20260707-2010/throughput/4-8K_rep1.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 13.413474330151255,
+          "p99_ttft_ms": 1781.1940679582767,
+          "p99_tpot_ms": 69.2095478169736,
+          "duration": 197.04067230806686
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3-fa-candidate-extra-buckets-20260707-2010/throughput/4-8K_rep2.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 13.416424904513194,
+          "p99_ttft_ms": 1779.6451067645103,
+          "p99_tpot_ms": 69.26518425315919,
+          "duration": 196.99733862117864
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3-fa-candidate-extra-buckets-20260707-2010/throughput/4-8K_rep3.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 13.419041518441562,
+          "p99_ttft_ms": 1780.958998494316,
+          "p99_tpot_ms": 69.20984746587985,
+          "duration": 196.9589255959727
+        }
+      ],
+      "median": {
+        "output_throughput": 13.416424904513194,
+        "p99_ttft_ms": 1780.958998494316,
+        "p99_tpot_ms": 69.20984746587985,
+        "duration": 196.99733862117864
+      }
+    },
+    "16-32K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3-fa-candidate-extra-buckets-20260707-2010/throughput/16-32K_rep1.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 8.454833965809673,
+          "p99_ttft_ms": 5451.578526603989,
+          "p99_tpot_ms": 72.02561436092977,
+          "duration": 132.11377118900418
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3-fa-candidate-extra-buckets-20260707-2010/throughput/16-32K_rep2.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 8.45627457009455,
+          "p99_ttft_ms": 5449.410129711032,
+          "p99_tpot_ms": 71.98803166144418,
+          "duration": 132.0912643908523
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3-fa-candidate-extra-buckets-20260707-2010/throughput/16-32K_rep3.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 8.441979442714812,
+          "p99_ttft_ms": 5493.208960476331,
+          "p99_tpot_ms": 71.9254086427763,
+          "duration": 132.31493959203362
+        }
+      ],
+      "median": {
+        "output_throughput": 8.454833965809673,
+        "p99_ttft_ms": 5451.578526603989,
+        "p99_tpot_ms": 71.98803166144418,
+        "duration": 132.11377118900418
+      }
+    }
+  },
+  "weighted_output_throughput": null,
+  "accuracy": {}
+}
+completed_at=2026-07-07T20:33:46+08:00

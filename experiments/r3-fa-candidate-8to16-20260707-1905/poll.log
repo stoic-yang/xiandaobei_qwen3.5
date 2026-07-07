@@ -1,0 +1,1896 @@
+=== poll 2026-07-07T19:05:19+0800 rc=0 ===
+status=running pid=7883
+=== poll 2026-07-07T19:05:49+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+=== poll 2026-07-07T19:06:19+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+=== poll 2026-07-07T19:06:50+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:07:20+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:07:50+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:08:20+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:08:51+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:09:21+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:09:52+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:10:22+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:10:53+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:11:23+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:11:54+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:12:24+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:12:55+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:13:26+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:13:56+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:14:26+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:14:57+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:15:27+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:15:57+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:16:27+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:16:57+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:17:28+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:17:58+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:18:29+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:18:59+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:19:31+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:20:01+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:20:32+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+=== poll 2026-07-07T19:21:02+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== poll 2026-07-07T19:21:33+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== poll 2026-07-07T19:22:03+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== poll 2026-07-07T19:22:34+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== poll 2026-07-07T19:23:04+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== poll 2026-07-07T19:23:34+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== poll 2026-07-07T19:24:04+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== poll 2026-07-07T19:24:35+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== poll 2026-07-07T19:25:05+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== poll 2026-07-07T19:25:35+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== poll 2026-07-07T19:26:05+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== poll 2026-07-07T19:26:35+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== poll 2026-07-07T19:27:05+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== poll 2026-07-07T19:27:35+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== poll 2026-07-07T19:28:05+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== poll 2026-07-07T19:28:35+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== poll 2026-07-07T19:29:05+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== poll 2026-07-07T19:29:36+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== poll 2026-07-07T19:30:06+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== poll 2026-07-07T19:30:36+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== poll 2026-07-07T19:31:06+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== throughput bucket=8-16K rep=3 ===
+=== poll 2026-07-07T19:31:36+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== throughput bucket=8-16K rep=3 ===
+=== poll 2026-07-07T19:32:07+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== throughput bucket=8-16K rep=3 ===
+=== poll 2026-07-07T19:32:37+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== throughput bucket=8-16K rep=3 ===
+=== poll 2026-07-07T19:33:08+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== throughput bucket=8-16K rep=3 ===
+=== poll 2026-07-07T19:33:38+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== throughput bucket=8-16K rep=3 ===
+=== poll 2026-07-07T19:34:09+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== throughput bucket=8-16K rep=3 ===
+=== accuracy smoke ===
+=== poll 2026-07-07T19:34:39+0800 rc=0 ===
+status=running pid=7883
+=== guard benchmark ===
+run_id=r3-fa-candidate-8to16-20260707-1905
+host=worker-0
+started_at=2026-07-07T19:05:20+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+stopping existing server processes
+kill: (4191): No such process
+starting vLLM server
+server_ready_at=2026-07-07T19:20:45+08:00 pid=7999
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== throughput bucket=8-16K rep=3 ===
+=== accuracy smoke ===
+=== poll 2026-07-07T19:35:10+0800 rc=255 ===
+Connection closed by UNKNOWN port 65535
+=== poll 2026-07-07T19:35:41+0800 rc=255 ===
+Connection closed by UNKNOWN port 65535
+=== poll 2026-07-07T19:36:12+0800 rc=255 ===
+Connection closed by UNKNOWN port 65535
+=== poll 2026-07-07T19:36:43+0800 rc=255 ===
+Connection closed by UNKNOWN port 65535
+=== poll 2026-07-07T19:37:14+0800 rc=255 ===
+Connection closed by UNKNOWN port 65535
+=== poll 2026-07-07T19:37:45+0800 rc=255 ===
+Connection closed by UNKNOWN port 65535
+=== poll 2026-07-07T19:38:19+0800 rc=255 ===
+Connection closed by UNKNOWN port 65535
+=== poll 2026-07-07T19:38:51+0800 rc=255 ===
+Connection closed by UNKNOWN port 65535

@@ -1,0 +1,117 @@
+=== guard benchmark ===
+run_id=r3-fa-candidate-accuracy-smoke-20260707-1948
+host=worker-0
+started_at=2026-07-07T19:46:53+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=1 repetitions=1 buckets=8-16K accuracy=smoke accuracy_rows=10 overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+Installing collected packages: vllm
+Successfully installed vllm-0.18.1+das.dtk2604
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=
+overlay_source_dir=/root/overlay-r3-fa-20260707
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_missing=vllm/model_executor/models/qwen3_5.py
+overlay_missing=vllm/model_executor/models/qwen3_next.py
+overlay_missing=vllm/model_executor/layers/activation.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_missing=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/backends/triton_attn.py
+overlay_missing=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_missing=vllm/version.py
+starting vLLM server
+server_ready_at=2026-07-07T19:59:20+08:00 pid=301
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== accuracy smoke ===
+=== summary ===
+{
+  "run_id": "r3-fa-candidate-accuracy-smoke-20260707-1948",
+  "status": "pass",
+  "finished_at": "2026-07-07T20:07:57+0800",
+  "repo": {
+    "kind": "competition",
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition",
+    "branch": "contest-p1-ffn-pool-20260621",
+    "head": "d29e9db3ffa01b701346445c6e62fe963f6c17b1",
+    "status_path": "/public/home/xdzs2026_c166/codex_runs/r3-fa-candidate-accuracy-smoke-20260707-1948/repo_status.txt",
+    "log_path": "/public/home/xdzs2026_c166/codex_runs/r3-fa-candidate-accuracy-smoke-20260707-1948/repo_log.txt"
+  },
+  "wheel": {
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl",
+    "sha256": "a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde"
+  },
+  "runtime_fingerprints_path": "/public/home/xdzs2026_c166/codex_runs/r3-fa-candidate-accuracy-smoke-20260707-1948/runtime_fingerprints.json",
+  "overlay": {
+    "rev": "",
+    "source_dir": "/root/overlay-r3-fa-20260707",
+    "manifest_path": "/public/home/xdzs2026_c166/codex_runs/r3-fa-candidate-accuracy-smoke-20260707-1948/overlay_manifest.txt"
+  },
+  "model_dir": "/public/home/xdzs2026_c166/Qwen3.5-27B",
+  "protocol": {
+    "warmup": "run_throughput.sh 4-8K 1",
+    "buckets": [
+      "8-16K"
+    ],
+    "repetitions": 1,
+    "num_prompts": 1,
+    "accuracy": "smoke",
+    "locked_start_script": "1",
+    "load_format": "runai_streamer",
+    "enforce_eager": "0"
+  },
+  "throughput": {
+    "8-16K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3-fa-candidate-accuracy-smoke-20260707-1948/throughput/8-16K_rep1.json",
+          "completed": 1,
+          "failed": 0,
+          "output_throughput": 8.625995809007438,
+          "p99_ttft_ms": 3266.982353059575,
+          "p99_tpot_ms": 70.29371547185212,
+          "duration": 10.665435276925564
+        }
+      ],
+      "median": {
+        "output_throughput": 8.625995809007438,
+        "p99_ttft_ms": 3266.982353059575,
+        "p99_tpot_ms": 70.29371547185212,
+        "duration": 10.665435276925564
+      }
+    }
+  },
+  "weighted_output_throughput": null,
+  "accuracy": {
+    "hotpotqa": {
+      "version": "fece4a",
+      "metric": "score",
+      "mode": "gen",
+      "score": "67.71"
+    },
+    "gov_report": {
+      "version": "52bd7a",
+      "metric": "score",
+      "mode": "gen",
+      "score": "34.45"
+    },
+    "retrieval_multi_point": {
+      "metric": "recalculated_acc",
+      "score": "100.00",
+      "count": "10/10"
+    },
+    "aggregation_keyword_aggregation": {
+      "metric": "recalculated_acc",
+      "score": "100.00",
+      "count": "10/10"
+    }
+  }
+}
+completed_at=2026-07-07T20:07:58+08:00
+stopping server pid=301
