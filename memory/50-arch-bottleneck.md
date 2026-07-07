@@ -61,6 +61,16 @@
   → **R3 靶心 = flash-attention on gfx936；投影 GEMM 交 rocBLAS/hipBLASLt + Matrix Core。**
 - decode 合规下唯一剩余空间 = **host 侧**（图捕获消 launch + 算子融合，Amdahl：每 tok 几十个小算子+launch），**不是带宽侧**。
 
+## 外部 DCU 实测讲义的额外锚点（2 份 gfx936 微基准，非本仓测量）
+> 来源：用户提供《大模型decode访存瓶颈与双缓冲_DCU实测》(expA.py/dbocc.hip 原文，即本文件已引用的外部 gfx936 作业**原始出处**——HBM 1206/395 TFLOPS/拐点 327 出自此) +《第三集·带宽利用与算子优化》(带宽利用率方法论)。
+
+- **TPOT 三段分解（精确化 decode 可抢空间，重要）**：权重带宽下限 **~45ms** ＜ 讲义实测 bf16 纯前向 **~49ms** ＜ 本仓端到端 P99 **~69ms**。
+  → kernel 级已贴物理顶（45→49 仅差 4ms），**剩 ~20ms 几乎全是 host/框架开销**（kernel 间 launch gap + sampling + detokenize + python 调度）。这才是 R2 能抢的量；decode 带宽侧一步不能动。⚠️ 49 与 69 不同源，R2.0 decode-only trace 需证实此拆分。
+- **GQA 6:1 复用**：`heads=24 / kv_heads=4` → full-attn kernel 里 K/V 读一次供 6 个 query head 复用，有效 KV 带宽 ÷6。R3.1 flash-attn kernel 必须吃满这个复用。
+- **GDN 参考库 = FLA (flash-linear-attention)** `github.com/fla-org/flash-linear-attention`：GDN(Gated DeltaNet) 属 FLA 家族，是 R3.2 GDN chunked-prefill kernel 的直接参考。full-attn 侧参考 FlashAttention（tiling + online-softmax）。
+- **inductor combo_kernels 已开**（vllm_server.log 确认 `combo_kernels:True`）：vLLM 已自动融了一批小算子；R2/R3 手动融合前先查它融了什么，别做无用功。
+- **🔴 红线重申（别抄药方）**：两份讲义（尤其第一份）最终药方是"权重 int8/int4 量化把 TPOT 49→40ms"——**在本赛题 = 持久化量化红线，违规清零，绝不可抄**。讲义的分析（roofline / 双缓冲实测无效 / prefill O(S²)）全对且可用，但那个药方是给"无规则约束"场景的。
+
 ## 待 R0 确认
 - ~~是否 MoE / 层配比 / head_dim / KV heads~~ → codex R0.1 已确认（非 MoE，64=48+16）。
 - ~~DCU gfx / 是否 FP8~~ → gfx936 确认、FP8 支持确认（`du_mma`）；峰值带宽/算力由外部作业补（1206 GB/s / 395 TFLOPS）。
@@ -75,3 +85,4 @@
 - 2026-07-06 R0.1/R0.2 correction（Codex live probe on SCNet job 655597）：`config.json` confirms 64 text layers = 48 `linear_attention` + 16 `full_attention`, `full_attention_interval=4`, **not MoE** (`num_experts`/`num_experts_per_tok` absent), `head_dim=256`, `num_attention_heads=24`, `num_key_value_heads=4`, `hidden_size=5120`; DCU is `BW`/`gfx936:sramecc+:xnack-`, 80 CU, 64 GiB class VRAM, wavefront 64, HIP 6.3 runtime; DTK exposes `du_mma` FP8 fragments/conversion builtins, but `hy-smi` did not print peak memory bandwidth or peak TFLOPS directly.
 - 2026-07-06 R0.4 profile reuse（`experiments/r0-profile-20260706-2138/`, source `/public/home/xdzs2026_c166/codex_logs/profile_runs/rocprofv2_8_16K_20260622_161546`）：8-16K long-context hot window ranks `kernel_unified_attention_2d.kd` 38.82%, `chunk_fwd_kernel_o.kd` 22.65%, `chunk_gated_delta_rule_fwd_kernel_h_blockdim64.kd` 7.66%, top Tensile GEMM rows about 16.82%; decode GDN kernel is only 0.67% in full trace, so score-limiting path remains prefill/full-attn+GDN+GEMM. Caveat: reused trace is not a clean prefill/decode split; decode bandwidth-vs-launch label still needs a decode-only trace if required.
 - 2026-07-07 R1 guard anchor（`experiments/guard-a55f3c3-overlay-fullsmoke-20260707-0010/`）：a55/runtime-wheel-equivalent warm guard medians are 12.156717 / 7.231679 / 4.655501 output tok/s, weighted 7.443833, TTFT-P99 4.537s / 15.616s / 28.667s, TPOT-P99 69.731ms / 70.654ms / 72.115ms. Compared to `experiments/guard-d29e9db3-20260706-2005/` installed-wheel guard, deltas are -0.58% / +0.02% / +0.09%; this is consistent with the same runtime path plus noise, not proof of a new speedup.
+- 2026-07-07 Claude 沉淀 2 份 gfx936 实测讲义（新增「外部 DCU 实测讲义额外锚点」小节）：TPOT 三段分解 45/49/69ms → **host overhead ~20ms 是 R2 靶子**（decode 带宽侧仍到顶不可动）；GQA 6:1 复用；GDN 参考库 FLA；inductor combo_kernels 已开（手融前先查）；红线重申——讲义"权重量化降 TPOT"药方在本赛题违规不可抄。

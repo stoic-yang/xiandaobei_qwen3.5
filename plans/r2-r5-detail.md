@@ -24,16 +24,16 @@
 
 ## 2. Round 2 细化 —— 抢 decode 的 host/launch gap（不写 kernel）
 
-### 核心机会（本轮的数字锚点）
-decode 实测 TPOT-P99 ≈ **69–72 ms**，权重带宽物理下限 ≈ **45 ms**，KV 读取（长档）≈ 0.4–1.7 ms。
-→ **剩下 ~22–24 ms（约占 TPOT 30–35%）是 kernel 之间的 launch/host 空隙**，这就是 R2 能抢的天花板。
-抢下其中一半 → TPOT 69→57 ms → decode ~20% 提速（4-8K 档 decode 主导，直接近似 +20% 吞吐；两长档也有份）。
+### 核心机会（本轮的数字锚点，已被外部讲义精确化）
+decode TPOT 三段：权重带宽下限 **~45ms** ＜ 外部讲义实测 bf16 纯前向 **~49ms** ＜ 本仓端到端 P99 **~69ms**。
+→ kernel 级已贴物理顶（45→49 只差 4ms），**剩 ~20ms（占 TPOT ~30%）几乎全是 host/框架开销**：kernel 间 launch gap + sampling + detokenize + python 调度。这就是 R2 能抢的（decode 带宽侧一步不能动）。
+抢下其中一半 → TPOT ~69→59ms → decode ~15% 提速（4-8K 档 decode 主导，近似同幅吞吐；两长档也有份）。
 
-> ⚠️ 这个 24ms gap 是"物理下限 vs 实测"的推算，**必须先用 decode-only trace 证实 gap 的构成**（launch 还是 python host），再动手——R0.4 的 caveat 明确留了这个坑。
+> ⚠️ 49ms（外部讲义微基准）与 69ms（本仓端到端 P99）不同源，那 ~20ms 差**未必全是 host**，也可能含口径差异。**R2.0 decode-only trace 必须证实这个拆分**（kernel 忙时 vs launch/host 空隙）再动手。
 
 ### R2.0（先决）decode-only profile
 - 用 rocprofv2/hipprof 抓一段**纯 decode**（长 prompt、只生成、稳态若干 token）的时间线，量化：kernel 忙时 vs 空隙、每 token 的 launch 次数、host python 占比。
-- 产出：把上面"24ms gap"拆成 launch-bound / host-bound 两部分的比例。→ 决定 R2.1 与 R2.3 谁先做。
+- 产出：把 ~20ms 差拆成 launch-bound / host-bound / 口径差 三部分。→ 决定 R2.1 与 R2.3 谁先做，并回填校正 memory/50 的三段分解。
 
 ### R2.1 CUDA graph 覆盖度（大概率最大项）
 - 现状：`cudagraph_mode=FULL_AND_PIECEWISE`，但 `splitting_ops` 把 `unified_attention`/`linear_attention`/`mamba_mixer2`/`gdn_attention_core` 等列为**图分割点**——意味着每层 attention/GDN 都可能打断 cudagraph，bs=1 decode 每 token 有 64 层 × 数个断点 = 大量 launch。
@@ -67,11 +67,14 @@ decode 实测 TPOT-P99 ≈ **69–72 ms**，权重带宽物理下限 ≈ **45 ms
 - 现状 `unified_attention` triton kernel 在 gfx936 上大概率没调好（占 38.82%）。
 - 路线优先级：① 先试 DTK 26.04 是否自带 CK(Composable Kernel)/ROCm flash-attention，直接接入 vLLM 的 attention backend；② 不行再手写/移植 flash-attention。
 - **关键难点 = head_dim=256**（多数 flash-attn 实现只优化到 128）。这既是难点也是别人容易翻车的地方，做对了就是护城河。先验证目标 kernel 在 head_dim=256 下的正确性+性能，再谈提速。
-- 注意：只有 16 层 full-attn（`full_attention_interval=4`），但 O(S²) 使其在长档是主力；GQA kv_heads=4 可利用。
+- 注意：只有 16 层 full-attn（`full_attention_interval=4`），但 O(S²) 使其在长档是主力。
+- **吃满 GQA 6:1 复用**（heads=24 / kv_heads=4）：kernel 内 K/V 从 HBM 读一次供 6 个 query head 复用，有效 KV 带宽 ÷6（外部《第三集》讲义明确点名的手法）。
+- 范本：FlashAttention（tiling + online-softmax，避免把 S×S 注意力矩阵落 HBM）；参考实现见文末资料。
 
 ### R3.2 GDN chunked-prefill kernel（次要，~30%）
 - `chunk_fwd_kernel_o` 22.65% + `chunk_gated_delta_rule_fwd` 7.66%。GDN(Gated DeltaNet) 特有的 chunked 线性注意力 prefill。
 - 先 profile 单 kernel 的 occupancy/带宽/tile，判断是 tile 尺寸、bank conflict 还是 launch 配置问题。注意历史上 `33323a1 GDN chunk` 是负优化——**别重蹈覆辙，任何 GDN prefill 改动严格 A/B**。
+- **直接参考 FLA (flash-linear-attention)** `github.com/fla-org/flash-linear-attention`：GDN 属该家族，其 chunked 融合 kernel 是移植/对标对象（先看 vLLM 现用实现与 FLA 上游差多少）。
 
 ### R3.3 投影 GEMM —— 交给库，别自己写
 - 已贴 bf16 算力峰值（memory/50 结论）。R3 不手写 GEMM，只确保 rocBLAS/hipBLASLt + Matrix Core 选到最优（与 R2.4 重叠）。
@@ -133,5 +136,12 @@ decode 实测 TPOT-P99 ≈ **69–72 ms**，权重带宽物理下限 ≈ **45 ms
 4. R3.1 flash-attention（head_dim=256）—— 主力精力，唯一大胜负手。
 5. R2.3/R2.4 → R3.2 → R4（可选增强）→ R5 收尾。
 
+## 参考资料（外部实测讲义 + 开源 kernel）
+- 2 份 gfx936 实测讲义（用户提供）：《decode访存瓶颈与双缓冲_DCU实测》(expA.py/dbocc.hip)、《第三集·带宽利用与算子优化》。要点已提炼进 memory/50「外部 DCU 实测讲义额外锚点」。**⚠️ 讲义的"权重量化降 TPOT"药方在本赛题违规，不可抄。**
+- R3.1 full-attn 参考：FlashAttention `github.com/Dao-AILab/flash-attention`；ROCm/CK flash-attn（gfx936 后端）。
+- R3.2 GDN 参考：FLA `github.com/fla-org/flash-linear-attention`。
+- 库/工具：rocBLAS、hipBLASLt、omniperf（Roofline/带宽利用率）、Triton（HIP 后端）。
+
 ## Changelog
-- 2026-07-07 create（Claude 基于 R0/R1 实证细化 R2–R5：R2 重定位为抢 decode ~24ms host/launch gap；量化 decode gap 数字锚点；R3 靶心 flash-attention on gfx936 + head_dim=256 难点；R4 降级为 R3 精度增强；新增战略动作 A/B 校准官方分与口径）。
+- 2026-07-07 create（Claude 基于 R0/R1 实证细化 R2–R5：R2 重定位为抢 decode host/launch gap；量化 decode gap 数字锚点；R3 靶心 flash-attention on gfx936 + head_dim=256 难点；R4 降级为 R3 精度增强；新增战略动作 A/B 校准官方分与口径）。
+- 2026-07-07 Claude 纳入 2 份 gfx936 实测讲义：decode gap 精确化为 45/49/69ms 三段（~20ms host 是 R2 靶子）；R3.1 加 GQA 6:1 复用 + FlashAttention 范本；R3.2 加 FLA 参考库；R2/R3 手融前先查 inductor combo_kernels；补参考资料小节 + 红线重申。
