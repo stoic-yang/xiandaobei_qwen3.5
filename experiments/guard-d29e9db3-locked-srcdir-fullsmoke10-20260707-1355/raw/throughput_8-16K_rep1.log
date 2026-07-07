@@ -1,0 +1,129 @@
+===== throughput: 8-16K =====
+Namespace(subparser='bench', bench_type='serve', dispatch_function=<function BenchmarkServingSubcommand.cmd at 0x7ff421d08820>, trust_remote_code=False, seed=0, num_prompts=10, dataset_name='custom', no_stream=False, dataset_path='./8-16K_throughput.jsonl', no_oversample=True, skip_chat_template=False, enable_multimodal_chat=False, disable_shuffle=True, custom_output_len=1024, spec_bench_output_len=256, spec_bench_category=None, sonnet_input_len=550, sonnet_output_len=150, sonnet_prefix_len=200, sharegpt_output_len=None, blazedit_min_distance=0.0, blazedit_max_distance=1.0, asr_max_audio_len_sec=inf, asr_min_audio_len_sec=0.0, random_input_len=1024, random_output_len=128, random_range_ratio=0.0, random_prefix_len=0, random_batch_size=1, no_reranker=False, random_mm_base_items_per_request=1, random_mm_num_mm_items_range_ratio=0.0, random_mm_limit_mm_per_prompt={'image': 255, 'video': 1}, random_mm_bucket_config={(256, 256, 1): 0.5, (720, 1280, 1): 0.5, (720, 1280, 16): 0.0}, hf_subset=None, hf_split=None, hf_name=None, hf_output_len=None, prefix_repetition_prefix_len=256, prefix_repetition_suffix_len=256, prefix_repetition_num_prefixes=10, prefix_repetition_output_len=128, label=None, backend='openai-chat', base_url=None, host='127.0.0.1', port=8001, endpoint='/v1/chat/completions', header=None, max_concurrency=1, model='Qwen3.5-27B', input_len=None, output_len=None, tokenizer='/public/home/xdzs2026_c166/Qwen3.5-27B', tokenizer_mode='auto', use_beam_search=False, logprobs=None, request_rate=1.0, burstiness=1.0, disable_tqdm=False, num_warmups=2, profile=False, save_result=True, save_detailed=True, append_result=False, metadata=None, result_dir='./test/8-16K_throughput', result_filename='result.json', ignore_eos=False, percentile_metrics='ttft,tpot,itl,e2el', metric_percentiles='50,95,99', goodput=None, request_id_prefix='bench-d3edcb93-', top_p=None, top_k=None, min_p=None, temperature=0.0, frequency_penalty=None, presence_penalty=None, repetition_penalty=None, served_model_name=None, lora_modules=None, ramp_up_strategy=None, ramp_up_start_rps=None, ramp_up_end_rps=None, ready_check_timeout_sec=0, extra_body={'temperature': 0.0}, skip_tokenizer_init=False, insecure=False, plot_timeline=False, timeline_itl_thresholds=[25.0, 50.0], plot_dataset_stats=False)
+INFO 07-07 14:27:14 [datasets.py:232] Skipping oversampling. Total samples: 10.
+Starting initial single prompt test run...
+Skipping endpoint ready check.
+Warming up with 2 requests...
+  0%|          | 0/2 [00:00<?, ?it/s] 50%|█████     | 1/2 [00:18<00:18, 18.88s/it]100%|██████████| 2/2 [00:37<00:00, 18.89s/it]100%|██████████| 2/2 [00:37<00:00, 18.89s/it]
+Warmup run completed.
+Starting main benchmark run...
+Traffic request rate: 1.0
+Burstiness factor: 1.0 (Poisson process)
+Maximum request concurrency: 1
+  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:19<02:55, 19.54s/it] 20%|██        | 2/10 [00:33<02:10, 16.29s/it] 30%|███       | 3/10 [01:13<03:09, 27.04s/it] 40%|████      | 4/10 [01:32<02:22, 23.76s/it] 50%|█████     | 5/10 [01:52<01:52, 22.44s/it] 60%|██████    | 6/10 [02:09<01:22, 20.67s/it] 70%|███████   | 7/10 [02:41<01:12, 24.24s/it]100%|██████████| 10/10 [02:41<00:00, 16.11s/it]
+Failed requests during benchmark run detected (capping to 10):
+Error 0: Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/aiohttp/connector.py", line 1298, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+  File "/usr/local/lib/python3.10/dist-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/usr/local/lib/python3.10/dist-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+  File "/usr/local/lib/python3.10/dist-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/usr/lib/python3.10/asyncio/selector_events.py", line 501, in sock_connect
+    return await fut
+  File "/usr/lib/python3.10/asyncio/selector_events.py", line 541, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8001)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/vllm/benchmarks/lib/endpoint_request_func.py", line 325, in async_request_openai_chat_completions
+    async with session.post(url=api_url, json=payload, headers=headers) as response:
+  File "/usr/local/lib/python3.10/dist-packages/aiohttp/client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+  File "/usr/local/lib/python3.10/dist-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+  File "/usr/local/lib/python3.10/dist-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+  File "/usr/local/lib/python3.10/dist-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+  File "/usr/local/lib/python3.10/dist-packages/aiohttp/connector.py", line 1239, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+  File "/usr/local/lib/python3.10/dist-packages/aiohttp/connector.py", line 1611, in _create_direct_connection
+    raise last_exc
+  File "/usr/local/lib/python3.10/dist-packages/aiohttp/connector.py", line 1580, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+  File "/usr/local/lib/python3.10/dist-packages/aiohttp/connector.py", line 1321, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host 127.0.0.1:8001 ssl:default [Connect call failed ('127.0.0.1', 8001)]
+
+Error 1: Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/aiohttp/connector.py", line 1298, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+  File "/usr/local/lib/python3.10/dist-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/usr/local/lib/python3.10/dist-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+  File "/usr/local/lib/python3.10/dist-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/usr/lib/python3.10/asyncio/selector_events.py", line 501, in sock_connect
+    return await fut
+  File "/usr/lib/python3.10/asyncio/selector_events.py", line 541, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8001)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/vllm/benchmarks/lib/endpoint_request_func.py", line 325, in async_request_openai_chat_completions
+    async with session.post(url=api_url, json=payload, headers=headers) as response:
+  File "/usr/local/lib/python3.10/dist-packages/aiohttp/client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+  File "/usr/local/lib/python3.10/dist-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+  File "/usr/local/lib/python3.10/dist-packages/aiohttp/client.py", line 734, in _connect_and_send_request
+    conn = await self._connector.connect(
+  File "/usr/local/lib/python3.10/dist-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+  File "/usr/local/lib/python3.10/dist-packages/aiohttp/connector.py", line 1239, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+  File "/usr/local/lib/python3.10/dist-packages/aiohttp/connector.py", line 1611, in _create_direct_connection
+    raise last_exc
+  File "/usr/local/lib/python3.10/dist-packages/aiohttp/connector.py", line 1580, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+  File "/usr/local/lib/python3.10/dist-packages/aiohttp/connector.py", line 1321, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host 127.0.0.1:8001 ssl:default [Connect call failed ('127.0.0.1', 8001)]
+
+tip: install termplotlib and gnuplot to plot the metrics
+============ Serving Benchmark Result ============
+Successful requests:                     8         
+Failed requests:                         2         
+Maximum request concurrency:             1         
+Request rate configured (RPS):           1.00      
+Benchmark duration (s):                  161.10    
+Total input tokens:                      105004    
+Total generated tokens:                  1156      
+Request throughput (req/s):              0.05      
+Output token throughput (tok/s):         7.18      
+Peak output token throughput (tok/s):    15.00     
+Peak concurrent requests:                2.00      
+Total token throughput (tok/s):          658.96    
+---------------Time to First Token----------------
+Mean TTFT (ms):                          10053.21  
+Median TTFT (ms):                        11112.87  
+P50 TTFT (ms):                           11112.87  
+P95 TTFT (ms):                           15609.25  
+P99 TTFT (ms):                           15614.69  
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          69.86     
+Median TPOT (ms):                        69.78     
+P50 TPOT (ms):                           69.78     
+P95 TPOT (ms):                           70.40     
+P99 TPOT (ms):                           70.47     
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           69.15     
+Median ITL (ms):                         69.52     
+P50 ITL (ms):                            69.52     
+P95 ITL (ms):                            70.65     
+P99 ITL (ms):                            71.08     
+----------------End-to-end Latency----------------
+Mean E2EL (ms):                          20053.41  
+Median E2EL (ms):                        18802.59  
+P50 E2EL (ms):                           18802.59  
+P95 E2EL (ms):                           36945.96  
+P99 E2EL (ms):                           39261.00  
+==================================================

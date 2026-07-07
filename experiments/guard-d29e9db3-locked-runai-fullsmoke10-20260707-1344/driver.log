@@ -1,0 +1,18 @@
+=== guard benchmark ===
+run_id=guard-d29e9db3-locked-runai-fullsmoke10-20260707-1344
+host=worker-0
+started_at=2026-07-07T13:44:28+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 8-16K 16-32K accuracy=smoke accuracy_rows=10 overlay_rev=d29e9db3
+locked_start_script=1 load_format=runai_streamer
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+overlay_rev=d29e9db3
+overlay_source_dir=
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
