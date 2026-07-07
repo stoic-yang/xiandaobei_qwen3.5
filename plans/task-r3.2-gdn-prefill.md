@@ -16,6 +16,7 @@
   - `recompute_w_u_fwd_kernel.kd` 2.60%
   - `chunk_scaled_dot_kkt_fwd_kernel.kd` 0.12%-3% 量级，随窗口变化
 - R3.1 candidate 已显著压低 full-attn TTFT；因此 **R3.2 第一步必须重抓 R3.1 开启后的 prefill profile**，旧占比只能做方向锚点，不能当收益承诺。
+- ✅ Step 0 已完成（`experiments/r3.2-post-r31-prefill-profile-20260707-2210/`）：post-R3.1 8-16K prefill one-request profile 显示 `Cijk_*` Tensile GEMM `67.101%`、flash-attn prefill `8.994%`、GDN core `9.303%`（含 helper `13.277%`）。R3.2 已按本卡规则降级；下一主线应转 R3.0/R2.4 GEMM library/autotune，GDN 只保留 cheap env-gated config/autotune spike 或等 16-32K profile 反证。
 - 历史警告：`33323a1 perf(qwen3next): chunk long gdn prefills` 曾是负优化嫌疑，GDN 改动必须一改一开关、同容器 A/B。
 
 ## 硬约束
@@ -36,7 +37,7 @@
 - 输出 post-R3.1 hot window top-N，单独汇总 GDN kernels / GEMM / fill / flash-attn。
 - 若 GDN chunk 已低于 10%，本卡降级，先转 R2.0/R2.4 或 R5；若 GDN 仍是前二热点，继续。
 
-### Step 1 — 固化 GDN shape 与正确性对拍
+### Step 1 — 固化 GDN shape 与正确性对拍（降级后仅在 cheap spike 时做）
 
 在现有 `vllm/model_executor/layers/fla/ops/` 上加临时诊断或单测，记录实际形状：
 
@@ -89,7 +90,7 @@
 
 - 正向：8-16K 或 16-32K TTFT-P99 改善，三档 output throughput 无倒退，accuracy smoke Δ<1%。
 - 负向：任何一档 throughput 低于同容器 baseline 超过噪声，或 `final_state` 对拍不过，立即关掉并记录 fail。
-- 若 GDN 优化低收益但 post-R3.1 profile 显示 GEMM/fill 变成主块，转 R2.4/R3.0 库 autotune，不继续死磕 GDN。
+- 若 GDN 优化低收益但 post-R3.1 profile 显示 GEMM/fill 变成主块，转 R2.4/R3.0 库 autotune，不继续死磕 GDN。2026-07-07 Step 0 已触发这一条。
 
 ## 产出
 
@@ -100,3 +101,4 @@
 ## Changelog
 
 - 2026-07-07 create（Codex；GitLab 评测不可用时继续本地闭环，R3.1 后转向 GDN chunked-prefill，但先强制 post-R3.1 profile 与数值对拍）。
+- 2026-07-07 Step0 result（Codex；`experiments/r3.2-post-r31-prefill-profile-20260707-2210/`）：post-R3.1 prefill 热点转为 GEMM `67.101%`，GDN core `9.303%` / with helpers `13.277%`；本卡降级，下一主线改 R3.0/R2.4 GEMM library/autotune。

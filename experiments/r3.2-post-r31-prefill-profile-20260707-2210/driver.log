@@ -1,0 +1,9 @@
+started_at=2026-07-07T22:10:27+08:00
+repo_head=847d1bef10b0b5bb71b7e427535b610a20a4d263
+site_root=/usr/local/lib/python3.10/dist-packages/vllm
+starting hipprof-wrapped service session=xdb_r32_prefill_2210 at 2026-07-07T22:11:08+08:00
+health_ok_at=2026-07-07T22:17:17+08:00 wait_s=349
+warmup_start=2026-07-07T22:17:17+08:00
+prefill_trace_start=2026-07-07T22:18:27+08:00
+session cleanup 2026-07-07T22:18:30+08:00
+finished_at=2026-07-07T22:18:38+08:00

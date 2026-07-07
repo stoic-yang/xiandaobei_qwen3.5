@@ -1,0 +1,6 @@
+{
+  "prompt_chars": 56507,
+  "wall_ms": 3299.468076,
+  "response_bytes": 578,
+  "response_preview": "{\"id\":\"chatcmpl-87fd1cc8c1816fcc\",\"object\":\"chat.completion\",\"created\":1783433907,\"model\":\"Qwen3.5-27B\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Based\",\"refusal\":null,\"annotations\":null,\"audio\":null,\"function_call\":null,\"tool_calls\":[],\"reasoning\":null},\"logprobs\":null,\"finish_reason\":\"length\",\"stop_reason\":null,\"token_ids\":null}],\"service_tier\":null,\"system_fingerprint\":null,\"usage\":{\"prompt_tokens\":13964,\"total_tokens\":13965,\"completion_tokens\":1,\"prompt_tokens_details\":n"
+}

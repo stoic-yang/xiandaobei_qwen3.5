@@ -1,0 +1,7 @@
+[31mHIP_PROF [2026-07-07 22:18:38.49048] [11153] [ERROR]: SQL select name from sqlite_master WHERE type='table' error:database is locked[m
+[31mHIP_PROF [2026-07-07 22:18:38.49120] [11153] [ERROR]: sql select name from sqlite_master WHERE type='table' error:(null)[m
+[31mHIP_PROF [2026-07-07 22:18:38.49148] [11153] [ERROR]: SQL select KEY from config; error:database is locked[m
+[31mHIP_PROF [2026-07-07 22:18:38.172607] [11153] [ERROR]: SQL select name from sqlite_master WHERE type='table' error:database is locked[m
+[31mHIP_PROF [2026-07-07 22:18:38.172644] [11153] [ERROR]: sql select name from sqlite_master WHERE type='table' error:(null)[m
+[33mHIP_PROF [2026-07-07 22:18:38.172650] [11153] [WARN]: '/public/home/xdzs2026_c166/codex_runs/r3.2-post-r31-prefill-profile-20260707-2210/profile/vllm_prefill.db' has not valid trace data.[m
+HIP_PROF:finish
