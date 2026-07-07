@@ -91,3 +91,4 @@ fresh 容器装基线或优化任一 wheel，`start_vllm.sh` 都在 model loader
 
 ## Changelog (continued)
 - 2026-07-07 opencode: 仓库 worktree 拓扑复核 + scripts dirty 收编 + 7 个 R1 experiment 目录 commit 入仓；追加本节。改 r0-r1 工作 9 commits（`72fee79` 起 `2a96294` 止）。**未推送 GitHub**。
+- 2026-07-07 Codex correction: `guard-d29e9db3-hotserver-nooverlay-fullsmoke10-20260707-1011` later completed, replacing the opencode partial stub with final medians 12.211258 / 7.223185 / 4.652457 output tok/s and weighted 7.449581; runtime fingerprint keeps d29 attention site SHA `acf4b51...`. `guard-d29-revert333-srcdir-fullsmoke10-20260707-1126` tested candidate head `51cb6f325ab53854e94f5d4b5018712f4f662d7f` via `/root/overlay-d29-revert333-51cb6f325ab5`; it is **not** baseline-safe vs 1011 (deltas -0.0148% / -0.0528% / -0.1630%, weighted -0.0610%). `guard_bench.py` now skips full `accuracy_debug/output` copies unless `--copy-accuracy-output` is set; raw accuracy log remains collected by default.
