@@ -67,3 +67,27 @@ fresh 容器装基线或优化任一 wheel，`start_vllm.sh` 都在 model loader
 - 2026-07-06 live correction（Codex SCNet job 655597）：`vllm_cscc_competition` is currently clean on `contest-p1-ffn-pool-20260621` at `d29e9db3f` (`perf(attention): add qwen35 rocm gqa attention path`), not `a55f3c3`; current competition wheel sha256 is `a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde`. Baseline repo still has only build-noise `M vllm/version.py`.
 - 2026-07-06 R1 wheel fingerprint correction（`experiments/r1-wheel-fingerprint-20260706-2320/`）：repo HEAD is still `d29e9db3f`, but the installed competition wheel `a0f09295...` and site-packages do **not** include the `d29e9db3` `triton_unified_attention.py`; that file matches `33323a1` through `a55f3c3` and differs from source `d29e9db3`. Any benchmark using only `pip install dist/*.whl` measures wheel content, not necessarily source HEAD. Rebuild wheel or explicitly overlay source before claiming a d29 measurement.
 - 2026-07-07 R1 guard update（SCNet job 656013）：`experiments/guard-a55f3c3-overlay-fullsmoke-20260707-0010/` completed the full guard for `a55f3c3` overlay with medians 12.156717 / 7.231679 / 4.655501 output tok/s and weighted 7.443833; smoke accuracy log reports hotpotqa 100.00, gov_report 30.51, retrieval recalculated 100.00 (1/1), aggregation recalculated 100.00 (1/1), with an OpenCompass aggregation JSON-vs-recalc mouthpiece mismatch. `experiments/guard-d29e9db3-overlay-fullsmoke-20260706-2355/` only proves the d29 source attention overlay SHA (`acf4b51...`) and abnormal first warmup request (128.30s); it was stopped at 4-8K rep1 and is **not** a completed d29 sign row. The 6+1 R1 sign table remains incomplete.
+
+## meta 仓库 worktree 拓扑（2026-07-07 opencode 复核）
+原始 `meta` 仓库的 `/Users/keynary/Code/xiandaobei/{meta,meta-r0-r1,meta-infra-verify}` 是同一 git 仓库的三个 worktree，挂在三条 codex/* 分支上：
+- `meta`               → `codex/scnet-submit-auto-20260706`（提交自动化：`chrome_submit_adapter.mjs`/`submit_job.py`/`automation/submission.json`）
+- `meta-r0-r1`         → `codex/r0-r1-probe-20260706`       （R0/R1 守门、infra 池骨架、6+1 commit sign table 主干）
+- `meta-infra-verify`  → `codex/infra-verify-20260707`      （r0-r1 + 2 commit：`gfx936 microbench`、`candidate_executor.py`，seam 1/3/4 已验、seam 2 sbatch 命门仍 blocked）
+
+分支关系：`infra-verify` 祖先含 `r0-r1`；`scnet-submit-auto` 与 `r0-r1` 自 `41cbafb` 分叉**互不祖先**但内容不重叠，可干净 merge。**main 上没有任何 codex/* 内容**。
+
+### 三处 `scripts/*.py` 工作树差异（2026-07-07 已收）
+`r0-r1` 的 dirty 版已确认是权威最新：guard_bench +189 行新增 `--overlay-source-dir`/`--foreground`/后台 upload-start-poll；pool_manager 把 `NotImplementedError` 换成 `POOL_SUBMIT_CMD` 空值 gate；scnetctl smoke rows 1→10。这些已在 `codex/r0-r1-probe-20260706` 上 commit `72fee79` 固化。**`meta/` 与 `meta-infra-verify/` 各自的 `scnetctl.py` dirty 版未** commit（仍按原样冻结，留 Codex 后续决策）。
+
+### 远程同步阻塞（待 Codex 修一次）
+容器 `/public/home/xdzs2026_c166/meta` 的 `.git/FETCH_HEAD` 为 root/ftp 拥有，`git pull --ff-only` 被拒（`meta` 与 `meta-r0-r1` 仓库更新推送上去后远程同步不进来）。修法二选一：容器内 `sudo chown xdzs2026_c166:xdzs2026_c166 .git/FETCH_HEAD .git/refs .git/logs` 或改用 `git -C ... pull --ff-only --no-edit refs/remotes/origin/main`（绕开 FETCH_HEAD）。
+
+### 7 个 R1 guard experiment 目录处置记录（2026-07-07 opencode）
+`meta-r0-r1/experiments/` 下 7 个未跟踪 dir 已全部按 AGENTS.md "1 exp = 1 dir = 1 commit" 规则 commit 进 `codex/r0-r1-probe-20260706`：
+- PASS（有 `summary.json`）: `guard-d29e9db3-overlay-fullsmoke10-20260707-0122` (weighted 7.4566)、`guard-fde463d-overlay-fullsmoke10-20260707-0236` (weighted 7.4592)。
+- partial（无 `summary.json`）：`guard-d29e9db3-overlay-fullsmoke10-20260707-0900`（模型拷贝窗口被打断）、`...-reuse-20260707-1005`、`...-reuse-20260707-1010`、`guard-d29e9db3-hotserver-nooverlay-fullsmoke10-20260707-1011`（poll 末态 8-16K rep=3；README 仅 opencode stub，待 Codex 填最终 verdict）。
+- 证据账（非 guard 运行）: `r1-container-start-20260707-0854`（656380/656384 chrome-start-vs-resubmit 对照）。
+**未完成 R1 sign table 仍差 `33323a1 / 993a944 / 0ba4953 / 293566c` 四个 commit 的同容器三档 guard。**
+
+## Changelog (continued)
+- 2026-07-07 opencode: 仓库 worktree 拓扑复核 + scripts dirty 收编 + 7 个 R1 experiment 目录 commit 入仓；追加本节。改 r0-r1 工作 9 commits（`72fee79` 起 `2a96294` 止）。**未推送 GitHub**。
