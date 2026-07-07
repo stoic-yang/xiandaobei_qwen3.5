@@ -1,0 +1,41 @@
+=== runai locked startup probe ===
+run_id=runai-startup-probe-locked-20260707-1324
+host=worker-0
+started_at=2026-07-07T13:24:51+08:00
+MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+WHEEL=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+VLLM_CACHE_ROOT=/public/home/xdzs2026_c166/vllm_cache/vllm_cache
+TRITON_CACHE_DIR=/public/home/xdzs2026_c166/vllm_cache/triton_cache
+load_format=runai_streamer
+max_model_len=32768
+cache_state=warm_after_prior_invalid_probe
+pip_install_start=2026-07-07T13:24:51+08:00 epoch=1783401891
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+pip_install_done=2026-07-07T13:24:52+08:00 epoch=1783401892 elapsed_s=1
+server_start_at=2026-07-07T13:24:52+08:00 epoch=1783401892
+server_pid=12789
+server_ready_at=2026-07-07T13:36:57+08:00 epoch=1783402617 elapsed_s=725
+{
+  "run_id": "runai-startup-probe-locked-20260707-1324",
+  "status": "pass",
+  "finished_at": "2026-07-07T13:36:57+0800",
+  "model_dir": "/public/home/xdzs2026_c166/Qwen3.5-27B",
+  "load_format": "runai_streamer",
+  "max_model_len": 32768,
+  "max_num_seqs": 128,
+  "max_num_batched_tokens": 4096,
+  "vllm_cache_root": "/public/home/xdzs2026_c166/vllm_cache/vllm_cache",
+  "triton_cache_dir": "/public/home/xdzs2026_c166/vllm_cache/triton_cache",
+  "cache_state": "warm_after_prior_invalid_probe",
+  "pip_install_elapsed_s": 1,
+  "health_elapsed_s": 725,
+  "log_metrics": {
+    "stream_to_cpu_s": 341.16,
+    "stream_to_cpu_mib_s": 155.3,
+    "model_loading_s": 342.118507,
+    "initial_profiling_s": 171.88
+  }
+}
+completed_at=2026-07-07T13:36:57+08:00

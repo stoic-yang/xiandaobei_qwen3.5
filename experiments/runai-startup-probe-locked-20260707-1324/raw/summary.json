@@ -1,0 +1,21 @@
+{
+  "run_id": "runai-startup-probe-locked-20260707-1324",
+  "status": "pass",
+  "finished_at": "2026-07-07T13:36:57+0800",
+  "model_dir": "/public/home/xdzs2026_c166/Qwen3.5-27B",
+  "load_format": "runai_streamer",
+  "max_model_len": 32768,
+  "max_num_seqs": 128,
+  "max_num_batched_tokens": 4096,
+  "vllm_cache_root": "/public/home/xdzs2026_c166/vllm_cache/vllm_cache",
+  "triton_cache_dir": "/public/home/xdzs2026_c166/vllm_cache/triton_cache",
+  "cache_state": "warm_after_prior_invalid_probe",
+  "pip_install_elapsed_s": 1,
+  "health_elapsed_s": 725,
+  "log_metrics": {
+    "stream_to_cpu_s": 341.16,
+    "stream_to_cpu_mib_s": 155.3,
+    "model_loading_s": 342.118507,
+    "initial_profiling_s": 171.88
+  }
+}
