@@ -2,6 +2,9 @@
 
 Last updated: 2026-07-06 by opencode (initial seed from Claude memories + Codex rollouts).
 
+## ⚠️ 执行 agent 先读
+- [../execution-discipline.md](../execution-discipline.md) — 无人值守远程执行纪律（长任务后台化 / 低频轮询 ≥5min / 子任务外包 codex exec / 汇报少而准）。**跑长任务前必读。**
+
 ## Files
 
 - [10-project.md](10-project.md) — 赛题/规则/评分/红线/绿区/截止 2026-07-15 12:00
@@ -29,3 +32,4 @@ Last updated: 2026-07-06 by opencode (initial seed from Claude memories + Codex 
 - 2026-07-06 Claude: add plans/infra-pool.md + scripts/pool_manager.py（L0 容器池热备骨架，登录节点运行，create_container 命门待 Codex 填）。
 - 2026-07-07 Claude: add plans/r2-r5-detail.md（R0/R1 实证驱动细化 R2–R5：decode host gap 数字锚点、flash-attn靶心、量化封锁、官方分校准两动作）。
 - 2026-07-07 Claude: add plans/audit-opus-20260707.md + 整合审计入 memory/50、r2-r5-detail、task-r3.1、task-r2.0（INT8 合规上行 / FP8+FA-build 待验证 / MTP 违禁 / issue #35238 → output-equivalence gate / R3 dump backend / config autotune 前置）。
+- 2026-07-07 Claude: add execution-discipline.md（无人值守远程执行纪律，用户经 opus4.8 分析 Codex 执行后提炼）。
