@@ -17,7 +17,9 @@ Last updated: 2026-07-06 by opencode (initial seed from Claude memories + Codex 
 - [../plans/infra-pool.md](../plans/infra-pool.md) — 容器池/预热/并行加速基础设施（L0 骨架 scripts/pool_manager.py + sbatch 命门）
 
 ### 任务卡（可直接派给实现 agent）
-- [../plans/task-r2.1-cudagraph.md](../plans/task-r2.1-cudagraph.md) — R2.1 CUDA graph 覆盖度（enforce_eager 对照为核心诊断，抢 decode ~20ms host gap）
+- [../plans/task-r2.1-cudagraph.md](../plans/task-r2.1-cudagraph.md) — R2.1 CUDA graph 覆盖度 ✅已诊断关闭（graph 已 FULL、省 48ms，无覆盖度肉）
+- [../plans/task-r2.0-decode-profile.md](../plans/task-r2.0-decode-profile.md) — R2.0 decode-only profile（收尾 R2，定性剩余 ~20ms + full-attn decode 占比）
+- [../plans/task-r3.1-flash-attention.md](../plans/task-r3.1-flash-attention.md) — 🎯R3.1 prefill flash-attention on gfx936（head_dim=256，唯一大胜负手）
 
 ## Changelog
 
