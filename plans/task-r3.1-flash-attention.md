@@ -21,13 +21,14 @@
 ## 执行步骤（直接干，不设 η 前置闸门）
 
 **Step 1 — 直接选实现并接入**
-- 直接调研并接入**支持 head_dim=256** 的成熟 flash-attn：CK(Composable Kernel) / ROCm / AITER。能接就接，接不上再考虑手写/移植。head_dim=256 支持是第一硬门槛。
-- 利用率 η **并行测**（用来解释收益来源、写消融表），**不阻塞动手**——先干起来。
+- 直接调研并接入**支持 head_dim=256** 的成熟 flash-attn：CK(Composable Kernel) / ROCm / AITER / Triton FA。能接就接，接不上再考虑手写/移植。head_dim=256 支持是第一硬门槛。
+- **审计定调：这是"启用/移植"活，不是"绿地手写"**。head_dim=256 CK 上游已支持、Triton FA 功能完整可 autotune（`FLASH_ATTENTION_TRITON_AMD_AUTOTUNE`）；真瓶颈是**为 gfx936 target 编译/启用**。手写 HIP 是**最后**手段。
+- **并行诊断（不阻塞动手）**：① dump vLLM 现在给 full-attn 层 dispatch 的是哪个 backend（38.82%@758 tok/s 大概率是 reference fallback，证实即坐实"启用即赚"）；② 利用率 η 并行测（解释收益来源、写消融表）。
 
-**Step 2 — tiny-tensor 数值对拍（5 分钟，保命，唯一不可省）**
-- 接完先在小张量上把新 attention 输出与原 `unified_attention` 对一遍：head_dim=256 / GQA(4 kv / 24 q) / causal / chunk 边界，误差 < bf16 容差。
-- ⚠️ **为什么不能省**：attention 算错**照样能跑、还会显示吞吐变快**（算少了/算错了），但精度会崩 → 在"吞吐+40%"的假象下精度四类清零、总分暴跌。5 分钟，防自己骗自己。
-- **对拍不过的吞吐数字一律不采信。**
+**Step 2 — 数值对拍（保命，唯一不可省）**
+- **2a tiny-tensor 对拍（5 分钟）**：小张量上把新 attention 输出与原 `unified_attention` 对一遍：head_dim=256 / GQA(4 kv / 24 q) / causal / chunk 边界，误差 < bf16 容差。
+- **2b 端到端 output-equivalence gate（合入默认前必跑，审计 + issue #35238）**：固定 prompt 集，greedy(`temp=0`) 输出与 **eager baseline 逐 token 对齐**。理由：① FA 的 online-softmax **非 bitwise 等价**，temp=0 下可能翻某个 token 并级联成发散生成（"无损"kernel 也能崩精度）；② vLLM **issue #35238**：Qwen3.5-27B DeltaNet 有 torch.compile dtype / FP8 **乱码**bug，可能静默产出坏文本。**tiny-tensor 过 ≠ 端到端过。**
+- ⚠️ **为什么不能省**：attention 算错**照样能跑、还显示吞吐变快**，但精度会崩 → "吞吐+40%"假象下精度四类清零、总分暴跌。**对拍/对齐不过的吞吐数字一律不采信。**
 
 **Step 3 — 单档 A/B + 精度回归**
 - config/env 开关门控（关掉=原 backend、数值等价）；8-16K 守门员 A/B（locked 口径）看 TTFT-P99 + 吞吐 Δ；四类精度 Δ<1%；三档无一倒退（尤其 4-8K 别因 attention 改动倒退）。
@@ -40,8 +41,8 @@
 - 先接现成实现，别一上来手写 gfx936 kernel（周期不够）。
 
 ## 判定 / 验收门槛
-- Step 2 数值对拍过（否则吞吐不采信）；Step 3 8-16K TTFT-P99 改善、四类精度 Δ<1%、三档无一倒退。
-- 目标：prefill tok/s 明显上抬，报出三档 TTFT-P99 改善幅度。
+- Step 2 数值对拍过 **+ 端到端 output-equivalence 过**（否则吞吐不采信）；Step 3 8-16K TTFT-P99 改善、四类精度 Δ<1%、三档无一倒退。
+- 目标：prefill tok/s 明显上抬，报出三档 TTFT-P99 改善幅度。**现实量级 1.5–2.5×（hd=256 LDS-bound，被迫小 tile），别对外承诺 10×。**
 
 ## 产出 / 交回
 - `experiments/<id>/`：现状 η + 候选实现对比 + 数值等价证明 + 单档/全档守门员 + verdict。
@@ -55,3 +56,4 @@
 ## Changelog
 - 2026-07-07 create（Claude；R3 主攻卡，η 体检先行 + head_dim=256 正确性硬门槛 + 先正确后快）。
 - 2026-07-07 revise（用户定"直接做"）：去 η 前置闸门（改并行测）；5 步压成 3 步（直接接入 → tiny-tensor 数值对拍保命 → 单档A/B+精度）；数值对拍是**唯一不可省**验证（防 attention 算错→假性变快→精度清零）。
+- 2026-07-07 整合 opus 审计：Step1 加 dump backend 并行诊断 + "启用/移植非绿地手写"定调（CK/Triton 支持 hd=256，瓶颈是 gfx936 build）；Step2 升级为 2a tiny-tensor + 2b 端到端 output-equivalence gate（issue #35238 + FA 非 bitwise，temp=0 翻 token）；量级现实化 1.5–2.5×。

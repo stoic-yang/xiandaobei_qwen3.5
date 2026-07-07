@@ -13,6 +13,8 @@
 ## 步骤
 1. locked 口径（`--locked-start-script --load-format runai_streamer`，验证 `max_seq_len=32768`）起服务，抓一段**稳态 decode** trace（长 prompt、纯生成若干十 token，避开 prefill 窗口），用 rocprofv2/omniperf。
 2. 每 token 时间拆成四份：**kernel 忙时总和 / graph replay 开销 / 段间空隙 / host（采样+detokenize+python）**，并数每 token 的 launch/replay 次数。
+   - **审计增量**：特别看 48× GDN 每步 state/norm/gating 等**非 GEMV 小算子**的耗时与 kernel 数——vLLM 有 GDN decode fusion PR，这里可能有 3–6ms slack，且融合顺带**减 kernel 数、缩 host gap**（一箭双雕）。
+   - **审计增量**：确认 detokenize/sampler 是否在关键路径——vLLM V1 通常异步 detokenize（独立进程）；若本栈是同步的，那是 20ms 里可回收的一块，无需碰 scheduler。
 3. 列 decode kernel top-N，**特别标出 full-attn(GQA) 的 decode attention kernel 占 decode 的百分比**。
 
 ## 产出（决策树，直接给结论）
@@ -27,3 +29,4 @@
 
 ## Changelog
 - 2026-07-07 create（Claude；R2 收尾诊断，紧接 R2.1 enforce_eager 结论）。
+- 2026-07-07 加 opus 审计增量：步骤 2 特别看 48× GDN state/norm/gating 非 GEMV 小算子（GDN decode fusion PR，可能 3–6ms slack + 减 kernel 数缩 host gap）；确认 V1 detokenize 是否异步。

@@ -60,6 +60,8 @@
   codex R0.4 印证：`unified_attention` 38.82% + `chunk_fwd`(GDN prefill) 22.65% = prefill 大头。
   → **R3 靶心 = flash-attention on gfx936；投影 GEMM 交 rocBLAS/hipBLASLt + Matrix Core。**
 - decode 合规下唯一剩余空间 = **host 侧**（图捕获消 launch + 算子融合，Amdahl：每 tok 几十个小算子+launch），**不是带宽侧**。
+- **🔴 MTP = 违禁杠杆（opus 审计提醒，写下来防队友"发现"）**：本模型 vLLM 头号 decode 吞吐旋钮是 `qwen3_next_mtp`（多 token 预测）speculative —— **正是红线投机解码**。任何 MTP / speculative / draft 路径一律越界，别开。
+- **⚠️ 已知 live bug（opus 审计查到，vLLM issue #35238）**：Qwen3.5-27B DeltaNet 层 torch.compile **dtype mismatch(float vs half)**；相关 **FP8-DeltaNet 路径产生乱码而非崩溃**。两者都会逼人退回 enforce_eager（decode 减半）。→ **任何动 torch.compile / cudagraph / 低精度的改动，必须过 output-equivalence gate**（固定 prompt 集，greedy 输出逐 token 对齐 eager baseline），否则可能静默 ship 坏生成、吃精度乘数清零。
 
 ## 外部 DCU 实测讲义的额外锚点（2 份 gfx936 微基准，非本仓测量）
 > 来源：用户提供《大模型decode访存瓶颈与双缓冲_DCU实测》(expA.py/dbocc.hip 原文，即本文件已引用的外部 gfx936 作业**原始出处**——HBM 1206/395 TFLOPS/拐点 327 出自此) +《第三集·带宽利用与算子优化》(带宽利用率方法论)。
@@ -73,7 +75,9 @@
 
 ## 待 R0 确认
 - ~~是否 MoE / 层配比 / head_dim / KV heads~~ → codex R0.1 已确认（非 MoE，64=48+16）。
-- ~~DCU gfx / 是否 FP8~~ → gfx936 确认、FP8 支持确认（`du_mma`）；峰值带宽/算力由外部作业补（1206 GB/s / 395 TFLOPS）。
+- DCU=gfx936 确认；`du_mma` 有 **FP8 转换 builtin**，但 ⚠️ **FP8 矩阵吞吐(MFMA)是否快未确认**（opus 审计：builtin 存在 ≠ throughput 快；double/single/half/INT8 有文档、FP8 没有）→ 需 DTK release notes + 本地实测。峰值带宽/算力由外部作业补（1206 GB/s / 395 TFLOPS）。
+- **[待本地验证] INT8 MFMA throughput**（文档有、通常 2–4× bf16）→ 是**合规**低精度候选（prefill compute 侧、权重仍 bf16 驻留 HBM，非持久化），见 r2-r5 §4。
+- **[待本地验证] gfx936 的 CK/Triton flash-attention 是否 build 支持 head_dim=256**（opus 审计：CK 上游支持到 256、Triton 功能完整，但需针对 gfx936 target 编译）→ 决定 R3 是"启用/移植现成后端"还是"手写"。
 - throughput 数据集 max_tokens（输出长度）→ 定 prefill/decode 投入比。
 - 精度口径 EM vs F1（官方群）→ 定量化激进程度。
 - **运行时非持久权重量化是否违规**（每前向临时量化、不落盘、复用显存缓存）→ 决定 decode 有无空间；
@@ -87,3 +91,4 @@
 - 2026-07-07 R1 guard anchor（`experiments/guard-a55f3c3-overlay-fullsmoke-20260707-0010/`）：a55/runtime-wheel-equivalent warm guard medians are 12.156717 / 7.231679 / 4.655501 output tok/s, weighted 7.443833, TTFT-P99 4.537s / 15.616s / 28.667s, TPOT-P99 69.731ms / 70.654ms / 72.115ms. Compared to `experiments/guard-d29e9db3-20260706-2005/` installed-wheel guard, deltas are -0.58% / +0.02% / +0.09%; this is consistent with the same runtime path plus noise, not proof of a new speedup.
 - 2026-07-07 Claude 沉淀 2 份 gfx936 实测讲义（新增「外部 DCU 实测讲义额外锚点」小节）：TPOT 三段分解 45/49/69ms → **host overhead ~20ms 是 R2 靶子**（decode 带宽侧仍到顶不可动）；GQA 6:1 复用；GDN 参考库 FLA；inductor combo_kernels 已开（手融前先查）；红线重申——讲义"权重量化降 TPOT"药方在本赛题违规不可抄。
 - 2026-07-07 R2.1 enforce_eager A/B（`experiments/r2-eager-enforce-ab-20260707/`）：locked `runai_streamer` 8-16K diagnostic, 3 prompts x 3 reps, accuracy none. Current graph/compile path median TPOT-P99 `69.910539ms`, output `7.882584 tok/s`; `--enforce-eager` median TPOT-P99 `118.195300ms`, output `5.737616 tok/s`; delta `+48.285ms` TPOT and `-27.21%` output throughput. Baseline log explicitly captured decode `FULL` CUDA graphs, while eager disabled both torch.compile and CUDAGraphs. Conclusion: R2.1 is not a "graph absent" rescue; next step is decode-only launch-count confirmation and narrow residual host-overhead tuning.
+- 2026-07-07 Claude 整合 opus4.8 web-grounded 审计（存档 `plans/audit-opus-20260707.md`）：新增 **MTP=违禁杠杆**、**issue #35238 DeltaNet dtype/FP8 乱码 → output-equivalence gate 必做**、**FP8 MFMA throughput 未确认**（推翻本文件早先"FP8 支持确认"的过度乐观——builtin≠throughput）、**INT8 MFMA 是合规 prefill 低精度候选（待测）**、**gfx936 CK/Triton FA head_dim=256 build 待验证**、**prefill GEMM 仅 ~33% 峰值效率(autotune near-free)**。审计对 R2.1 的"enforce_eager 会误导"担心已被本仓 decode-FULL 日志实锤排除。
