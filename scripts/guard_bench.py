@@ -96,7 +96,7 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
 
     accuracy_rows = ""
     if args.accuracy == "smoke":
-        accuracy_rows = str(args.accuracy_rows or 1)
+        accuracy_rows = str(args.accuracy_rows or 10)
     elif args.accuracy == "full" and args.accuracy_rows:
         accuracy_rows = str(args.accuracy_rows)
 
@@ -123,6 +123,7 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
         BUCKETS={q(bucket_words)}
         REPO_KIND={q(args.repo)}
         OVERLAY_REV={q(args.overlay_rev)}
+        OVERLAY_SOURCE_DIR={q(args.overlay_source_dir)}
         ACCURACY={q(args.accuracy)}
         ACCURACY_ROWS={q(accuracy_rows)}
         REUSE_SERVER={1 if args.reuse_server else 0}
@@ -130,7 +131,7 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
         STOP_EXISTING={1 if args.stop_existing else 0}
         INSTALL_WHEEL={0 if args.no_install else 1}
         SERVER_START_TIMEOUT={q(args.server_start_timeout)}
-        export NUM_PROMPTS REPETITIONS BUCKETS REPO_KIND OVERLAY_REV
+        export NUM_PROMPTS REPETITIONS BUCKETS REPO_KIND OVERLAY_REV OVERLAY_SOURCE_DIR
 
         mkdir -p "$RUN_DIR/raw" "$RUN_DIR/throughput" "$RUN_DIR/accuracy"
         exec > >(tee -a "$RUN_DIR/driver.log") 2>&1
@@ -172,10 +173,17 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
         fi
 
         git config --global --add safe.directory "$REPO_PATH" >/dev/null 2>&1 || true
-        REPO_HEAD="$(git -C "$REPO_PATH" rev-parse HEAD 2>/dev/null || echo unknown)"
-        REPO_BRANCH="$(git -C "$REPO_PATH" rev-parse --abbrev-ref HEAD 2>/dev/null || echo unknown)"
-        git -C "$REPO_PATH" status --short --branch > "$RUN_DIR/repo_status.txt" 2>&1 || true
-        git -C "$REPO_PATH" log --oneline --decorate -12 > "$RUN_DIR/repo_log.txt" 2>&1 || true
+        git_quick() {{
+          if command -v timeout >/dev/null 2>&1; then
+            timeout 20 git -C "$REPO_PATH" "$@"
+          else
+            git -C "$REPO_PATH" "$@"
+          fi
+        }}
+        REPO_HEAD="$(git_quick rev-parse HEAD 2>/dev/null || echo unknown)"
+        REPO_BRANCH="$(git_quick rev-parse --abbrev-ref HEAD 2>/dev/null || echo unknown)"
+        git_quick status --short --branch > "$RUN_DIR/repo_status.txt" 2>&1 || true
+        git_quick log --oneline --decorate -12 > "$RUN_DIR/repo_log.txt" 2>&1 || true
         echo "repo_head=$REPO_HEAD branch=$REPO_BRANCH"
 
         WHEEL="$(ls -t $WHEEL_GLOB 2>/dev/null | head -n 1 || true)"
@@ -190,9 +198,12 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
           python3 -m pip install --no-deps "$WHEEL"
         fi
 
-        if [ -n "$OVERLAY_REV" ]; then
+        if [ -n "$OVERLAY_REV" ] || [ -n "$OVERLAY_SOURCE_DIR" ]; then
           echo "overlay_rev=$OVERLAY_REV"
-          git -C "$REPO_PATH" cat-file -e "$OVERLAY_REV^{{commit}}"
+          echo "overlay_source_dir=$OVERLAY_SOURCE_DIR"
+          if [ -n "$OVERLAY_REV" ]; then
+            git_quick cat-file -e "$OVERLAY_REV^{{commit}}"
+          fi
           SITE_ROOT="$(python3 -c 'import pathlib, vllm; print(pathlib.Path(vllm.__file__).resolve().parent)')"
           echo "overlay_site_root=$SITE_ROOT"
           : > "$RUN_DIR/overlay_manifest.txt"
@@ -205,10 +216,20 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
             vllm/v1/attention/ops/triton_unified_attention.py \
             vllm/version.py
           do
-            if git -C "$REPO_PATH" cat-file -e "$OVERLAY_REV:$file" 2>/dev/null; then
+            src=""
+            if [ -n "$OVERLAY_SOURCE_DIR" ] && [ -f "$OVERLAY_SOURCE_DIR/$file" ]; then
+              src="$OVERLAY_SOURCE_DIR/$file"
+            fi
+            if [ -n "$src" ]; then
               dest="$SITE_ROOT/${{file#vllm/}}"
               mkdir -p "$(dirname "$dest")"
-              git -C "$REPO_PATH" show "$OVERLAY_REV:$file" > "$dest"
+              cp "$src" "$dest"
+              printf '%s  %s\\n' "$(sha256sum "$dest" | awk '{{print $1}}')" "$file" >> "$RUN_DIR/overlay_manifest.txt"
+              echo "overlay_file=$file"
+            elif [ -n "$OVERLAY_REV" ] && git_quick cat-file -e "$OVERLAY_REV:$file" 2>/dev/null; then
+              dest="$SITE_ROOT/${{file#vllm/}}"
+              mkdir -p "$(dirname "$dest")"
+              git_quick show "$OVERLAY_REV:$file" > "$dest"
               printf '%s  %s\\n' "$(sha256sum "$dest" | awk '{{print $1}}')" "$file" >> "$RUN_DIR/overlay_manifest.txt"
               echo "overlay_file=$file"
             else
@@ -424,6 +445,7 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
             "runtime_fingerprints_path": str(run_dir / "runtime_fingerprints.json") if (run_dir / "runtime_fingerprints.json").exists() else None,
             "overlay": {{
                 "rev": os.environ.get("OVERLAY_REV", ""),
+                "source_dir": os.environ.get("OVERLAY_SOURCE_DIR", ""),
                 "manifest_path": str(run_dir / "overlay_manifest.txt") if (run_dir / "overlay_manifest.txt").exists() else None,
             }},
             "model_dir": model_dir,
@@ -453,7 +475,20 @@ def collect_artifacts(args: argparse.Namespace, cfg: dict[str, Any], local_dir: 
     alias = cfg.get("auto_worker_alias", "xiandaobei-worker-auto")
     remote_dir = f"{cfg['remote_runs_dir']}/{args.run_id}"
     local_dir.mkdir(parents=True, exist_ok=True)
-    for item in ("summary.json", "runtime_fingerprints.json", "overlay_manifest.txt", "driver.log", "repo_status.txt", "repo_log.txt", "raw", "throughput"):
+    for item in (
+        "summary.json",
+        "runtime_fingerprints.json",
+        "overlay_manifest.txt",
+        "driver.log",
+        "repo_status.txt",
+        "repo_log.txt",
+        "raw",
+        "throughput",
+        "accuracy",
+        "guard.pid",
+        "guard_remote.sh",
+        "launch.log",
+    ):
         target = local_dir / item
         if target.exists():
             continue
@@ -490,6 +525,110 @@ def collect_artifacts(args: argparse.Namespace, cfg: dict[str, Any], local_dir: 
         )
 
 
+def remote_run_dir(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
+    return f"{cfg['remote_runs_dir']}/{args.run_id}"
+
+
+def ssh_run(
+    ssh_config: pathlib.Path,
+    alias: str,
+    command: str,
+    *,
+    stdin: str | None = None,
+) -> subprocess.CompletedProcess[str]:
+    return run(["ssh", "-F", str(ssh_config), alias, command], stdin=stdin)
+
+
+def upload_remote_script(
+    args: argparse.Namespace,
+    cfg: dict[str, Any],
+    ssh_config: pathlib.Path,
+    alias: str,
+    script: str,
+) -> subprocess.CompletedProcess[str]:
+    remote_dir = remote_run_dir(args, cfg)
+    remote_script_path = f"{remote_dir}/guard_remote.sh"
+    command = (
+        f"mkdir -p {q(remote_dir)} && "
+        f"cat > {q(remote_script_path)} && "
+        f"chmod +x {q(remote_script_path)}"
+    )
+    return ssh_run(ssh_config, alias, command, stdin=script)
+
+
+def start_remote_script(
+    args: argparse.Namespace,
+    cfg: dict[str, Any],
+    ssh_config: pathlib.Path,
+    alias: str,
+) -> subprocess.CompletedProcess[str]:
+    remote_dir = remote_run_dir(args, cfg)
+    command = textwrap.dedent(
+        f"""\
+        cd {q(remote_dir)} &&
+        (nohup bash guard_remote.sh > launch.log 2>&1 < /dev/null & echo $! > guard.pid) &&
+        cat guard.pid
+        """
+    )
+    return ssh_run(ssh_config, alias, command)
+
+
+def poll_remote_run(
+    args: argparse.Namespace,
+    cfg: dict[str, Any],
+    ssh_config: pathlib.Path,
+    alias: str,
+    local_dir: pathlib.Path,
+) -> None:
+    remote_dir = remote_run_dir(args, cfg)
+    poll_log = local_dir / "poll.log"
+    deadline = time.monotonic() + args.remote_timeout
+    last_status = ""
+    while True:
+        command = textwrap.dedent(
+            f"""\
+            cd {q(remote_dir)} 2>/dev/null || exit 2
+            if [ -f summary.json ]; then
+              echo status=done
+              exit 0
+            fi
+            pid="$(cat guard.pid 2>/dev/null || true)"
+            if [ -n "$pid" ] && kill -0 "$pid" 2>/dev/null; then
+              echo status=running pid=$pid
+            else
+              echo status=dead pid=$pid
+            fi
+            tail -n 60 driver.log 2>/dev/null || true
+            """
+        )
+        proc = ssh_run(ssh_config, alias, command)
+        stamp = time.strftime("%Y-%m-%dT%H:%M:%S%z")
+        with poll_log.open("a", encoding="utf-8") as f:
+            f.write(f"=== poll {stamp} rc={proc.returncode} ===\n")
+            f.write(proc.stdout)
+            f.write(proc.stderr)
+            if not proc.stdout.endswith("\n") and proc.stdout:
+                f.write("\n")
+
+        if proc.returncode == 0 and "status=done" in proc.stdout.splitlines()[:1]:
+            return
+        if proc.returncode == 0 and proc.stdout.splitlines():
+            status = proc.stdout.splitlines()[0]
+            if status != last_status:
+                print(status, flush=True)
+                last_status = status
+            if status.startswith("status=dead"):
+                collect_artifacts(args, cfg, local_dir)
+                raise SystemExit("remote guard benchmark exited before summary.json was written")
+        elif proc.returncode != 0:
+            print(f"poll ssh failed rc={proc.returncode}; retrying", flush=True)
+
+        if time.monotonic() >= deadline:
+            collect_artifacts(args, cfg, local_dir)
+            raise SystemExit(f"remote guard benchmark timed out after {args.remote_timeout}s")
+        time.sleep(args.poll_interval)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", default=str(ROOT / "automation" / "config.json"))
@@ -504,6 +643,7 @@ def main() -> None:
     parser.add_argument("--repetitions", type=int, default=3)
     parser.add_argument("--buckets", default="4-8K,8-16K,16-32K", help="Comma-separated throughput buckets to run")
     parser.add_argument("--overlay-rev", help="Overlay selected Python files from this remote git revision after installing the wheel")
+    parser.add_argument("--overlay-source-dir", help="Overlay selected Python files from this remote directory instead of git show")
     parser.add_argument("--accuracy", choices=["none", "smoke", "full"], default="full")
     parser.add_argument("--accuracy-rows", type=int)
     parser.add_argument("--server-start-timeout", type=int, default=900)
@@ -512,6 +652,9 @@ def main() -> None:
     parser.add_argument("--stop-existing", action="store_true")
     parser.add_argument("--no-install", action="store_true")
     parser.add_argument("--env", action="append", default=[], help="Export KEY=VALUE in the remote benchmark process")
+    parser.add_argument("--foreground", action="store_true", help="Run the remote benchmark in the SSH foreground")
+    parser.add_argument("--poll-interval", type=int, default=30)
+    parser.add_argument("--remote-timeout", type=int, default=14400)
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
@@ -528,12 +671,24 @@ def main() -> None:
 
     local_dir = ROOT / "experiments" / args.run_id
     local_dir.mkdir(parents=True, exist_ok=True)
-    proc = run(["ssh", "-F", str(ssh_config), alias, "bash", "-s"], stdin=script)
-    (local_dir / "remote.stdout.log").write_text(proc.stdout, encoding="utf-8", errors="ignore")
-    (local_dir / "remote.stderr.log").write_text(proc.stderr, encoding="utf-8", errors="ignore")
-    if proc.returncode != 0:
-        collect_artifacts(args, cfg, local_dir)
-        require_ok(proc, "remote guard benchmark")
+    if args.foreground:
+        proc = run(["ssh", "-F", str(ssh_config), alias, "bash", "-s"], stdin=script)
+        (local_dir / "remote.stdout.log").write_text(proc.stdout, encoding="utf-8", errors="ignore")
+        (local_dir / "remote.stderr.log").write_text(proc.stderr, encoding="utf-8", errors="ignore")
+        if proc.returncode != 0:
+            collect_artifacts(args, cfg, local_dir)
+            require_ok(proc, "remote guard benchmark")
+    else:
+        proc = upload_remote_script(args, cfg, ssh_config, alias, script)
+        (local_dir / "upload.stdout.log").write_text(proc.stdout, encoding="utf-8", errors="ignore")
+        (local_dir / "upload.stderr.log").write_text(proc.stderr, encoding="utf-8", errors="ignore")
+        require_ok(proc, "upload remote guard script")
+        proc = start_remote_script(args, cfg, ssh_config, alias)
+        (local_dir / "start.stdout.log").write_text(proc.stdout, encoding="utf-8", errors="ignore")
+        (local_dir / "start.stderr.log").write_text(proc.stderr, encoding="utf-8", errors="ignore")
+        require_ok(proc, "start remote guard script")
+        print(f"remote_guard_pid={proc.stdout.strip()}", flush=True)
+        poll_remote_run(args, cfg, ssh_config, alias, local_dir)
     collect_artifacts(args, cfg, local_dir)
     print(f"wrote {local_dir / 'summary.json'}")
 

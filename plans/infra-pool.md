@@ -37,6 +37,15 @@ squeue -u $USER -o "%.18i %.30j %.9P %.8T %R"
 sacctmgr show assoc user=$USER format=Partition,MaxJobs,GrpTRES,MaxSubmitJobs   # 并发/队列上限
 ```
 - 找到等价 sbatch → 填进 `submit_job()`，**维持型池成立**。
+  - 2026-07-07 已从 job `656121` 的 `sacct SubmitLine` 探明当前可复用脚本：
+    `sbatch -p hx1hdexclu08 /public/home/xdzs2026_c166/SothisAI/instance/ssh/Instances_2607070059422056_0_0/job_xdzs2026_c166_20260707_010007`。
+  - 2026-07-07 08:54 复核更正：直接重投上述脚本生成 job `656380`，但 15 秒后
+    `COMPLETED`，日志报 `_dockerlist_656380 does not exist` / `No such container:
+    656380_e03r1n11`。随后通过 Chrome「确认并启动」同一 stopped instance 生成
+    job `656384` 并成功 RUNNING/attach。结论：`sacct SubmitLine` 是有用线索，
+    但旧脚本**不是已验证的可复用自动建池入口**；`pool_manager.py` 默认不再自动
+    sbatch，只有 `POOL_SUBMIT_CMD='sbatch --parsable -p hx1hdexclu08 <script>'`
+    经过“提交后 RUNNING + `scnetctl.py attach` 成功”验证后才允许打开。
 - 只能网页/chrome → 维持型池无法自动化，退化为"脚本提醒 + 人工点"（价值大打折扣）。
 
 ## 维持循环（见 pool_manager.py，每 60s）

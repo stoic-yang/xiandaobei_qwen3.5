@@ -31,7 +31,7 @@
 （补 pending 到 K+B、首次 running 预热、health 转 READY、回收清理）是设计意图，保持不变。
 """
 from __future__ import annotations
-import json, subprocess, time, shlex, datetime, os
+import json, subprocess, time, shlex, datetime, os, re
 from dataclasses import dataclass, asdict
 
 # ---------------- 配置 ----------------
@@ -45,6 +45,8 @@ STATE_FILE = os.path.expanduser("~/pool_state.json")
 MODEL_DIR = "/public/home/xdzs2026_c166/Qwen3.5-27B"
 WHEEL_GLOB = "/public/home/xdzs2026_c166/vllm_cscc_competition/dist/*.whl"
 TESTDATA_DIR = "/public/home/xdzs2026_c166/testdata"
+DEFAULT_SUBMIT_CMD = ""
+SUBMIT_CMD = os.environ.get("POOL_SUBMIT_CMD", DEFAULT_SUBMIT_CMD)
 
 # 容器状态：WARMING(已 RUNNING，正装 wheel/起 vllm) → READY(health 通过，可派活)
 @dataclass
@@ -87,12 +89,23 @@ def check_health(c: Container):
 
 def submit_job() -> str:
     """
-    ⚠️ 命门 —— 由 Codex 填，提交一个容器作业进 Slurm 队列，返回 job_id（失败返回 ""）。
-    维持型池强依赖此为命令行 sbatch：
-        return sh("sbatch --parsable <partition/image/wall/gres 参数> <submit.sh>").strip()
-    探明网页"创建容器"背后的 sbatch，见 plans/infra-pool.md 探查清单。
+    提交一个容器作业进 Slurm 队列，返回 job_id（失败返回 ""）。
+
+    2026-07-07 复核：旧 SubmitLine 直接 sbatch 会生成短命作业但不一定创建
+    容器（656380 15 秒退出，缺 _dockerlist），不能作为默认自动建池入口。
+
+    只有当 POOL_SUBMIT_CMD 指向经过实测的可复用命令（提交后 RUNNING 且
+    scnetctl attach 成功）时才自动提交；否则退回 Chrome 启动。
     """
-    raise NotImplementedError("Codex: fill sbatch here — see plans/infra-pool.md")
+    if not SUBMIT_CMD:
+        log("POOL_SUBMIT_CMD 未配置为已验证命令；需要 Chrome/平台启动容器")
+        return ""
+    out = sh(SUBMIT_CMD, 30)
+    m = re.search(r"\b(\d+)\b", out)
+    if m:
+        return m.group(1)
+    log(f"submit_job 未拿到 job_id：cmd={SUBMIT_CMD!r} output={out!r}")
+    return ""
 
 def warm_container(c: Container):
     """新 RUNNING 容器里装 wheel + 后台起 vllm（每容器首次一次）。"""

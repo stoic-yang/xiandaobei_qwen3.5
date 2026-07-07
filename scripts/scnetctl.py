@@ -585,7 +585,7 @@ def remote_baseline_script(
 
         if [ "$ACCURACY" = "smoke" ]; then
           echo "=== run accuracy smoke ==="
-          (cd "$WORK" && bash ./run_accuracy.sh all 1) > "$RUN_DIR/accuracy.log" 2>&1
+          (cd "$WORK" && bash ./run_accuracy.sh all 10) > "$RUN_DIR/accuracy.log" 2>&1
         elif [ "$ACCURACY" = "full" ]; then
           echo "=== run accuracy full ==="
           (cd "$WORK" && bash ./run_accuracy.sh all) > "$RUN_DIR/accuracy.log" 2>&1
