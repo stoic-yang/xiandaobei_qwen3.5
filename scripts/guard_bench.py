@@ -105,6 +105,8 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
         for item in args.env
         if "=" in item and item.split("=", 1)[0].isidentifier()
     )
+    if extra_exports:
+        extra_exports = textwrap.indent(extra_exports, "        ")
 
     return textwrap.dedent(
         f"""\
@@ -157,7 +159,7 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
         export PYTHONPATH={q(dcu_env['PYTHONPATH'])}${{PYTHONPATH:+:$PYTHONPATH}}
         export PATH={q(dcu_env['PATH_PREFIX'])}:$PATH
         export LD_LIBRARY_PATH={q(dcu_env['LD_LIBRARY_PATH_PREFIX'])}:${{LD_LIBRARY_PATH:-}}
-        {extra_exports}
+{extra_exports}
 
         if [ "$COPY_MODEL_LOCAL" = "1" ] && [ ! -f "$LOCAL_MODEL_DIR/config.json" ]; then
           echo "copying model to local disk: $PERSIST_MODEL_DIR -> $LOCAL_MODEL_DIR"
