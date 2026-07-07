@@ -1,0 +1,173 @@
+{
+  "run_id": "guard-d29-revert333-srcdir-fullsmoke10-20260707-1126",
+  "status": "pass",
+  "finished_at": "2026-07-07T12:37:53+0800",
+  "repo": {
+    "kind": "competition",
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_r1_d29_revert333_20260707",
+    "branch": "HEAD",
+    "head": "51cb6f325ab53854e94f5d4b5018712f4f662d7f",
+    "status_path": "/public/home/xdzs2026_c166/codex_runs/guard-d29-revert333-srcdir-fullsmoke10-20260707-1126/repo_status.txt",
+    "log_path": "/public/home/xdzs2026_c166/codex_runs/guard-d29-revert333-srcdir-fullsmoke10-20260707-1126/repo_log.txt"
+  },
+  "wheel": {
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl",
+    "sha256": "a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde"
+  },
+  "runtime_fingerprints_path": "/public/home/xdzs2026_c166/codex_runs/guard-d29-revert333-srcdir-fullsmoke10-20260707-1126/runtime_fingerprints.json",
+  "overlay": {
+    "rev": "",
+    "source_dir": "/root/overlay-d29-revert333-51cb6f325ab5",
+    "manifest_path": "/public/home/xdzs2026_c166/codex_runs/guard-d29-revert333-srcdir-fullsmoke10-20260707-1126/overlay_manifest.txt"
+  },
+  "model_dir": "/root/Qwen3.5-27B",
+  "protocol": {
+    "warmup": "run_throughput.sh 4-8K 1",
+    "buckets": [
+      "4-8K",
+      "8-16K",
+      "16-32K"
+    ],
+    "repetitions": 3,
+    "num_prompts": 10,
+    "accuracy": "smoke"
+  },
+  "throughput": {
+    "4-8K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29-revert333-srcdir-fullsmoke10-20260707-1126/throughput/4-8K_rep1.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 12.20954249812785,
+          "p99_ttft_ms": 4543.05879610125,
+          "p99_tpot_ms": 69.39258704309547,
+          "duration": 210.818710069987
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29-revert333-srcdir-fullsmoke10-20260707-1126/throughput/4-8K_rep2.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 12.208265146689433,
+          "p99_ttft_ms": 4540.2571826812355,
+          "p99_tpot_ms": 69.40596509445446,
+          "duration": 210.84076804295182
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29-revert333-srcdir-fullsmoke10-20260707-1126/throughput/4-8K_rep3.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 12.209453104081557,
+          "p99_ttft_ms": 4543.237042074325,
+          "p99_tpot_ms": 69.36701544259886,
+          "duration": 210.820253622951
+        }
+      ],
+      "median": {
+        "output_throughput": 12.209453104081557,
+        "p99_ttft_ms": 4543.05879610125,
+        "p99_tpot_ms": 69.39258704309547,
+        "duration": 210.820253622951
+      }
+    },
+    "8-16K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29-revert333-srcdir-fullsmoke10-20260707-1126/throughput/8-16K_rep1.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 7.0605711814908805,
+          "p99_ttft_ms": 15645.911306055496,
+          "p99_tpot_ms": 70.71446931537564,
+          "duration": 242.19003761094064
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29-revert333-srcdir-fullsmoke10-20260707-1126/throughput/8-16K_rep2.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 7.221910605580547,
+          "p99_ttft_ms": 15646.06931376853,
+          "p99_tpot_ms": 70.71292477088956,
+          "duration": 236.77944707300048
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29-revert333-srcdir-fullsmoke10-20260707-1126/throughput/8-16K_rep3.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 7.219372385253074,
+          "p99_ttft_ms": 15648.840088049183,
+          "p99_tpot_ms": 70.72106984146112,
+          "duration": 236.8626950859325
+        }
+      ],
+      "median": {
+        "output_throughput": 7.219372385253074,
+        "p99_ttft_ms": 15646.06931376853,
+        "p99_tpot_ms": 70.71446931537564,
+        "duration": 236.8626950859325
+      }
+    },
+    "16-32K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29-revert333-srcdir-fullsmoke10-20260707-1126/throughput/16-32K_rep1.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 4.4886174096996845,
+          "p99_ttft_ms": 30887.765436732443,
+          "p99_tpot_ms": 76.98061508995791,
+          "duration": 407.6979240969522
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29-revert333-srcdir-fullsmoke10-20260707-1126/throughput/16-32K_rep2.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 4.6454752579442795,
+          "p99_ttft_ms": 28743.830597563647,
+          "p99_tpot_ms": 72.21247411668644,
+          "duration": 393.931707390002
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/guard-d29-revert333-srcdir-fullsmoke10-20260707-1126/throughput/16-32K_rep3.json",
+          "completed": 10,
+          "failed": 0,
+          "output_throughput": 4.644871865799357,
+          "p99_ttft_ms": 28750.47058351105,
+          "p99_tpot_ms": 72.19579391935197,
+          "duration": 393.9828810939798
+        }
+      ],
+      "median": {
+        "output_throughput": 4.644871865799357,
+        "p99_ttft_ms": 28750.47058351105,
+        "p99_tpot_ms": 72.21247411668644,
+        "duration": 393.9828810939798
+      }
+    }
+  },
+  "weighted_output_throughput": 7.445038373182655,
+  "accuracy": {
+    "hotpotqa": {
+      "version": "fece4a",
+      "metric": "score",
+      "mode": "gen",
+      "score": "67.71"
+    },
+    "gov_report": {
+      "version": "52bd7a",
+      "metric": "score",
+      "mode": "gen",
+      "score": "35.30"
+    },
+    "retrieval_multi_point": {
+      "metric": "recalculated_acc",
+      "score": "100.00",
+      "count": "10/10"
+    },
+    "aggregation_keyword_aggregation": {
+      "metric": "recalculated_acc",
+      "score": "100.00",
+      "count": "10/10"
+    }
+  }
+}

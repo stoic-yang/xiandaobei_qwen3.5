@@ -1,0 +1,11 @@
+dataset=hotpotqa rows=10
+dataset=gov_report rows=10
+dataset=retrieval_multi_point rows=10
+dataset=aggregation_keyword_aggregation rows=10
+===== Final Accuracy Results =====
+| hotpotqa | fece4a | score | gen | 67.71 |
+| gov_report | 52bd7a | score | gen | 35.30 |
+===== Recalculated RULER Results =====
+retrieval_multi_point_recalculated: 100.00 (10/10)
+aggregation_keyword_aggregation_recalculated: 100.00 (10/10)
+output_dir: output/local_accuracy_qwen35/20260707_122701
