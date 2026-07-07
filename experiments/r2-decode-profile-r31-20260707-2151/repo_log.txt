@@ -1,0 +1,12 @@
+847d1bef1 (HEAD -> contest-p1-ffn-pool-20260621) perf(qwen35): enable flash attention prefill path
+d29e9db3f perf(attention): add qwen35 rocm gqa attention path
+a55f3c316 (codex/baseline-gap-20260705-224533) perf(qwen3.5): replace hot rearranges with views
+fde463da8 perf(qwen3.5): remove qwen temp allocations
+293566c3b perf(qwen3.5): reuse core attn and buffer pools
+0ba4953d9 fix(build): clean generated version metadata
+993a9444e perf(activation): reuse swiglu output buffers
+33323a1d4 perf(qwen3next): chunk long gdn prefills
+fa718036b (origin/v0.18.1, v0.18.1) [Arch] Support bmz and nmz
+40faaf0c0 [Deps] remove triton
+8680bfdb8 [Deps] add torchvision
+df4818c6b [Feature] support vllm 0.18.1

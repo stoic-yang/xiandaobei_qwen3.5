@@ -1,0 +1,7 @@
+[31mHIP_PROF [2026-07-07 22:00:40.95274] [8044] [ERROR]: SQL select name from sqlite_master WHERE type='table' error:database is locked[m
+[31mHIP_PROF [2026-07-07 22:00:40.96401] [8044] [ERROR]: sql select name from sqlite_master WHERE type='table' error:(null)[m
+[31mHIP_PROF [2026-07-07 22:00:40.96435] [8044] [ERROR]: SQL select KEY from config; error:database is locked[m
+[31mHIP_PROF [2026-07-07 22:00:40.217174] [8044] [ERROR]: SQL select name from sqlite_master WHERE type='table' error:database is locked[m
+[31mHIP_PROF [2026-07-07 22:00:40.217207] [8044] [ERROR]: sql select name from sqlite_master WHERE type='table' error:(null)[m
+[33mHIP_PROF [2026-07-07 22:00:40.217212] [8044] [WARN]: '/public/home/xdzs2026_c166/codex_runs/r2-decode-profile-r31-20260707-2151/profile/vllm_decode.db' has not valid trace data.[m
+HIP_PROF:finish

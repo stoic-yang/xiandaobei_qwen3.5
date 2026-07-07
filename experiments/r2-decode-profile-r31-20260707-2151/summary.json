@@ -1,0 +1,173 @@
+{
+  "run_id": "r2-decode-profile-r31-20260707-2151",
+  "status": "pass",
+  "scope": "R2.0 decode-only streaming trace, R3.1 source on but decode path equivalent",
+  "protocol": {
+    "service": "hipprof-wrapped vllm serve with --trace-off until first streamed token",
+    "prompt_file": "/public/home/xdzs2026_c166/testdata/8-16K_throughput.jsonl",
+    "prompt_row": 0,
+    "prompt_chars": 56507,
+    "trace_start": "after first non-empty streamed content chunk",
+    "traced_chunks": 64,
+    "max_tokens": 96
+  },
+  "stream": {
+    "ttft_ms": 3273.566827,
+    "trace_wall_ms": 4553.405826,
+    "per_chunk_wall_ms": 71.14696603125,
+    "chunk_interval_median_ms": 71.314697,
+    "chunk_interval_p95_ms": 72.24050480000001,
+    "chunk_interval_p99_ms": 72.37002039999999
+  },
+  "kernel": {
+    "kernel_busy_sum_ms": 4453.442428,
+    "kernel_busy_per_chunk_ms": 69.5850379375,
+    "wall_minus_kernel_sum_ms": 99.96339799999987,
+    "wall_minus_kernel_sum_per_chunk_ms": 1.561928093749998,
+    "top_kernels": [
+      {
+        "name": "Cijk_Alik_Bljk_BBH_MT64x32x32_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW4_GSU1_ISA936_IU1_KME_GRCMn2_K1_KLA_LDL1_LRVW4_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR1_PGR1_PLR1_RK0_SU32_SUM0_SUS256_SVW4_TT8_4_TLM0_ULDSWM0_USFGRO0_USSB0_VAW2_VSn1_VW4_WG8_8_1_WGM8",
+        "calls": 7168,
+        "total_ms": 2800.236117,
+        "avg_us": 390.657,
+        "pct": 62.878
+      },
+      {
+        "name": "Cijk_Alik_Bljk_BBH_MT32x16x4_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK1_SU0_SUM0_SUS256_SVW4_TT4_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW2_VSn1_VW2_WG8_8_1_WGM1",
+        "calls": 8256,
+        "total_ms": 934.534556,
+        "avg_us": 113.194,
+        "pct": 20.985
+      },
+      {
+        "name": "Cijk_Alik_Bljk_BBH_MT128x32x32_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW4_GSU4_ISA936_IU1_KME_GRCMn2_K1_KLA_LDL1_LRVW4_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR1_PGR1_PLR1_RK0_SU32_SUM0_SUS256_SVW4_TT4_4_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW4_WG32_8_1_WGM8",
+        "calls": 1024,
+        "total_ms": 231.534083,
+        "avg_us": 226.107,
+        "pct": 5.199
+      },
+      {
+        "name": "kernel_unified_attention_3d",
+        "calls": 1024,
+        "total_ms": 185.167458,
+        "avg_us": 180.827,
+        "pct": 4.158
+      },
+      {
+        "name": "Cijk_Alik_Bljk_BBH_MT32x32x32_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETSP_EPS1_FL0_GRVW4_GSU8_ISA936_IU1_KME_GRCMn2_K1_KLA_LDL1_LRVW4_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR1_PGR1_PLR1_RK0_SU32_SUM0_SUS256_SVW4_TT4_4_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW4_WG8_8_1_WGM1",
+        "calls": 3072,
+        "total_ms": 48.219956,
+        "avg_us": 15.696,
+        "pct": 1.083
+      },
+      {
+        "name": "fused_recurrent_gated_delta_rule_packed_decode_kernel",
+        "calls": 3072,
+        "total_ms": 40.539019,
+        "avg_us": 13.196,
+        "pct": 0.91
+      },
+      {
+        "name": "Cijk_B_PostGSU",
+        "calls": 4096,
+        "total_ms": 20.749271,
+        "avg_us": 5.065,
+        "pct": 0.466
+      },
+      {
+        "name": "triton_poi_fused_0",
+        "calls": 1024,
+        "total_ms": 19.474391,
+        "avg_us": 19.017,
+        "pct": 0.437
+      },
+      {
+        "name": "_causal_conv1d_update_kernel",
+        "calls": 3072,
+        "total_ms": 15.464471,
+        "avg_us": 5.034,
+        "pct": 0.347
+      },
+      {
+        "name": "triton_red_fused__to_copy_add_copy__mean_mul_pow_rsqrt_4",
+        "calls": 2048,
+        "total_ms": 13.009752,
+        "avg_us": 6.352,
+        "pct": 0.292
+      },
+      {
+        "name": "triton_poi_fused__to_copy__unsafe_view_add_clone_mean_mul_pow_reshape_rocm_unquantized_gemm_rsqrt_silu_view_1",
+        "calls": 2048,
+        "total_ms": 10.412474,
+        "avg_us": 5.084,
+        "pct": 0.234
+      },
+      {
+        "name": "triton_poi_fused_mul_rocm_unquantized_gemm_silu_slice_3",
+        "calls": 2048,
+        "total_ms": 10.419992,
+        "avg_us": 5.087,
+        "pct": 0.234
+      }
+    ],
+    "full_attention_decode": [
+      {
+        "name": "kernel_unified_attention_3d",
+        "calls": 1024,
+        "total_ms": 185.167458,
+        "per_chunk_ms": 2.89324153125,
+        "pct_kernel": 4.158
+      }
+    ],
+    "gdn_decode_related": [
+      {
+        "name": "fused_recurrent_gated_delta_rule_packed_decode_kernel",
+        "calls": 3072,
+        "total_ms": 40.539019,
+        "per_chunk_ms": 0.633422171875,
+        "pct_kernel": 0.91
+      },
+      {
+        "name": "_causal_conv1d_update_kernel",
+        "calls": 3072,
+        "total_ms": 15.464471,
+        "per_chunk_ms": 0.241632359375,
+        "pct_kernel": 0.347
+      }
+    ]
+  },
+  "hip_api": {
+    "total_api_ms": 8275.537626,
+    "hipGraphLaunch": {
+      "calls": 64,
+      "total_ms": 439.844678,
+      "avg_ms": 6.872573,
+      "pct_api": 5.31499822583249
+    },
+    "hipLaunchKernel": {
+      "calls": 970,
+      "total_ms": 14.739116,
+      "avg_us": 15.194,
+      "pct_api": 0.178104633996138
+    },
+    "hipMemcpyAsync": {
+      "calls": 1416,
+      "total_ms": 3891.507428,
+      "avg_ms": 2.748239,
+      "pct_api": 47.0242249370446
+    },
+    "hipEventSynchronize": {
+      "calls": 128,
+      "total_ms": 3914.90279,
+      "avg_ms": 30.585178,
+      "pct_api": 47.3069299775787
+    }
+  },
+  "verdict": {
+    "r2_3_host_overlap_worth_it": "no_large_slack",
+    "reason": "kernel busy sum is 4453.4ms of 4553.4ms streaming trace wall; residual is about 1.56ms/chunk, so decode TPOT is dominated by GPU kernels/weight bandwidth rather than host/detokenize gap.",
+    "full_attention_decode_pct_kernel": 4.158,
+    "full_attention_decode_ms_per_chunk": 2.89324153125,
+    "graph_replay": "hipGraphLaunch calls equal traced chunks (64), i.e. about one graph replay per token/chunk; no evidence of missing graph coverage."
+  }
+}
