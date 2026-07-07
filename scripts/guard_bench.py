@@ -131,12 +131,13 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
         COPY_ACCURACY_OUTPUT={1 if args.copy_accuracy_output else 0}
         LOCKED_START_SCRIPT={1 if args.locked_start_script else 0}
         LOAD_FORMAT={q(args.load_format or "")}
+        ENFORCE_EAGER={1 if args.enforce_eager else 0}
         REUSE_SERVER={1 if args.reuse_server else 0}
         KEEP_SERVER={1 if args.keep_server else 0}
         STOP_EXISTING={1 if args.stop_existing else 0}
         INSTALL_WHEEL={0 if args.no_install else 1}
         SERVER_START_TIMEOUT={q(args.server_start_timeout)}
-        export NUM_PROMPTS REPETITIONS BUCKETS REPO_KIND OVERLAY_REV OVERLAY_SOURCE_DIR LOCKED_START_SCRIPT LOAD_FORMAT
+        export NUM_PROMPTS REPETITIONS BUCKETS REPO_KIND OVERLAY_REV OVERLAY_SOURCE_DIR LOCKED_START_SCRIPT LOAD_FORMAT ENFORCE_EAGER
 
         mkdir -p "$RUN_DIR/raw" "$RUN_DIR/throughput" "$RUN_DIR/accuracy"
         exec > >(tee -a "$RUN_DIR/driver.log") 2>&1
@@ -148,7 +149,7 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
         echo "repo_kind={args.repo}"
         echo "repo_path=$REPO_PATH"
         echo "num_prompts=$NUM_PROMPTS repetitions=$REPETITIONS buckets=$BUCKETS accuracy=$ACCURACY accuracy_rows=$ACCURACY_ROWS overlay_rev=$OVERLAY_REV"
-        echo "locked_start_script=$LOCKED_START_SCRIPT load_format=$LOAD_FORMAT"
+        echo "locked_start_script=$LOCKED_START_SCRIPT load_format=$LOAD_FORMAT enforce_eager=$ENFORCE_EAGER"
 
         unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY ALL_PROXY all_proxy
         export no_proxy=127.0.0.1,localhost
@@ -309,6 +310,10 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
         if [ -n "${{GUARD_LOAD_FORMAT:-}}" ]; then
           load_format_args=(--load-format "$GUARD_LOAD_FORMAT")
         fi
+        eager_args=()
+        if [ "${{GUARD_ENFORCE_EAGER:-0}}" = "1" ]; then
+          eager_args=(--enforce-eager)
+        fi
 
         vllm serve "$MODEL_DIR" \
             --served-model-name Qwen3.5-27B \
@@ -324,10 +329,12 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
             --reasoning-parser qwen3 \
             --enable-auto-tool-choice \
             --tool-call-parser qwen3_coder \
+            "${{eager_args[@]}}" \
             "${{load_format_args[@]}}"
         EOS
           chmod +x "$START_SCRIPT"
           export GUARD_LOAD_FORMAT="$LOAD_FORMAT"
+          export GUARD_ENFORCE_EAGER="$ENFORCE_EAGER"
         fi
 
         SERVER_PID=""
@@ -504,6 +511,7 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
                 "accuracy": accuracy_mode,
                 "locked_start_script": os.environ.get("LOCKED_START_SCRIPT", ""),
                 "load_format": os.environ.get("LOAD_FORMAT", ""),
+                "enforce_eager": os.environ.get("ENFORCE_EAGER", ""),
             }},
             "throughput": throughput,
             "weighted_output_throughput": weighted,
@@ -536,6 +544,8 @@ def collect_artifacts(args: argparse.Namespace, cfg: dict[str, Any], local_dir: 
         "guard.pid",
         "guard_remote.sh",
         "launch.log",
+        "vllm_server.log",
+        "start_vllm_locked.sh",
     ]
     if args.copy_accuracy_output:
         items.append("accuracy")
@@ -568,6 +578,7 @@ def collect_artifacts(args: argparse.Namespace, cfg: dict[str, Any], local_dir: 
                 - Overlay rev: `{args.overlay_rev or ""}`
                 - Locked start script: `{args.locked_start_script}`
                 - Load format: `{args.load_format or ""}`
+                - Enforce eager: `{args.enforce_eager}`
                 - Remote run dir: `{remote_dir}`
                 - Local summary: `summary.json`
                 - Raw logs: `raw/`
@@ -702,6 +713,7 @@ def main() -> None:
     parser.add_argument("--copy-accuracy-output", action="store_true")
     parser.add_argument("--locked-start-script", action="store_true", help="Start vLLM from a generated script that preserves the locked competition CLI, including --max-model-len 32768")
     parser.add_argument("--load-format", help="Optional vLLM --load-format to use with --locked-start-script, for example runai_streamer")
+    parser.add_argument("--enforce-eager", action="store_true", help="Pass vLLM --enforce-eager through the generated locked start script; diagnostic only")
     parser.add_argument("--server-start-timeout", type=int, default=900)
     parser.add_argument("--reuse-server", action="store_true")
     parser.add_argument("--keep-server", action="store_true")
@@ -718,6 +730,8 @@ def main() -> None:
         raise SystemExit("--repetitions must be >= 1")
     if args.load_format and not args.locked_start_script:
         raise SystemExit("--load-format is only supported with --locked-start-script")
+    if args.enforce_eager and not args.locked_start_script:
+        raise SystemExit("--enforce-eager is only supported with --locked-start-script")
 
     cfg = load_config(pathlib.Path(args.config))
     ssh_config = pathlib.Path(os.path.expanduser(cfg["generated_ssh_config"]))
