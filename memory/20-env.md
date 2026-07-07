@@ -68,3 +68,4 @@ modelscope download --model Qwen/Qwen3.5-27B --local_dir ./Qwen3.5-27B
 
 ## Changelog
 - 2026-07-06 seed（合并 Claude memory 与 Codex 7-5 实测：SSH 三段跳打通，废弃"不对公网开放"结论；明确 4h 硬性 + 重建税；列出最小前置 5 步）。
+- 2026-07-07 Codex startup correction（`experiments/runai-startup-probe-locked-20260707-1324/`）：`--load-format runai_streamer` 是 Run:ai Model Streamer 并行/流式读取 safetensors，不是单纯"避免复制模型"；但它确实省掉了先 `cp` 52G 模型到 `/root` 的重建税。合规参数 `--max-model-len 32768` 下，直接从 `/public/home/xdzs2026_c166/Qwen3.5-27B` 启动并使用共享 cache，`vllm serve` 到 `/health` 200 为 `725s`；其中 streamer 读 `51.7 GiB` 用 `341.16s`（`155.3 MiB/s`），model loading `342.12s`，torch.compile `44.08s`，profiling/warmup `171.88s`，graph capture `42s`。这比 40-60 分钟级显式模型 copy 工作流快很多，但不等于 300s 内完整 ready。原样用户脚本 probe `experiments/runai-startup-probe-fresh-20260707-1259/` 漏了锁定 `--max-model-len`，vLLM 跑成 `max_seq_len=262144`，仅作负例。
