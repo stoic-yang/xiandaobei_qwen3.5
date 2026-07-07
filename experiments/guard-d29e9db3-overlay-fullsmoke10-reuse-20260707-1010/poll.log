@@ -1,0 +1,56 @@
+=== poll 2026-07-07T10:08:40+0800 rc=0 ===
+status=running pid=13338
+=== poll 2026-07-07T10:09:10+0800 rc=0 ===
+status=running pid=13338
+=== guard benchmark ===
+run_id=guard-d29e9db3-overlay-fullsmoke10-reuse-20260707-1010
+host=worker-0
+started_at=2026-07-07T10:08:41+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 8-16K 16-32K accuracy=smoke accuracy_rows=10 overlay_rev=d29e9db3
+model_dir_source=local MODEL_DIR=/root/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+overlay_rev=d29e9db3
+=== poll 2026-07-07T10:09:41+0800 rc=0 ===
+status=running pid=13338
+=== guard benchmark ===
+run_id=guard-d29e9db3-overlay-fullsmoke10-reuse-20260707-1010
+host=worker-0
+started_at=2026-07-07T10:08:41+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 8-16K 16-32K accuracy=smoke accuracy_rows=10 overlay_rev=d29e9db3
+model_dir_source=local MODEL_DIR=/root/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+overlay_rev=d29e9db3
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_file=vllm/model_executor/models/qwen3_5.py
+overlay_file=vllm/model_executor/models/qwen3_next.py
+overlay_file=vllm/model_executor/layers/activation.py
+=== poll 2026-07-07T10:10:11+0800 rc=0 ===
+status=dead pid=13338
+=== guard benchmark ===
+run_id=guard-d29e9db3-overlay-fullsmoke10-reuse-20260707-1010
+host=worker-0
+started_at=2026-07-07T10:08:41+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 8-16K 16-32K accuracy=smoke accuracy_rows=10 overlay_rev=d29e9db3
+model_dir_source=local MODEL_DIR=/root/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+overlay_rev=d29e9db3
+overlay_site_root=/usr/local/lib/python3.10/dist-packages/vllm
+overlay_file=vllm/model_executor/models/qwen3_5.py
+overlay_file=vllm/model_executor/models/qwen3_next.py
+overlay_file=vllm/model_executor/layers/activation.py
+overlay_file=vllm/model_executor/layers/fla/ops/chunk.py
+overlay_file=vllm/model_executor/layers/fla/ops/chunk_o.py
+overlay_file=vllm/v1/attention/ops/triton_unified_attention.py
+overlay_file=vllm/version.py
