@@ -1,0 +1,43 @@
+{
+  "exp_id": "r3.0-gemm-autotune-survey-20260707-2249",
+  "intent": "Survey GEMM/autotune toolchain after post-R3.1 prefill profile showed Cijk/Tensile GEMM dominance.",
+  "source_commit": "847d1bef10b0b5bb71b7e427535b610a20a4d263",
+  "remote_run_dir": "/public/home/xdzs2026_c166/codex_runs/r3.0-gemm-autotune-survey-20260707-2249",
+  "device": {
+    "name": "BW",
+    "gcn_arch": "gfx936:sramecc+:xnack-",
+    "total_memory_mb": 65520,
+    "multi_processor_count": 80
+  },
+  "runtime": {
+    "torch": "2.10.0",
+    "hip": "6.3.26093",
+    "vllm": "0.18.1"
+  },
+  "tool_availability": {
+    "hipprof": "/opt/dtk/bin/hipprof",
+    "hipblaslt_bench": null,
+    "rocblas_bench": null,
+    "rocblas_gemm_tune": null,
+    "tensile_client": null,
+    "omniperf": null
+  },
+  "torch_autotune": {
+    "cuda_tunable_present": true,
+    "cuda_tunable_key_apis": [
+      "enable",
+      "tuning_enable",
+      "set_filename",
+      "read_file",
+      "tune_gemm_in_file"
+    ],
+    "inductor_max_autotune": false,
+    "inductor_max_autotune_gemm": false,
+    "inductor_search_autotune_cache": false
+  },
+  "verdict": {
+    "next_step": "Create and execute an env-gated PyTorch/vLLM-level GEMM autotune A/B task; do not rely on standalone rocBLAS/hipBLASLt bench tools in this container.",
+    "required_precondition": "Attribute hot Cijk rows to model ops/shapes before choosing knobs.",
+    "scope": "configuration/library-selection only; no GEMM kernel writing."
+  }
+}

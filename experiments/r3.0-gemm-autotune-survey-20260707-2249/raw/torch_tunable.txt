@@ -1,0 +1,13 @@
+torch 2.10.0 hip 6.3.26093
+has torch.cuda.tunable: True
+dir: ['Optional', 'concurrent', 'enable', 'get_filename', 'get_max_tuning_duration', 'get_max_tuning_iterations', 'get_results', 'get_rotating_buffer_size', 'get_validators', 'glob', 'is_enabled', 'mgpu_tune_gemm_in_file', 'mp', 'os', 'read_file', 'record_untuned_enable', 'record_untuned_is_enabled', 'set_filename', 'set_max_tuning_duration', 'set_max_tuning_iterations', 'set_numerical_check_tolerances', 'set_rotating_buffer_size', 'shutil', 'torch', 'tune_gemm_in_file', 'tuning_enable', 'tuning_is_enabled', 'warnings']
+is_tunableop_enabled None
+enable_tunableop None
+tuning_enable <function tuning_enable at 0x7fb8bf73c4c0>
+get_filename <function get_filename at 0x7fb8bf764670>
+set_filename <function set_filename at 0x7fb8bf7645e0>
+write_file None
+read_file <function read_file at 0x7fb8bf764820>
+inductor max_autotune: False
+inductor max_autotune_gemm: False
+inductor search_autotune_cache: False

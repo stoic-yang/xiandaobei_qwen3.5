@@ -23,7 +23,9 @@ Last updated: 2026-07-06 by opencode (initial seed from Claude memories + Codex 
 ### 任务卡（可直接派给实现 agent）
 - [../plans/task-r2.1-cudagraph.md](../plans/task-r2.1-cudagraph.md) — R2.1 CUDA graph 覆盖度 ✅已诊断关闭（graph 已 FULL、省 48ms，无覆盖度肉）
 - [../plans/task-r2.0-decode-profile.md](../plans/task-r2.0-decode-profile.md) — R2.0 decode-only profile（收尾 R2，定性剩余 ~20ms + full-attn decode 占比）
+- [../plans/task-r3.0-gemm-autotune.md](../plans/task-r3.0-gemm-autotune.md) — R3.0/R2.4 GEMM library/autotune（post-R3.1 prefill GEMM 67%，shape attribution + TunableOp/Inductor A/B）
 - [../plans/task-r3.1-flash-attention.md](../plans/task-r3.1-flash-attention.md) — 🎯R3.1 prefill flash-attention on gfx936（head_dim=256，唯一大胜负手）
+- [../plans/task-r3.2-gdn-prefill.md](../plans/task-r3.2-gdn-prefill.md) — R3.2 GDN chunked-prefill（✅Step0 已降级：GDN core 9.303%，转 GEMM 主线）
 
 ## Changelog
 
@@ -33,3 +35,4 @@ Last updated: 2026-07-06 by opencode (initial seed from Claude memories + Codex 
 - 2026-07-07 Claude: add plans/r2-r5-detail.md（R0/R1 实证驱动细化 R2–R5：decode host gap 数字锚点、flash-attn靶心、量化封锁、官方分校准两动作）。
 - 2026-07-07 Claude: add plans/audit-opus-20260707.md + 整合审计入 memory/50、r2-r5-detail、task-r3.1、task-r2.0（INT8 合规上行 / FP8+FA-build 待验证 / MTP 违禁 / issue #35238 → output-equivalence gate / R3 dump backend / config autotune 前置）。
 - 2026-07-07 Claude: add execution-discipline.md（无人值守远程执行纪律，用户经 opus4.8 分析 Codex 执行后提炼）。
+- 2026-07-07 Codex: add task-r3.0-gemm-autotune.md and index task-r3.2-gdn-prefill.md after post-R3.1 profile shifted next mainline from GDN to GEMM/autotune.
