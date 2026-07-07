@@ -1,0 +1,101 @@
+=== guard benchmark ===
+run_id=r2-eager-a-baseline-8to16-20260707-1543
+host=worker-0
+started_at=2026-07-07T15:43:00+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+starting vLLM server
+server_ready_at=2026-07-07T15:59:34+08:00 pid=22553
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== throughput bucket=8-16K rep=3 ===
+=== summary ===
+{
+  "run_id": "r2-eager-a-baseline-8to16-20260707-1543",
+  "status": "pass",
+  "finished_at": "2026-07-07T16:08:25+0800",
+  "repo": {
+    "kind": "competition",
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition",
+    "branch": "contest-p1-ffn-pool-20260621",
+    "head": "d29e9db3ffa01b701346445c6e62fe963f6c17b1",
+    "status_path": "/public/home/xdzs2026_c166/codex_runs/r2-eager-a-baseline-8to16-20260707-1543/repo_status.txt",
+    "log_path": "/public/home/xdzs2026_c166/codex_runs/r2-eager-a-baseline-8to16-20260707-1543/repo_log.txt"
+  },
+  "wheel": {
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl",
+    "sha256": "a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde"
+  },
+  "runtime_fingerprints_path": "/public/home/xdzs2026_c166/codex_runs/r2-eager-a-baseline-8to16-20260707-1543/runtime_fingerprints.json",
+  "overlay": {
+    "rev": "",
+    "source_dir": "",
+    "manifest_path": null
+  },
+  "model_dir": "/public/home/xdzs2026_c166/Qwen3.5-27B",
+  "protocol": {
+    "warmup": "run_throughput.sh 4-8K 1",
+    "buckets": [
+      "8-16K"
+    ],
+    "repetitions": 3,
+    "num_prompts": 3,
+    "accuracy": "none",
+    "locked_start_script": "1",
+    "load_format": "runai_streamer",
+    "enforce_eager": "0"
+  },
+  "throughput": {
+    "8-16K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r2-eager-a-baseline-8to16-20260707-1543/throughput/8-16K_rep1.json",
+          "completed": 3,
+          "failed": 0,
+          "output_throughput": 7.874476715530846,
+          "p99_ttft_ms": 13230.53728477098,
+          "p99_tpot_ms": 69.9105385331665,
+          "duration": 73.52869541896507
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r2-eager-a-baseline-8to16-20260707-1543/throughput/8-16K_rep2.json",
+          "completed": 3,
+          "failed": 0,
+          "output_throughput": 7.88258444192027,
+          "p99_ttft_ms": 13225.199342060369,
+          "p99_tpot_ms": 69.9392253757032,
+          "duration": 73.4530666009523
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r2-eager-a-baseline-8to16-20260707-1543/throughput/8-16K_rep3.json",
+          "completed": 3,
+          "failed": 0,
+          "output_throughput": 7.885573901792279,
+          "p99_ttft_ms": 13219.363798575941,
+          "p99_tpot_ms": 69.85418293974782,
+          "duration": 73.42522018193267
+        }
+      ],
+      "median": {
+        "output_throughput": 7.88258444192027,
+        "p99_ttft_ms": 13225.199342060369,
+        "p99_tpot_ms": 69.9105385331665,
+        "duration": 73.4530666009523
+      }
+    }
+  },
+  "weighted_output_throughput": null,
+  "accuracy": {}
+}
+completed_at=2026-07-07T16:08:25+08:00
+keep_server=1

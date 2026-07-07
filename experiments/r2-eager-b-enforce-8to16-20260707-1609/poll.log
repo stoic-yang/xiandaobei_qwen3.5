@@ -1,0 +1,771 @@
+=== poll 2026-07-07T16:09:21+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+=== poll 2026-07-07T16:09:51+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+=== poll 2026-07-07T16:10:21+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+=== poll 2026-07-07T16:10:52+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+=== poll 2026-07-07T16:11:22+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+=== poll 2026-07-07T16:11:52+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+=== poll 2026-07-07T16:12:23+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+=== poll 2026-07-07T16:12:53+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+=== poll 2026-07-07T16:13:24+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+=== poll 2026-07-07T16:13:54+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+=== poll 2026-07-07T16:14:25+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+=== poll 2026-07-07T16:14:55+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+=== poll 2026-07-07T16:15:25+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+=== poll 2026-07-07T16:15:55+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+=== poll 2026-07-07T16:16:25+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+server_ready_at=2026-07-07T16:16:09+08:00 pid=24731
+=== warmup ===
+=== poll 2026-07-07T16:16:55+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+server_ready_at=2026-07-07T16:16:09+08:00 pid=24731
+=== warmup ===
+=== poll 2026-07-07T16:17:26+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+server_ready_at=2026-07-07T16:16:09+08:00 pid=24731
+=== warmup ===
+=== poll 2026-07-07T16:17:56+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+server_ready_at=2026-07-07T16:16:09+08:00 pid=24731
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== poll 2026-07-07T16:18:26+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+server_ready_at=2026-07-07T16:16:09+08:00 pid=24731
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== poll 2026-07-07T16:18:56+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+server_ready_at=2026-07-07T16:16:09+08:00 pid=24731
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== poll 2026-07-07T16:19:26+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+server_ready_at=2026-07-07T16:16:09+08:00 pid=24731
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== poll 2026-07-07T16:19:56+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+server_ready_at=2026-07-07T16:16:09+08:00 pid=24731
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== poll 2026-07-07T16:20:26+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+server_ready_at=2026-07-07T16:16:09+08:00 pid=24731
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== poll 2026-07-07T16:20:56+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+server_ready_at=2026-07-07T16:16:09+08:00 pid=24731
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== poll 2026-07-07T16:21:26+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+server_ready_at=2026-07-07T16:16:09+08:00 pid=24731
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== poll 2026-07-07T16:21:56+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+server_ready_at=2026-07-07T16:16:09+08:00 pid=24731
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== poll 2026-07-07T16:22:27+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+server_ready_at=2026-07-07T16:16:09+08:00 pid=24731
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== poll 2026-07-07T16:22:57+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+server_ready_at=2026-07-07T16:16:09+08:00 pid=24731
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== poll 2026-07-07T16:23:27+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+server_ready_at=2026-07-07T16:16:09+08:00 pid=24731
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== poll 2026-07-07T16:23:57+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+server_ready_at=2026-07-07T16:16:09+08:00 pid=24731
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== throughput bucket=8-16K rep=3 ===
+=== poll 2026-07-07T16:24:27+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+server_ready_at=2026-07-07T16:16:09+08:00 pid=24731
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== throughput bucket=8-16K rep=3 ===
+=== poll 2026-07-07T16:24:57+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+server_ready_at=2026-07-07T16:16:09+08:00 pid=24731
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== throughput bucket=8-16K rep=3 ===
+=== poll 2026-07-07T16:25:27+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+server_ready_at=2026-07-07T16:16:09+08:00 pid=24731
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== throughput bucket=8-16K rep=3 ===
+=== poll 2026-07-07T16:25:58+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+server_ready_at=2026-07-07T16:16:09+08:00 pid=24731
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== throughput bucket=8-16K rep=3 ===
+=== poll 2026-07-07T16:26:28+0800 rc=0 ===
+status=running pid=24652
+=== guard benchmark ===
+run_id=r2-eager-b-enforce-8to16-20260707-1609
+host=worker-0
+started_at=2026-07-07T16:09:21+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=1
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=d29e9db3ffa01b701346445c6e62fe963f6c17b1 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+stopping existing server processes
+kill: (22554): No such process
+starting vLLM server
+server_ready_at=2026-07-07T16:16:09+08:00 pid=24731
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== throughput bucket=8-16K rep=3 ===
+=== poll 2026-07-07T16:26:58+0800 rc=0 ===
+status=done

@@ -1,0 +1,50 @@
+{
+  "task": "R2.1 CUDA graph enforce_eager diagnostic",
+  "scope": "8-16K only, 3 prompts, 3 repetitions, accuracy none",
+  "protocol": {
+    "guard": "scripts/guard_bench.py --locked-start-script --load-format runai_streamer",
+    "job_id": "656918",
+    "worker_ip": "173.0.253.4",
+    "max_seq_len_verified": 32768,
+    "vllm_cache_root": "/public/home/xdzs2026_c166/vllm_cache/vllm_cache",
+    "triton_cache_dir": "/public/home/xdzs2026_c166/vllm_cache/triton_cache"
+  },
+  "arms": {
+    "current_graph_compile": {
+      "experiment": "experiments/r2-eager-a-baseline-8to16-20260707-1543",
+      "enforce_eager": false,
+      "output_throughput": 7.88258444192027,
+      "p99_ttft_ms": 13225.199342060369,
+      "p99_tpot_ms": 69.9105385331665,
+      "duration_s": 73.4530666009523,
+      "log_evidence": [
+        "vllm_server.log:20 cudagraph_mode FULL_AND_PIECEWISE",
+        "vllm_server.log:130 Capturing CUDA graphs (decode, FULL)"
+      ]
+    },
+    "enforce_eager": {
+      "experiment": "experiments/r2-eager-b-enforce-8to16-20260707-1609",
+      "enforce_eager": true,
+      "output_throughput": 5.7376162428625,
+      "p99_ttft_ms": 13374.59358784603,
+      "p99_tpot_ms": 118.19529973519334,
+      "duration_s": 103.87589109700639,
+      "log_evidence": [
+        "vllm_server.log:19 disables torch.compile and CUDAGraphs",
+        "vllm_server.log:24 cudagraph_mode NONE"
+      ]
+    }
+  },
+  "delta_enforce_eager_minus_current": {
+    "output_throughput": -2.14496819905777,
+    "output_throughput_pct": -27.211483934769443,
+    "p99_ttft_ms": 149.39424578566104,
+    "p99_ttft_pct": 1.129617976245596,
+    "p99_tpot_ms": 48.28476120202684,
+    "p99_tpot_pct": 69.06793683787509,
+    "duration_s": 30.42282449605409,
+    "duration_pct": 41.41804028745231
+  },
+  "verdict": "Current decode is not graph-missing. The existing torch.compile/CUDAGraph stack is active and materially improves TPOT; continue with decode-only launch-count confirmation and narrow residual overhead tuning rather than rebuilding graph coverage from zero.",
+  "caveat": "--enforce-eager disables both torch.compile and CUDAGraphs, so the delta is graph-plus-compile-stack contribution, not a pure CUDAGraph-only number."
+}
