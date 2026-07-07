@@ -127,12 +127,14 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
         ACCURACY={q(args.accuracy)}
         ACCURACY_ROWS={q(accuracy_rows)}
         COPY_ACCURACY_OUTPUT={1 if args.copy_accuracy_output else 0}
+        LOCKED_START_SCRIPT={1 if args.locked_start_script else 0}
+        LOAD_FORMAT={q(args.load_format or "")}
         REUSE_SERVER={1 if args.reuse_server else 0}
         KEEP_SERVER={1 if args.keep_server else 0}
         STOP_EXISTING={1 if args.stop_existing else 0}
         INSTALL_WHEEL={0 if args.no_install else 1}
         SERVER_START_TIMEOUT={q(args.server_start_timeout)}
-        export NUM_PROMPTS REPETITIONS BUCKETS REPO_KIND OVERLAY_REV OVERLAY_SOURCE_DIR
+        export NUM_PROMPTS REPETITIONS BUCKETS REPO_KIND OVERLAY_REV OVERLAY_SOURCE_DIR LOCKED_START_SCRIPT LOAD_FORMAT
 
         mkdir -p "$RUN_DIR/raw" "$RUN_DIR/throughput" "$RUN_DIR/accuracy"
         exec > >(tee -a "$RUN_DIR/driver.log") 2>&1
@@ -144,6 +146,7 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
         echo "repo_kind={args.repo}"
         echo "repo_path=$REPO_PATH"
         echo "num_prompts=$NUM_PROMPTS repetitions=$REPETITIONS buckets=$BUCKETS accuracy=$ACCURACY accuracy_rows=$ACCURACY_ROWS overlay_rev=$OVERLAY_REV"
+        echo "locked_start_script=$LOCKED_START_SCRIPT load_format=$LOAD_FORMAT"
 
         unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY ALL_PROXY all_proxy
         export no_proxy=127.0.0.1,localhost
@@ -292,11 +295,44 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
           curl -fsS http://127.0.0.1:8001/health >/dev/null 2>&1
         }}
 
+        START_SCRIPT="$TESTDATA/start_vllm.sh"
+        if [ "$LOCKED_START_SCRIPT" = "1" ]; then
+          START_SCRIPT="$RUN_DIR/start_vllm_locked.sh"
+          cat > "$START_SCRIPT" <<'EOS'
+        #!/usr/bin/env bash
+        set -u
+        set -o pipefail
+
+        load_format_args=()
+        if [ -n "${{GUARD_LOAD_FORMAT:-}}" ]; then
+          load_format_args=(--load-format "$GUARD_LOAD_FORMAT")
+        fi
+
+        vllm serve "$MODEL_DIR" \
+            --served-model-name Qwen3.5-27B \
+            --port 8001 \
+            --trust-remote-code \
+            --dtype bfloat16 \
+            --tensor-parallel-size 1 \
+            --max-model-len 32768 \
+            --max-num-seqs 128 \
+            --max-num-batched-tokens 4096 \
+            --gpu-memory-utilization 0.95 \
+            --default-chat-template-kwargs '{{"enable_thinking": false}}' \
+            --reasoning-parser qwen3 \
+            --enable-auto-tool-choice \
+            --tool-call-parser qwen3_coder \
+            "${{load_format_args[@]}}"
+        EOS
+          chmod +x "$START_SCRIPT"
+          export GUARD_LOAD_FORMAT="$LOAD_FORMAT"
+        fi
+
         SERVER_PID=""
         if [ "$REUSE_SERVER" = "1" ] && health_ok; then
           echo "reuse_server=1 health=ok"
         else
-          if pgrep -af "vllm serve|start_vllm.sh" | grep -v -E "pgrep -af|grep -v|guard_bench" >/tmp/guard_active_vllm.txt; then
+          if pgrep -af "vllm serve|start_vllm" | grep -v -E "pgrep -af|grep -v|guard_bench" >/tmp/guard_active_vllm.txt; then
             if [ "$STOP_EXISTING" = "1" ]; then
               echo "stopping existing server processes"
               awk '{{print $1}}' /tmp/guard_active_vllm.txt | xargs -r kill || true
@@ -309,7 +345,7 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
             fi
           fi
           echo "starting vLLM server"
-          (cd "$RUN_DIR" && nohup bash "$TESTDATA/start_vllm.sh" > "$RUN_DIR/vllm_server.log" 2>&1 & echo $! > "$RUN_DIR/vllm_server.pid")
+          (cd "$RUN_DIR" && nohup bash "$START_SCRIPT" > "$RUN_DIR/vllm_server.log" 2>&1 & echo $! > "$RUN_DIR/vllm_server.pid")
           SERVER_PID="$(cat "$RUN_DIR/vllm_server.pid")"
           deadline=$((SECONDS + SERVER_START_TIMEOUT))
           until health_ok; do
@@ -464,6 +500,8 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
                 "repetitions": int(os.environ.get("REPETITIONS", "0") or 0),
                 "num_prompts": int(os.environ.get("NUM_PROMPTS", "0") or 0),
                 "accuracy": accuracy_mode,
+                "locked_start_script": os.environ.get("LOCKED_START_SCRIPT", ""),
+                "load_format": os.environ.get("LOAD_FORMAT", ""),
             }},
             "throughput": throughput,
             "weighted_output_throughput": weighted,
@@ -526,6 +564,8 @@ def collect_artifacts(args: argparse.Namespace, cfg: dict[str, Any], local_dir: 
                 - Method: warmup once, then three throughput buckets x {args.repetitions} repetitions, median summary, plus accuracy mode `{args.accuracy}`.
                 - Buckets: `{args.buckets}`
                 - Overlay rev: `{args.overlay_rev or ""}`
+                - Locked start script: `{args.locked_start_script}`
+                - Load format: `{args.load_format or ""}`
                 - Remote run dir: `{remote_dir}`
                 - Local summary: `summary.json`
                 - Raw logs: `raw/`
@@ -658,6 +698,8 @@ def main() -> None:
     parser.add_argument("--accuracy", choices=["none", "smoke", "full"], default="full")
     parser.add_argument("--accuracy-rows", type=int)
     parser.add_argument("--copy-accuracy-output", action="store_true")
+    parser.add_argument("--locked-start-script", action="store_true", help="Start vLLM from a generated script that preserves the locked competition CLI, including --max-model-len 32768")
+    parser.add_argument("--load-format", help="Optional vLLM --load-format to use with --locked-start-script, for example runai_streamer")
     parser.add_argument("--server-start-timeout", type=int, default=900)
     parser.add_argument("--reuse-server", action="store_true")
     parser.add_argument("--keep-server", action="store_true")
@@ -672,6 +714,8 @@ def main() -> None:
 
     if args.repetitions < 1:
         raise SystemExit("--repetitions must be >= 1")
+    if args.load_format and not args.locked_start_script:
+        raise SystemExit("--load-format is only supported with --locked-start-script")
 
     cfg = load_config(pathlib.Path(args.config))
     ssh_config = pathlib.Path(os.path.expanduser(cfg["generated_ssh_config"]))
