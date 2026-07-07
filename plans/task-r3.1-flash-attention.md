@@ -18,36 +18,29 @@
 - 只有 16 层 full-attn（`full_attention_interval=4`），但 O(S²) 是长档主力。
 - bf16 权重不可动（红线）；attention 内部低精度（FP8 QK/PV）属白名单但**留到 R4**——R3.1 只做 bf16 正确版。
 
-## 执行步骤
+## 执行步骤（直接干，不设 η 前置闸门）
 
-**Step 1 — 现状 η 体检（先确认真有肉）**
-- 定位 vLLM 当前 full-attn 走的 attention backend（`kernel_unified_attention_2d`，triton？）。
-- 在真实 shape（head_dim256 / 4 kv / chunk4096 / bf16 / causal）下测它的**达成算力利用率 + HBM 带宽利用率 η**（omniperf/rocprof 对 roofline）。看它是否把 S×S 注意力矩阵物化到 HBM。
-- 判定：η 低（算力 <0.5 或明显物化中间矩阵）→ 有肉，继续；η 已高 → 收益有限，回报设计层重估。**别在没测 η 前就动手写 kernel。**
+**Step 1 — 直接选实现并接入**
+- 直接调研并接入**支持 head_dim=256** 的成熟 flash-attn：CK(Composable Kernel) / ROCm / AITER。能接就接，接不上再考虑手写/移植。head_dim=256 支持是第一硬门槛。
+- 利用率 η **并行测**（用来解释收益来源、写消融表），**不阻塞动手**——先干起来。
 
-**Step 2 — 选实现（优先复用，别从零手写）**
-- 调研 DTK 26.04 是否自带、且**支持 head_dim=256** 的：CK(Composable Kernel) flash-attn、ROCm/AITER flash-attn、triton flash-attn。
-- 候选按"能否 head_dim=256 正确跑 + 达成 η"排序。**能接入成熟实现就别手写**——手写 gfx936 flash-attn 成本极高、周期不够。
+**Step 2 — tiny-tensor 数值对拍（5 分钟，保命，唯一不可省）**
+- 接完先在小张量上把新 attention 输出与原 `unified_attention` 对一遍：head_dim=256 / GQA(4 kv / 24 q) / causal / chunk 边界，误差 < bf16 容差。
+- ⚠️ **为什么不能省**：attention 算错**照样能跑、还会显示吞吐变快**（算少了/算错了），但精度会崩 → 在"吞吐+40%"的假象下精度四类清零、总分暴跌。5 分钟，防自己骗自己。
+- **对拍不过的吞吐数字一律不采信。**
 
-**Step 3 — 正确性优先（先正确后快，硬门槛）**
-- tiny-shape 数值等价单测：候选 kernel vs 原 `unified_attention`，误差 <bf16 容差阈值。
-- 必测组合：head_dim=256、GQA(4 kv / 24 q)、causal、chunk 边界（跨 chunk 的 K/V 拼接）。**任一不过，不进 Step 4。**
-
-**Step 4 — 接入 + 单档 A/B（开关门控）**
-- config/env 开关切换新旧 attention backend（关掉=原路径、数值等价）。
-- 8-16K 单档守门员 A/B（locked 口径），看 TTFT-P99 + 吞吐 Δ。
-
-**Step 5 — 精度 + 全档回归**
-- 四类精度 Δ<1%；三档守门员全过、无一倒退（尤其 4-8K 别因 attention 改动倒退）。
+**Step 3 — 单档 A/B + 精度回归**
+- config/env 开关门控（关掉=原 backend、数值等价）；8-16K 守门员 A/B（locked 口径）看 TTFT-P99 + 吞吐 Δ；四类精度 Δ<1%；三档无一倒退（尤其 4-8K 别因 attention 改动倒退）。
 
 ## 纪律（硬）
-- **config/env 开关门控**，关掉即回原 backend、数值等价。
-- **先正确后快**：Step 3 不过禁止谈提速。
+- **直接干，但接完必对拍**（Step 2）—— 对拍不过的吞吐一律不采信。**这是唯一不可省的验证。**
+- config/env 开关门控，关掉=原 backend、数值等价。
 - 同容器比相对 Δ；locked 口径（`max_seq_len=32768`）。
 - 不改 batch scheduler / 锁定 CLI；不改模型结构/权重；不投机解码。
+- 先接现成实现，别一上来手写 gfx936 kernel（周期不够）。
 
 ## 判定 / 验收门槛
-- Step 1 η 证明有肉；Step 3 数值等价过；Step 4 8-16K TTFT-P99 改善且吞吐不倒退；Step 5 四类精度 Δ<1% 且全档不倒退。
+- Step 2 数值对拍过（否则吞吐不采信）；Step 3 8-16K TTFT-P99 改善、四类精度 Δ<1%、三档无一倒退。
 - 目标：prefill tok/s 明显上抬，报出三档 TTFT-P99 改善幅度。
 
 ## 产出 / 交回
@@ -61,3 +54,4 @@
 
 ## Changelog
 - 2026-07-07 create（Claude；R3 主攻卡，η 体检先行 + head_dim=256 正确性硬门槛 + 先正确后快）。
+- 2026-07-07 revise（用户定"直接做"）：去 η 前置闸门（改并行测）；5 步压成 3 步（直接接入 → tiny-tensor 数值对拍保命 → 单档A/B+精度）；数值对拍是**唯一不可省**验证（防 attention 算错→假性变快→精度清零）。
