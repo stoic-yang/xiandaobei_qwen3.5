@@ -1,0 +1,10 @@
+=== guard benchmark ===
+run_id=guard-d29e9db3-overlay-fullsmoke10-20260707-0900
+host=worker-0
+started_at=2026-07-07T08:59:00+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=10 repetitions=3 buckets=4-8K 8-16K 16-32K accuracy=smoke accuracy_rows=10 overlay_rev=d29e9db3
+copying model to local disk: /public/home/xdzs2026_c166/Qwen3.5-27B -> /root/Qwen3.5-27B
+model_copy_done_at=2026-07-07T09:38:45+08:00
+model_dir_source=local MODEL_DIR=/root/Qwen3.5-27B
