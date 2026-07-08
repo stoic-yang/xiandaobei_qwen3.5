@@ -7,8 +7,8 @@
 > **R0/R1 已完成（R1 按用户决定暂停）；R2 起的实证细化见 [`r2-r5-detail.md`](r2-r5-detail.md)（含战略校准+decode gap 数字锚点+官方分校准动作）。**
 
 ## 一句话现状
-当前提交 `d29e9db3` 官方 **59.0018 = 净负优化**（baseline 保底 60）。瓶颈是**长上下文 Prefill/TTFT**（占 80% 权重的两档时间大头 + prefill 仅 ~758 tok/s），**不是** decode、**不是** KV Cache。
-**gfx936 实测 + 规则红线已钉死（见 memory/50）：decode 合规下到带宽物理顶——别碰；prefill flash-attention 是唯一战场。**
+R3.1 flash-attn prefill candidate 已拿到官方 **AC / 74.6924**（见 `experiments/r3.1-official-ac-20260708/`），官方三档吞吐 `13.78 / 12.89 / 11.18`，SLA 扣分 `0.0`，精度扣分 `0.5644`。旧 `d29e9db3` 官方 **59.0018** 只保留为早期负优化锚点，不再代表当前 baseline。
+当前瓶颈仍是**长上下文 Prefill/TTFT**；R3.1 后 profile 显示主热点已转为 `Cijk_*` GEMM（`67.101%`），下一主线是 R3.0/R2.4 GEMM library/autotune。**gfx936 实测 + 规则红线已钉死（见 memory/50）：decode 合规下到带宽物理顶——别碰。**
 
 ## 优化优先级（已被 gfx936 实测 + 规则红线钉死，见 memory/50）
 1. **Prefill flash-attention on gfx936 —— 唯一胜负手**。注意力 O(S²) 是长档主力（codex R0.4：
@@ -115,3 +115,4 @@
 ## Changelog
 - 2026-07-06 create（Claude 设计，基于 memory/50 瓶颈画像）。
 - 2026-07-06 Claude 按 gfx936 实测+规则红线更新优先级：**prefill flash-attention 唯一战场**；decode 带宽侧到顶别碰（GEMV 92–101%、权重量化=红线）；decode 仅做 host 侧图融合；新增 ★ 待问"运行时非持久权重量化是否违规"。
+- 2026-07-08 Codex 更新当前状态：R3.1 官方 `AC / 74.6924`，旧 d29 `59.0018` 降为历史负优化锚点；R3.1 后热点转 GEMM，下一主线 R3.0/R2.4 autotune。

@@ -1,0 +1,35 @@
+{
+  "exp_id": "r3.1-official-ac-20260708",
+  "kind": "official_platform_result",
+  "reported_at": "2026-07-08",
+  "source": "user-reported official platform row",
+  "candidate": {
+    "round": "R3.1",
+    "description": "flash-attention prefill candidate",
+    "source_commit": "847d1bef10b0b5bb71b7e427535b610a20a4d263"
+  },
+  "official": {
+    "status": "AC",
+    "final_score": 74.6924,
+    "throughput": {
+      "4-8K": 13.78,
+      "8-16K": 12.89,
+      "16-32K": 11.18,
+      "weighted_0.2_0.5_0.3": 12.555
+    },
+    "sla_penalty": 0.0,
+    "accuracy_penalty": 0.5644,
+    "score_before_accuracy_penalty_if_no_other_penalty": 75.2568
+  },
+  "local_reference": {
+    "4-8K": 13.416425,
+    "8-16K": 11.455965,
+    "16-32K": 8.454834
+  },
+  "verdict": {
+    "accepted": true,
+    "r31_is_current_safe_positive_baseline": true,
+    "local_proxy_note": "Local throughput proxy was conservative, especially for 16-32K.",
+    "next_mainline": "R3.0/R2.4 GEMM autotune"
+  }
+}
