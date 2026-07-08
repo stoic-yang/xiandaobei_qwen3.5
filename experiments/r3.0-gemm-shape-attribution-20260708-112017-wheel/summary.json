@@ -1,0 +1,193 @@
+{
+  "exp_id": "r3.0-gemm-shape-attribution-20260708-112017-wheel",
+  "intent": "R3.0 Step0 shape attribution for post-R3.1 Cijk/Tensile GEMM hotspot before TunableOp/Inductor A/B.",
+  "remote_run_dir": "/public/home/xdzs2026_c166/codex_runs/r3.0-gemm-shape-attribution-20260708-112017-wheel",
+  "source_profile": "experiments/r3.2-post-r31-prefill-profile-20260707-2210/profile/vllm_prefill.hipkernel.csv",
+  "locked": {
+    "max_model_len": 32768,
+    "load_format": "runai_streamer",
+    "request": "8-16K first prompt, max_tokens=1",
+    "request_prompt_chars": 56507,
+    "request_wall_s": 127.41383565287106,
+    "request_status": 200
+  },
+  "run_notes": {
+    "driver_exit": 24,
+    "driver_exit_reason": "The first driver used a 900s health timeout; vLLM became healthy shortly after the timeout, so a salvage request reused the already-ready locked service.",
+    "salvage_exit": 0,
+    "failed_attempt": "A source-prepend attempt failed because importing /public/home/xdzs2026_c166/vllm_cscc_competition ahead of the wheel missed wheel-registered C ops such as torch.ops._C.silu_and_mul. The successful run used the installed competition wheel plus the diagnostic probe path only."
+  },
+  "python_shape_probe": {
+    "status": "not_useful_for_language_graph",
+    "events": 116,
+    "linear_events": 110,
+    "captured_only": "visual tower warmup / profile shapes, not the compiled language-model graph for the text request",
+    "example_shapes": [
+      {
+        "prefix": "visual.blocks.*.attn.qkv",
+        "x_shape": [65536, 1, 1152],
+        "weight_shape": [3456, 1152],
+        "calls": 27
+      },
+      {
+        "prefix": "visual.blocks.*.mlp.linear_fc1",
+        "x_shape": [65536, 1, 1152],
+        "weight_shape": [4304, 1152],
+        "calls": 27
+      }
+    ],
+    "verdict": "Do not use Python-level UnquantizedLinearMethod.apply hook as the primary Cijk attribution source under torch.compile; the language-model request runs through the compiled graph."
+  },
+  "model_static": {
+    "text_layers": 64,
+    "linear_attention_layers": 48,
+    "full_attention_layers": 16,
+    "layer_pattern": "3 linear_attention layers followed by 1 full_attention layer, repeated",
+    "is_moe": false,
+    "hidden_size": 5120,
+    "intermediate_size": 17408,
+    "num_attention_heads": 24,
+    "num_key_value_heads": 4,
+    "head_dim": 256,
+    "linear_key_head_dim": 128,
+    "linear_value_head_dim": 128,
+    "linear_num_key_heads": 16,
+    "linear_num_value_heads": 48,
+    "chunks_in_profile": 4
+  },
+  "compiled_graph_projection_families": [
+    {
+      "op": "linear_attn.in_proj_qkvz",
+      "weight_shape": [16384, 5120],
+      "layers": 48,
+      "calls_if_4_chunks": 192,
+      "priority": "high"
+    },
+    {
+      "op": "linear_attn.in_proj_ba",
+      "weight_shape": [96, 5120],
+      "layers": 48,
+      "calls_if_4_chunks": 192,
+      "priority": "low"
+    },
+    {
+      "op": "linear_attn.out_proj",
+      "weight_shape": [5120, 6144],
+      "layers": 48,
+      "calls_if_4_chunks": 192,
+      "priority": "high"
+    },
+    {
+      "op": "mlp.gate_up_proj",
+      "weight_shape": [34816, 5120],
+      "layers": 64,
+      "calls_if_4_chunks": 256,
+      "priority": "highest"
+    },
+    {
+      "op": "mlp.down_proj",
+      "weight_shape": [5120, 17408],
+      "layers": 64,
+      "calls_if_4_chunks": 256,
+      "priority": "highest"
+    },
+    {
+      "op": "self_attn.qkv_proj",
+      "weight_shape": [14336, 5120],
+      "layers": 16,
+      "calls_if_4_chunks": 64,
+      "priority": "medium"
+    },
+    {
+      "op": "self_attn.o_proj",
+      "weight_shape": [5120, 6144],
+      "layers": 16,
+      "calls_if_4_chunks": 64,
+      "priority": "medium"
+    },
+    {
+      "op": "lm_head/logits",
+      "weight_shape": [248320, 5120],
+      "layers": 1,
+      "calls_if_4_chunks": 4,
+      "priority": "low for R3.0 prefill GEMM autotune"
+    }
+  ],
+  "call_count_reconciliation": {
+    "language_projection_calls_if_4_chunks": 1216,
+    "lm_head_calls_if_4_chunks": 4,
+    "expected_total_cijk_calls": 1220,
+    "observed_cijk_calls": 1220,
+    "interpretation": "The post-R3.1 Cijk call count is fully explained by compiled language-model projection GEMMs plus one logits GEMM per chunk."
+  },
+  "hipprof_cijk_rows": [
+    {
+      "row": "Cijk_WGM4_MT256x256x16",
+      "calls": 192,
+      "total_ms": 827.421481,
+      "avg_us": 4309.486,
+      "kernel_pct": 26.153,
+      "attribution": "one 48-layer linear_attention projection family across 4 chunks",
+      "most_likely_ops": ["linear_attn.in_proj_qkvz", "linear_attn.out_proj"],
+      "excluded_or_low_likelihood": ["linear_attn.in_proj_ba"],
+      "confidence": "medium-high: exact call-count match; exact WGM-to-shape mapping still needs M/N/K from Tensile/TunableOp logs"
+    },
+    {
+      "row": "Cijk_WGM8_MT256x256x16",
+      "calls": 448,
+      "total_ms": 658.164938,
+      "avg_us": 1469.118,
+      "kernel_pct": 20.804,
+      "attribution": "mixed projection families sharing the same Tensile kernel name",
+      "most_likely_ops": ["mlp.gate_up_proj", "mlp.down_proj", "linear_attn.out_proj", "linear_attn.in_proj_qkvz"],
+      "confidence": "medium: call count is a mixture; treat as MLP plus GDN/output-projection tuning target, not a single module"
+    },
+    {
+      "row": "Cijk_WGM1_MT256x256x16",
+      "calls": 384,
+      "total_ms": 616.762249,
+      "avg_us": 1606.151,
+      "kernel_pct": 19.495,
+      "attribution": "mixed projection families sharing the same Tensile kernel name",
+      "most_likely_ops": ["linear_attn.in_proj_qkvz", "linear_attn.out_proj", "mlp.down_proj", "self_attn.qkv_proj", "self_attn.o_proj"],
+      "confidence": "medium-low: aggregated hipkernel.csv lacks per-call M/N/K; use compiled graph shape set for A/B target selection"
+    },
+    {
+      "row": "Cijk_small_MT128x64x32",
+      "calls": 144,
+      "total_ms": 10.180949,
+      "kernel_pct": 0.322,
+      "attribution": "remaining small projection slices; low priority"
+    },
+    {
+      "row": "Cijk_lm_head_MT32x16x4",
+      "calls": 4,
+      "total_ms": 7.607836,
+      "kernel_pct": 0.24,
+      "attribution": "likely logits/lm_head, one per prefill chunk; low priority for this card"
+    },
+    {
+      "row": "Cijk_small_MT32x64x128",
+      "calls": 48,
+      "total_ms": 2.735679,
+      "kernel_pct": 0.086,
+      "attribution": "small residual projection family; low priority"
+    }
+  ],
+  "verdict": {
+    "step0_status": "completed_with_static_compiled_graph_attribution",
+    "main_findings": [
+      "The hot Cijk group is not a single op. It is the compiled language-model dense projection set: all-layer MLP gate/up and down projections, GDN input/output projections, full-attn qkv/o projections, plus a tiny lm_head tail.",
+      "The total Cijk call count (1220) is exactly reconciled by 4 prefill chunks x compiled projection families (1216) plus 4 lm_head/logits calls.",
+      "The Python-level linear hook is a negative diagnostic: it only sees visual warmup shapes under torch.compile, so future attribution should use compiled graph / profiler / TunableOp records."
+    ],
+    "next_ab_targets": [
+      "[34816,5120] mlp.gate_up_proj",
+      "[5120,17408] mlp.down_proj",
+      "[16384,5120] linear_attn.in_proj_qkvz",
+      "[5120,6144] linear_attn.out_proj + self_attn.o_proj",
+      "[14336,5120] self_attn.qkv_proj"
+    ],
+    "next_step": "Run task-r3.0 Step1 PyTorch TunableOp A/B first on 8-16K throughput-only. Require a tunable result file or equivalent M/N/K record covering the target shapes; if empty or no coverage, stop TunableOp and try Inductor GEMM autotune."
+  }
+}
