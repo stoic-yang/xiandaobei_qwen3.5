@@ -1,0 +1,18 @@
+{
+  "pid": 5078,
+  "results_len": 2,
+  "results": [
+    [
+      "GemmTunableOp_BFloat16_TN",
+      "tn_3456_65536_1152_ld_1152_1152_3456",
+      "Gemm_Rocblas_20980",
+      2.271038055419922
+    ],
+    [
+      "GemmTunableOp_BFloat16_TN",
+      "tn_1152_65536_1536_ld_1536_1536_1152",
+      "Gemm_Rocblas_20980",
+      0.940159022808075
+    ]
+  ]
+}

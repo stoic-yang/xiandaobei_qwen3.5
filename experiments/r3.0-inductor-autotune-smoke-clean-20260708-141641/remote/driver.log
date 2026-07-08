@@ -1,0 +1,86 @@
+=== guard benchmark ===
+run_id=r3.0-inductor-autotune-smoke-clean-20260708-141641
+host=worker-0
+started_at=2026-07-08T14:17:40+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=1 repetitions=1 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+repo_head=847d1bef10b0b5bb71b7e427535b610a20a4d263 branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde
+[xdb-inductor] {"TORCHINDUCTOR_MAX_AUTOTUNE": "1", "TORCHINDUCTOR_MAX_AUTOTUNE_GEMM": "1", "TORCHINDUCTOR_MAX_AUTOTUNE_GEMM_BACKENDS": null, "max_autotune": true, "max_autotune_gemm": true, "max_autotune_gemm_backends": "ATEN,TRITON,CPP", "pid": 7259, "search_autotune_cache": false}
+/usr/local/lib/python3.10/dist-packages/_distutils_hack/__init__.py:30: UserWarning: Setuptools is replacing distutils. Support for replacing an already imported distutils is deprecated. In the future, this condition will fail. Register concerns at https://github.com/pypa/setuptools/issues/new?template=distutils-deprecation.yml
+  warnings.warn(
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[xdb-inductor] {"TORCHINDUCTOR_MAX_AUTOTUNE": "1", "TORCHINDUCTOR_MAX_AUTOTUNE_GEMM": "1", "TORCHINDUCTOR_MAX_AUTOTUNE_GEMM_BACKENDS": null, "max_autotune": true, "max_autotune_gemm": true, "max_autotune_gemm_backends": "ATEN,TRITON,CPP", "pid": 7285, "search_autotune_cache": false}
+starting vLLM server
+server_ready_at=2026-07-08T14:34:08+08:00 pid=7316
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+[xdb-inductor] {"TORCHINDUCTOR_MAX_AUTOTUNE": "1", "TORCHINDUCTOR_MAX_AUTOTUNE_GEMM": "1", "TORCHINDUCTOR_MAX_AUTOTUNE_GEMM_BACKENDS": null, "max_autotune": true, "max_autotune_gemm": true, "max_autotune_gemm_backends": "ATEN,TRITON,CPP", "pid": 25261, "search_autotune_cache": false}
+=== summary ===
+{
+  "run_id": "r3.0-inductor-autotune-smoke-clean-20260708-141641",
+  "status": "pass",
+  "finished_at": "2026-07-08T14:39:11+0800",
+  "repo": {
+    "kind": "competition",
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition",
+    "branch": "contest-p1-ffn-pool-20260621",
+    "head": "847d1bef10b0b5bb71b7e427535b610a20a4d263",
+    "status_path": "/public/home/xdzs2026_c166/codex_runs/r3.0-inductor-autotune-smoke-clean-20260708-141641/repo_status.txt",
+    "log_path": "/public/home/xdzs2026_c166/codex_runs/r3.0-inductor-autotune-smoke-clean-20260708-141641/repo_log.txt"
+  },
+  "wheel": {
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl",
+    "sha256": "a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde"
+  },
+  "runtime_fingerprints_path": "/public/home/xdzs2026_c166/codex_runs/r3.0-inductor-autotune-smoke-clean-20260708-141641/runtime_fingerprints.json",
+  "overlay": {
+    "rev": "",
+    "source_dir": "",
+    "manifest_path": null
+  },
+  "model_dir": "/public/home/xdzs2026_c166/Qwen3.5-27B",
+  "protocol": {
+    "warmup": "run_throughput.sh 4-8K 1",
+    "buckets": [
+      "8-16K"
+    ],
+    "repetitions": 1,
+    "num_prompts": 1,
+    "accuracy": "none",
+    "locked_start_script": "1",
+    "load_format": "runai_streamer",
+    "enforce_eager": "0"
+  },
+  "throughput": {
+    "8-16K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3.0-inductor-autotune-smoke-clean-20260708-141641/throughput/8-16K_rep1.json",
+          "completed": 1,
+          "failed": 0,
+          "output_throughput": 4.775301521823894,
+          "p99_ttft_ms": 12295.509950025007,
+          "p99_tpot_ms": 70.17813728716065,
+          "duration": 19.894031730946153
+        }
+      ],
+      "median": {
+        "output_throughput": 4.775301521823894,
+        "p99_ttft_ms": 12295.509950025007,
+        "p99_tpot_ms": 70.17813728716065,
+        "duration": 19.894031730946153
+      }
+    }
+  },
+  "weighted_output_throughput": null,
+  "accuracy": {}
+}
+completed_at=2026-07-08T14:39:13+08:00
+keep_server=1

@@ -1,0 +1,77 @@
+{
+  "run_id": "r3.0-inductor-autotune-screen-20260708-144124",
+  "status": "pass",
+  "finished_at": "2026-07-08T14:50:48+0800",
+  "repo": {
+    "kind": "competition",
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition",
+    "branch": "contest-p1-ffn-pool-20260621",
+    "head": "847d1bef10b0b5bb71b7e427535b610a20a4d263",
+    "status_path": "/public/home/xdzs2026_c166/codex_runs/r3.0-inductor-autotune-screen-20260708-144124/repo_status.txt",
+    "log_path": "/public/home/xdzs2026_c166/codex_runs/r3.0-inductor-autotune-screen-20260708-144124/repo_log.txt"
+  },
+  "wheel": {
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl",
+    "sha256": "a0f09295a60dc1e5f4f7e9a096f540f29165168047c3caaf37233b6e4cb8cfde"
+  },
+  "runtime_fingerprints_path": "/public/home/xdzs2026_c166/codex_runs/r3.0-inductor-autotune-screen-20260708-144124/runtime_fingerprints.json",
+  "overlay": {
+    "rev": "",
+    "source_dir": "",
+    "manifest_path": null
+  },
+  "model_dir": "/public/home/xdzs2026_c166/Qwen3.5-27B",
+  "protocol": {
+    "warmup": "run_throughput.sh 4-8K 1",
+    "buckets": [
+      "8-16K"
+    ],
+    "repetitions": 3,
+    "num_prompts": 3,
+    "accuracy": "none",
+    "locked_start_script": "1",
+    "load_format": "runai_streamer",
+    "enforce_eager": "0"
+  },
+  "throughput": {
+    "8-16K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3.0-inductor-autotune-screen-20260708-144124/throughput/8-16K_rep1.json",
+          "completed": 3,
+          "failed": 0,
+          "output_throughput": 7.865904903201621,
+          "p99_ttft_ms": 13229.955180217512,
+          "p99_tpot_ms": 70.22999769404109,
+          "duration": 73.608822776936
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3.0-inductor-autotune-screen-20260708-144124/throughput/8-16K_rep2.json",
+          "completed": 3,
+          "failed": 0,
+          "output_throughput": 7.8625211657200085,
+          "p99_ttft_ms": 13231.200310122222,
+          "p99_tpot_ms": 70.15169444930788,
+          "duration": 73.64050128404051
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3.0-inductor-autotune-screen-20260708-144124/throughput/8-16K_rep3.json",
+          "completed": 3,
+          "failed": 0,
+          "output_throughput": 7.869329921705965,
+          "p99_ttft_ms": 13234.310436486267,
+          "p99_tpot_ms": 70.13113548699496,
+          "duration": 73.57678554090671
+        }
+      ],
+      "median": {
+        "output_throughput": 7.865904903201621,
+        "p99_ttft_ms": 13231.200310122222,
+        "p99_tpot_ms": 70.15169444930788,
+        "duration": 73.608822776936
+      }
+    }
+  },
+  "weighted_output_throughput": null,
+  "accuracy": {}
+}

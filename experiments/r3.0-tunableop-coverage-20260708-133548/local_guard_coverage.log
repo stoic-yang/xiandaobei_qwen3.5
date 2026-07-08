@@ -1,0 +1,13 @@
+remote_guard_pid=4845
+status=running pid=4845
+Traceback (most recent call last):
+  File "/Users/keynary/Code/xiandaobei/meta-main/scripts/guard_bench.py", line 771, in <module>
+    main()
+    ~~~~^^
+  File "/Users/keynary/Code/xiandaobei/meta-main/scripts/guard_bench.py", line 765, in main
+    poll_remote_run(args, cfg, ssh_config, alias, local_dir)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/keynary/Code/xiandaobei/meta-main/scripts/guard_bench.py", line 695, in poll_remote_run
+    time.sleep(args.poll_interval)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

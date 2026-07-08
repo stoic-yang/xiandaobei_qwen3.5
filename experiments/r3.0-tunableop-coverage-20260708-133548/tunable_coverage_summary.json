@@ -1,0 +1,41 @@
+{
+  "root": "/Users/keynary/Code/xiandaobei/meta-main/experiments/r3.0-tunableop-coverage-20260708-133548/remote/tunable",
+  "rows": 2,
+  "unique_shapes": 2,
+  "target_hits": {
+    "mlp.gate_up_proj": {
+      "count": 0,
+      "examples": []
+    },
+    "mlp.down_proj": {
+      "count": 0,
+      "examples": []
+    },
+    "linear_attn.in_proj_qkvz": {
+      "count": 0,
+      "examples": []
+    },
+    "out_proj": {
+      "count": 0,
+      "examples": []
+    },
+    "self_attn.qkv_proj": {
+      "count": 0,
+      "examples": []
+    }
+  },
+  "top_shapes": [
+    {
+      "n": 3456,
+      "m": 65536,
+      "k": 1152,
+      "count": 1
+    },
+    {
+      "n": 1152,
+      "m": 65536,
+      "k": 1536,
+      "count": 1
+    }
+  ]
+}
