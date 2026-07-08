@@ -2,8 +2,9 @@
   "exp_id": "r3.0-shape-attribution-blocked-20260708-1051",
   "status": "blocked-no-container",
   "attempted_at": "2026-07-08T10:51:06+08:00",
+  "rechecked_at": "2026-07-08T10:54:55+08:00",
   "intended_task": "plans/task-r3.0-gemm-autotune.md Step 0 shape attribution",
-  "blocker": "No running SCNet container job; scnetctl reported Chrome startup is required.",
+  "blocker": "No running SCNet container job; scnetctl reported Chrome startup is required / job none.",
   "decision": {
     "continue_remaining_task_cards": true,
     "next_mainline": "R3.0/R2.4 GEMM autotune",
@@ -14,5 +15,6 @@
       "decode GEMV or bandwidth-side work"
     ]
   },
+  "active_goal": "Execute R3.0/R2.4 GEMM autotune Step 0 shape attribution in a running container.",
   "next_step": "Start a SCNet container, attach with scnetctl, then run task-r3.0-gemm-autotune.md Step 0."
 }

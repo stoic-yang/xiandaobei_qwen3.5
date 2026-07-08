@@ -18,6 +18,22 @@ It is valid to continue, with these adjustments:
 4. Keep R3.2 GDN downgraded unless a later 16-32K post-R3.1 profile contradicts the current `9.303%` GDN-core result.
 5. Do not start R4 INT8 before R3.0 Step0; official accuracy penalty is small (`0.5644`) but still leaves no reason to risk a precision branch before the lower-risk GEMM/config path.
 
+## Active Goal
+
+Execute R3.0/R2.4 GEMM autotune Step 0 shape attribution: in a running SCNet container, launch the locked R3.1 service, capture one 8-16K `max_tokens=1` prefill request, and attribute the top `Cijk_*` GEMM rows to exact model ops/shapes. If no container is available, stop at a clear handoff instead of repeatedly retrying SSH.
+
+## Execution Plan
+
+1. Refresh meta on `main` and confirm `plans/task-r3.0-gemm-autotune.md` is the active task card.
+2. Run `python3 scripts/scnetctl.py status`; if a running job exists, `attach` and verify SSH ControlMaster.
+3. If attached, start a background/nohup run that:
+   - uses locked `--max-model-len=32768` and `--load-format runai_streamer`
+   - keeps `XDB_R31_FLASH_ATTN_PREFILL` enabled
+   - captures one 8-16K `max_tokens=1` prefill request
+   - records enough profiler or instrumentation data to map `Cijk_*` rows to ops/shapes
+4. Parse the result into `experiments/r3.0-gemm-shape-attribution-<date>/summary.json`.
+5. Only after Step 0 succeeds, decide TunableOp vs Inductor autotune A/B.
+
 ## Attempted Action
 
 Checked SCNet state before launching any long job:
@@ -31,6 +47,17 @@ scnetctl: no running SCNet container job; Chrome startup is required
 ```
 
 No vLLM/profiler/guard job was started.
+
+Rechecked after creating the active goal:
+
+```text
+checked_at: 2026-07-08T10:54:55
+job: none
+worker: unreachable
+Connection closed by UNKNOWN port 65535
+```
+
+`scripts/scnetctl.py attach` then blocked while resolving a job and was interrupted locally after the decisive `job: none` state was already printed. No remote job was started and no source files were touched.
 
 ## Next Step
 
