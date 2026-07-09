@@ -1,0 +1,20 @@
+started_at=2026-07-09T11:23:19+08:00
+run_id=r4.1-prefill-16to32-profile-20260709-1120 port=18001 session=xdb_r41_prefill16_1120
+repo_head=4653a56d52719dc8617d31e556e62a670ed5e6ec
+install_wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+Installing collected packages: vllm
+  Attempting uninstall: vllm
+    Found existing installation: vllm 0.18.1+das.dtk2604
+    Uninstalling vllm-0.18.1+das.dtk2604:
+      Successfully uninstalled vllm-0.18.1+das.dtk2604
+Successfully installed vllm-0.18.1+das.dtk2604
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+site_root=/usr/local/lib/python3.10/dist-packages/vllm
+starting hipprof-wrapped service at 2026-07-09T11:24:27+08:00
+health_ok_at=2026-07-09T11:47:54+08:00 wait_s=1138
+warmup_request_start=2026-07-09T11:47:55+08:00
+prefill_trace_start=2026-07-09T11:49:42+08:00
+session cleanup 2026-07-09T11:50:12+08:00
+done
+finished_at=2026-07-09T11:50:22+08:00 rc=0

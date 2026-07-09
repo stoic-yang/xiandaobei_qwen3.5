@@ -1,0 +1,58 @@
+{
+  "exp_id": "r3.1b-step0-fused-prefill-source-20260709",
+  "status": "partial_no_gpu",
+  "checked_at": "2026-07-09T15:40:08+08:00",
+  "worker_status": "no running SCNet container job; GPU A/B not started",
+  "r4_1_profile": {
+    "path": "experiments/r4.1-prefill-16to32-profile-20260709-1120/profile/vllm_prefill16.hipkernel.csv",
+    "repo_head": "4653a56d52719dc8617d31e556e62a670ed5e6ec",
+    "kernel_name": "_fwd_kernel",
+    "calls": 96,
+    "total_ms": 2862.586283,
+    "kernel_pct": 40.58226184303716
+  },
+  "source_attribution": {
+    "kernel_file": "vllm/v1/attention/ops/triton_flash_prefill.py",
+    "kernel_symbol": "_fwd_kernel",
+    "call_site": "vllm/v1/attention/backends/triton_attn.py::flash_layout_chunked_prefill_attention",
+    "introduced_by_commit": "f014885bc perf(attention): add fused triton flash prefill kernel",
+    "active_head": "4653a56d5 perf(qwen3.5): disable mono prefill by default",
+    "is_package_flash_attn_varlen": false
+  },
+  "next_matrix": [
+    {
+      "arm": "A",
+      "env": {
+        "VLLM_TRITON_FUSED_PREFILL": "1",
+        "XDB_R31_FLASH_ATTN_PREFILL": "1"
+      },
+      "purpose": "current default baseline; fused Triton path should win"
+    },
+    {
+      "arm": "B",
+      "env": {
+        "VLLM_TRITON_FUSED_PREFILL": "0",
+        "XDB_R31_FLASH_ATTN_PREFILL": "1"
+      },
+      "purpose": "force xdb/package varlen path"
+    },
+    {
+      "arm": "C",
+      "env": {
+        "VLLM_TRITON_FUSED_PREFILL": "0",
+        "XDB_R31_FLASH_ATTN_PREFILL": "0"
+      },
+      "purpose": "unified-attention fallback attribution only"
+    },
+    {
+      "arm": "D",
+      "env": {
+        "VLLM_TRITON_FUSED_PREFILL": "0",
+        "XDB_R31_FLASH_ATTN_PREFILL": "1",
+        "FLASH_ATTENTION_TRITON_AMD_AUTOTUNE": "1"
+      },
+      "purpose": "package flash-attn autotune only if arm B is competitive and the env is supported"
+    }
+  ],
+  "verdict": "R4.1 16-32K _fwd_kernel is the local fused Triton prefill kernel, not proven to be flash_attn.vllm_flash_attn_varlen_func. R3.1b Step 1 should benchmark VLLM_TRITON_FUSED_PREFILL first, then consider tile-shape probes in triton_flash_prefill.py."
+}

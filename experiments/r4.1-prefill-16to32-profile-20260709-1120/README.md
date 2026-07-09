@@ -36,6 +36,7 @@ Locked serving evidence:
 
 - `vllm_server.log`: `max_seq_len=32768`, `load_format=runai_streamer`
 - R3.1 path enabled: `XDB_R31_FLASH_ATTN_PREFILL enabled`
+- source head: `4653a56d52719dc8617d31e556e62a670ed5e6ec`; see `raw/repo_log.txt`
 - request: first `16-32K_throughput.jsonl` prompt, API usage `prompt_tokens=20576`, `max_tokens=1`
 - request wall: `7169.049ms`
 
@@ -57,4 +58,4 @@ Roofline:
 
 `Cijk_*` remains yellow-zone, consistent with the 8-16K precheck (`~320 TFLOPS`). Direct GEMM kernel work is not justified from this alone, and the already-tested TunableOp/Inductor routes should stay closed.
 
-The new score-growth signal is long-context full-attention: at 16-32K, R3.1 flash-attn `_fwd_kernel` rises to `40.582%`, nearly the same scale as GEMM. Next task should be an R3.1b long-context flash-attn diagnostic/tuning card before spending effort on INT8 GEMM implementation.
+The new score-growth signal is long-context full-attention: at 16-32K, `_fwd_kernel` rises to `40.582%`, nearly the same scale as GEMM. Follow-up Step 0 attributed this symbol to the local fused Triton prefill kernel (`vllm/v1/attention/ops/triton_flash_prefill.py`), not package `flash_attn` varlen. Next task should benchmark `VLLM_TRITON_FUSED_PREFILL` before spending effort on INT8 GEMM implementation.

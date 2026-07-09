@@ -1,0 +1,12 @@
+4653a56d5 (HEAD -> contest-p1-ffn-pool-20260621) perf(qwen3.5): disable mono prefill by default
+8bdcd4a52 Revert "perf(qwen3.5): fuse qk norm rope"
+911b40050 perf(qwen3.5): fuse qk norm rope
+365034db0 perf(qwen3.5): fuse full-attention output gating
+3f95db0b1 perf(qwen3.5): fuse GDN side-path copies
+eec6e4d6e perf(qwen3.5): enlarge mono prefill V blocks
+3cdff1965 perf(qwen3.5): default to fused mono prefills
+8e377b17a perf(qwen3.5): reuse GDN prefill scratch buffers
+041f02af5 perf(qwen3.5): optimize GDN long prefills
+f014885bc perf(attention): add fused triton flash prefill kernel
+847d1bef1 perf(qwen35): enable flash attention prefill path
+d29e9db3f perf(attention): add qwen35 rocm gqa attention path
