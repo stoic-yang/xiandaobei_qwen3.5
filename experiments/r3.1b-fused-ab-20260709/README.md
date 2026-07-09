@@ -79,6 +79,27 @@ Attempted same-container default A with `VLLM_TRITON_FUSED_PREFILL_MAX_SEQ_LEN=0
 - During the run, a separate `/public/home/xdzs2026_c166/Qwen3.5-0.8B` service appeared on port `8001`.
 - Per shared-container discipline, this agent stopped only the `18001` guard/benchmark and preserved the `8001` 0.8B service. See `experiments/r3.1b-fuseddefault-3bucket-20260709-1906/stopped.txt`.
 
+### Default A next command
+
+Run this only on a clean 27B-only container with enough lifetime for a cold `runai_streamer` start plus three buckets:
+
+```bash
+cd /Users/keynary/Code/xiandaobei/meta-main
+RUN_ID="r3.1b-fuseddefault-3bucket-$(date '+%Y%m%d-%H%M')"
+SESSION="xdb_${RUN_ID//./_}"
+tmux new-session -d -s "$SESSION" \
+  "cd /Users/keynary/Code/xiandaobei/meta-main && RUN_ID='$RUN_ID' bash experiments/r3.1b-fused-ab-20260709/run_default_fused_guard.sh"
+```
+
+Equivalent direct form inside any long-running shell:
+
+```bash
+RUN_ID=r3.1b-fuseddefault-3bucket-$(date '+%Y%m%d-%H%M') \
+  bash experiments/r3.1b-fused-ab-20260709/run_default_fused_guard.sh
+```
+
+Compare its `summary.json` against `experiments/r3.1b-threshold16384-3bucket-20260709-1822/summary.json`.
+
 ## Verdict
 
 - Confirmed a real long-bucket growth signal: xdb/package varlen beats fused default on `16-32K` by `+4.239%` in same-container A/B.
