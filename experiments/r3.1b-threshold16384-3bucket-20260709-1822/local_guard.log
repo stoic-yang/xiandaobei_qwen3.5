@@ -1,0 +1,6 @@
+started_at=2026-07-09T18:22:23+0800
+run_id=r3.1b-threshold16384-3bucket-20260709-1822
+overlay_source_dir=/public/home/xdzs2026_c166/vllm_cscc_codex_r31b_threshold_20260709_173633
+remote_guard_pid=35839
+status=running pid=35839
+wrote /Users/keynary/Code/xiandaobei/meta-main/experiments/r3.1b-threshold16384-3bucket-20260709-1822/summary.json

@@ -1,0 +1,2 @@
+PERSIST_MODEL_CHECK layers=64 hidden=5120 heads=24 kv_heads=4 head_dim=256
+CLEAN mem=0

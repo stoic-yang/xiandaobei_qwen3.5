@@ -1,0 +1,6 @@
+started_at=2026-07-09T19:06:47+0800
+run_id=r3.1b-fuseddefault-3bucket-20260709-1906
+overlay_source_dir=/public/home/xdzs2026_c166/vllm_cscc_codex_r31b_threshold_20260709_173633
+fused_max_seq_len=0
+remote_guard_pid=38647
+status=running pid=38647

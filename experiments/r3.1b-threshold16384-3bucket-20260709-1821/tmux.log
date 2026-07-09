@@ -1,0 +1,4 @@
+BUSY_PROCESS
+  35787 bash -s -- /public/home/xdzs2026_c166/Qwen3.5-27B /root/.xdb_guard_no_local_model_r3.1b-threshold16384-3bucket-20260709-1821
+  35788 bash -s -- /public/home/xdzs2026_c166/Qwen3.5-27B /root/.xdb_guard_no_local_model_r3.1b-threshold16384-3bucket-20260709-1821
+preflight failed rc=20; not starting guard

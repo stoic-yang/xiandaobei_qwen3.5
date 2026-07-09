@@ -1,0 +1,11 @@
+=== poll 2026-07-09T17:58:41+0800 rc=0 ===
+status=running pid=27998
+=== guard benchmark ===
+run_id=r3.1b-threshold16384-3bucket-retry-20260709-1758
+host=worker-0
+started_at=2026-07-09T17:58:42+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=4-8K 8-16K 16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0 server_port=18001
+model_dir_source=local MODEL_DIR=/root/Qwen3.5-27B

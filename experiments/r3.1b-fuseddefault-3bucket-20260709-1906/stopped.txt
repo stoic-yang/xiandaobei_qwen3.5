@@ -1,0 +1,2 @@
+stopped_at=2026-07-09T19:34:02+0800
+reason=0.8B service appeared on 8001 during default A; stopped only 18001 guard, preserved 8001

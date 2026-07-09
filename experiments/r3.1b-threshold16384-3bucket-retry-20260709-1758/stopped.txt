@@ -1,0 +1,2 @@
+stopped_at=2026-07-09T18:04:50+0800
+reason=invalid environment: 0.8B service/model present; user requested stop
