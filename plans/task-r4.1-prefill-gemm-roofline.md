@@ -137,3 +137,4 @@
 ## Changelog
 
 - 2026-07-09 create（Codex；用户提供两篇 gfx936/DCU 带宽讲义后，将方法论落到 R3.1 后瓶颈：decode 带宽侧继续关闭，prefill GEMM 先做 roofline 与 work-elimination 诊断，再决定是否进入低精度 compute）。
+- 2026-07-09 Step 1 result（Codex；`experiments/r4.1-prefill-16to32-profile-20260709-1120/`）：16-32K `Cijk_*` aggregate `317.396 TFLOPS` / `80.353%` peak，仍是黄区；但 flash-attn `_fwd_kernel` 占 `40.582%`，与 GEMM `44.715%` 同量级。直接 GEMM/INT8 实现降级，下一入口转 `task-r3.1b-long-context-flash-attn.md`。

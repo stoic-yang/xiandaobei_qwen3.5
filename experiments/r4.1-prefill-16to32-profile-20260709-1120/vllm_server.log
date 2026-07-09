@@ -1,0 +1,257 @@
+HIPPROFILE-trace_hsa_call: hsa_support OnLoad
+HIPPROFILE-trace_hsa_call: unknown AmdExtTable version 1.672
+Using the old table 6.3.10, previously size 608 now 648
+HIPPROFILE-trace_hsa_call: unknown AmdExtTable version 1.672
+Using the old table 6.3.10, previously size 608 now 648
+(APIServer pid=7802) INFO 07-09 11:24:52 [utils.py:297] 
+(APIServer pid=7802) INFO 07-09 11:24:52 [utils.py:297]        █     █     █▄   ▄█
+(APIServer pid=7802) INFO 07-09 11:24:52 [utils.py:297]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.18.1
+(APIServer pid=7802) INFO 07-09 11:24:52 [utils.py:297]   █▄█▀ █     █     █     █  model   /public/home/xdzs2026_c166/Qwen3.5-27B
+(APIServer pid=7802) INFO 07-09 11:24:52 [utils.py:297]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀
+(APIServer pid=7802) INFO 07-09 11:24:52 [utils.py:297] 
+(APIServer pid=7802) INFO 07-09 11:24:52 [utils.py:233] non-default args: {'model_tag': '/public/home/xdzs2026_c166/Qwen3.5-27B', 'default_chat_template_kwargs': {'enable_thinking': False}, 'enable_auto_tool_choice': True, 'tool_call_parser': 'qwen3_coder', 'port': 18001, 'model': '/public/home/xdzs2026_c166/Qwen3.5-27B', 'trust_remote_code': True, 'dtype': 'bfloat16', 'max_model_len': 32768, 'served_model_name': ['Qwen3.5-27B'], 'load_format': 'runai_streamer', 'reasoning_parser': 'qwen3', 'gpu_memory_utilization': 0.95, 'max_num_batched_tokens': 4096, 'max_num_seqs': 128}
+(APIServer pid=7802) The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+(APIServer pid=7802) `layer_type_validation` is deprecated and will be removed in v5.20. Use `PreTrainedConfig.validate_layer_type` instead
+(APIServer pid=7802) `layer_type_validation` is deprecated and will be removed in v5.20. Use `PreTrainedConfig.validate_layer_type` instead
+(APIServer pid=7802) `layer_type_validation` is deprecated and will be removed in v5.20. Use `PreTrainedConfig.validate_layer_type` instead
+(APIServer pid=7802) INFO 07-09 11:25:20 [model.py:533] Resolved architecture: Qwen3_5ForConditionalGeneration
+(APIServer pid=7802) INFO 07-09 11:25:20 [model.py:1582] Using max model len 32768
+(APIServer pid=7802) INFO 07-09 11:25:21 [scheduler.py:231] Chunked prefill is enabled with max_num_batched_tokens=4096.
+(APIServer pid=7802) `Qwen2VLImageProcessorFast` is deprecated. The `Fast` suffix for image processors has been removed; use `Qwen2VLImageProcessor` instead.
+(APIServer pid=7802) INFO 07-09 11:25:21 [config.py:212] Setting attention block size to 784 tokens to ensure that attention page size is >= mamba page size.
+(APIServer pid=7802) INFO 07-09 11:25:21 [config.py:243] Padding mamba page size by 0.13% to ensure that mamba page size and attention page size are exactly equal.
+(APIServer pid=7802) INFO 07-09 11:25:21 [vllm.py:775] Asynchronous scheduling is enabled.
+(APIServer pid=7802) The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+HIPPROFILE-trace_hsa_call: hsa_support OnLoad
+HIPPROFILE-trace_hsa_call: unknown AmdExtTable version 1.672
+Using the old table 6.3.10, previously size 608 now 648
+HIPPROFILE-trace_hsa_call: unknown AmdExtTable version 1.672
+Using the old table 6.3.10, previously size 608 now 648
+(EngineCore pid=8099) INFO 07-09 11:26:01 [core.py:103] Initializing a V1 LLM engine (v0.18.1) with config: model='/public/home/xdzs2026_c166/Qwen3.5-27B', speculative_config=None, tokenizer='/public/home/xdzs2026_c166/Qwen3.5-27B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=32768, download_dir=None, load_format=runai_streamer, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=True, quantization=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='qwen3', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=0, served_model_name=Qwen3.5-27B, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['+sparse_attn_indexer', 'none'], 'splitting_ops': ['vllm::unified_attention', 'vllm::unified_attention_with_output', 'vllm::unified_mla_attention', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::kda_attention', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update'], 'compile_mm_encoder': False, 'compile_sizes': [], 'compile_ranges_endpoints': [4096], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False}, 'max_cudagraph_capture_size': 256, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': True, 'static_all_moe_layers': []}
+(EngineCore pid=8099) `Qwen2VLImageProcessorFast` is deprecated. The `Fast` suffix for image processors has been removed; use `Qwen2VLImageProcessor` instead.
+(EngineCore pid=8099) INFO 07-09 11:26:05 [parallel_state.py:1395] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://173.0.58.2:59455 backend=nccl
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+W0709 11:26:05.420675  8099 socket.cpp:207] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+(EngineCore pid=8099) INFO 07-09 11:26:05 [parallel_state.py:1717] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=8099) The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+(EngineCore pid=8099) INFO 07-09 11:26:16 [gpu_model_runner.py:4481] Starting to load model /public/home/xdzs2026_c166/Qwen3.5-27B...
+(EngineCore pid=8099) INFO 07-09 11:26:16 [rocm.py:556] Using Torch SDPA backend for ViT model.
+(EngineCore pid=8099) WARNING 07-09 11:26:16 [activation.py:693] [ROCm] PyTorch's native GELU with tanh approximation is unstable. Falling back to GELU(approximate='none').
+(EngineCore pid=8099) INFO 07-09 11:26:16 [mm_encoder_attention.py:230] Using AttentionBackendEnum.TORCH_SDPA for MMEncoderAttention.
+(EngineCore pid=8099) INFO 07-09 11:26:16 [qwen3_next.py:226] Using Triton/FLA GDN prefill kernel
+(EngineCore pid=8099) INFO 07-09 11:26:16 [rocm.py:496] Using TRITON_ATTN attention backend out of potential backends: ['TRITON_ATTN'].
+(EngineCore pid=8099) INFO 07-09 11:26:16 [triton_attn.py:430] XDB_R31_FLASH_ATTN_PREFILL enabled: using flash-attn varlen for eligible decoder prefill attention.
+(EngineCore pid=8099) WARNING 07-09 11:26:17 [compilation.py:1136] Op 'sparse_attn_indexer' not present in model, enabling with '+sparse_attn_indexer' has no effect
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:   0% Completed | 0/1199 [00:00<?, ?it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:   1% Completed | 8/1199 [00:02<05:13,  3.80it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:   1% Completed | 16/1199 [00:04<05:51,  3.37it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:   2% Completed | 24/1199 [00:07<05:47,  3.38it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:   3% Completed | 35/1199 [00:09<05:04,  3.83it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:   4% Completed | 48/1199 [00:12<04:44,  4.04it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:   5% Completed | 57/1199 [00:14<04:52,  3.90it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:   5% Completed | 65/1199 [00:18<05:42,  3.31it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:   7% Completed | 78/1199 [00:21<04:59,  3.74it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:   8% Completed | 90/1199 [00:24<04:56,  3.74it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:   9% Completed | 103/1199 [00:26<04:29,  4.06it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:   9% Completed | 112/1199 [00:29<04:37,  3.91it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  10% Completed | 120/1199 [00:31<04:41,  3.84it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  11% Completed | 132/1199 [00:33<04:07,  4.31it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  12% Completed | 141/1199 [00:36<04:12,  4.20it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  13% Completed | 153/1199 [00:38<03:45,  4.64it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  14% Completed | 168/1199 [00:40<03:27,  4.96it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  15% Completed | 180/1199 [00:42<03:15,  5.20it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  16% Completed | 193/1199 [00:45<03:09,  5.30it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  17% Completed | 204/1199 [00:48<03:29,  4.74it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  18% Completed | 214/1199 [00:52<04:21,  3.77it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  19% Completed | 227/1199 [00:54<03:51,  4.20it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  20% Completed | 239/1199 [00:56<03:28,  4.60it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  21% Completed | 249/1199 [00:59<03:31,  4.49it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  22% Completed | 259/1199 [01:07<06:15,  2.50it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  23% Completed | 274/1199 [01:10<04:49,  3.20it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  24% Completed | 283/1199 [01:16<05:56,  2.57it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  24% Completed | 291/1199 [01:27<09:46,  1.55it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  25% Completed | 294/1199 [01:30<10:17,  1.47it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  25% Completed | 300/1199 [01:37<11:33,  1.30it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  25% Completed | 305/1199 [01:48<16:43,  1.12s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  26% Completed | 307/1199 [01:51<16:38,  1.12s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  26% Completed | 311/1199 [02:07<27:19,  1.85s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  26% Completed | 314/1199 [02:09<24:01,  1.63s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  27% Completed | 318/1199 [02:14<21:45,  1.48s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  35% Completed | 422/1199 [02:18<02:09,  5.98it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  35% Completed | 422/1199 [02:30<02:09,  5.98it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  36% Completed | 431/1199 [02:34<04:10,  3.07it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  36% Completed | 434/1199 [02:40<05:09,  2.47it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  37% Completed | 446/1199 [02:48<05:51,  2.14it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  37% Completed | 446/1199 [03:00<05:51,  2.14it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  38% Completed | 456/1199 [03:00<07:27,  1.66it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  38% Completed | 458/1199 [03:02<07:44,  1.60it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  39% Completed | 465/1199 [03:05<07:09,  1.71it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  39% Completed | 472/1199 [03:17<10:21,  1.17it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  40% Completed | 475/1199 [03:20<10:24,  1.16it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  40% Completed | 480/1199 [03:30<13:41,  1.14s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  41% Completed | 488/1199 [03:33<10:05,  1.17it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  41% Completed | 494/1199 [03:44<13:08,  1.12s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  41% Completed | 497/1199 [03:48<13:31,  1.16s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  43% Completed | 520/1199 [03:51<05:42,  1.98it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  44% Completed | 528/1199 [03:53<05:01,  2.22it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  46% Completed | 546/1199 [03:55<03:22,  3.22it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  46% Completed | 556/1199 [03:58<03:07,  3.44it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  48% Completed | 579/1199 [04:00<02:08,  4.83it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  49% Completed | 592/1199 [04:03<02:02,  4.96it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  51% Completed | 606/1199 [04:06<02:00,  4.92it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  52% Completed | 618/1199 [04:08<01:52,  5.14it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  53% Completed | 630/1199 [04:12<02:18,  4.10it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  53% Completed | 641/1199 [04:14<02:09,  4.32it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  53% Completed | 641/1199 [04:30<02:09,  4.32it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  54% Completed | 650/1199 [04:31<05:35,  1.64it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  55% Completed | 657/1199 [04:35<05:36,  1.61it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  55% Completed | 665/1199 [04:43<06:06,  1.46it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  56% Completed | 672/1199 [04:56<08:34,  1.02it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  57% Completed | 680/1199 [04:59<07:03,  1.23it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  57% Completed | 680/1199 [05:10<07:03,  1.23it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  57% Completed | 686/1199 [05:11<09:26,  1.11s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  57% Completed | 689/1199 [05:13<08:53,  1.05s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  58% Completed | 694/1199 [05:21<09:37,  1.14s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  58% Completed | 698/1199 [05:24<09:12,  1.10s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  59% Completed | 704/1199 [05:27<07:16,  1.14it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  59% Completed | 708/1199 [05:32<08:06,  1.01it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  59% Completed | 712/1199 [05:37<08:37,  1.06s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  60% Completed | 717/1199 [05:41<07:32,  1.07it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  62% Completed | 741/1199 [05:44<02:57,  2.58it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  62% Completed | 748/1199 [05:47<03:01,  2.48it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  65% Completed | 775/1199 [05:49<01:37,  4.35it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  66% Completed | 790/1199 [05:52<01:23,  4.90it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  67% Completed | 802/1199 [05:54<01:18,  5.06it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  68% Completed | 814/1199 [05:56<01:17,  4.97it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  70% Completed | 836/1199 [05:59<01:02,  5.81it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  71% Completed | 849/1199 [06:01<00:59,  5.84it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  72% Completed | 867/1199 [06:05<01:00,  5.47it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  74% Completed | 889/1199 [06:08<00:48,  6.33it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  75% Completed | 903/1199 [06:10<00:47,  6.26it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  77% Completed | 921/1199 [06:12<00:40,  6.79it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  78% Completed | 935/1199 [06:19<01:03,  4.15it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  79% Completed | 949/1199 [06:21<00:54,  4.61it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  80% Completed | 961/1199 [06:25<00:58,  4.04it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  81% Completed | 971/1199 [06:30<01:06,  3.45it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  82% Completed | 980/1199 [06:33<01:05,  3.35it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  82% Completed | 988/1199 [06:38<01:19,  2.64it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  83% Completed | 998/1199 [06:40<01:06,  3.04it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  84% Completed | 1006/1199 [06:44<01:13,  2.61it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  85% Completed | 1015/1199 [06:48<01:12,  2.54it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  85% Completed | 1021/1199 [06:50<01:09,  2.57it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  86% Completed | 1028/1199 [06:53<01:03,  2.70it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  86% Completed | 1034/1199 [06:56<01:09,  2.37it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  87% Completed | 1040/1199 [06:58<01:04,  2.48it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  87% Completed | 1046/1199 [07:01<01:05,  2.35it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  88% Completed | 1054/1199 [07:04<00:56,  2.56it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  88% Completed | 1061/1199 [07:06<00:49,  2.77it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  89% Completed | 1067/1199 [07:08<00:48,  2.71it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  90% Completed | 1082/1199 [07:11<00:32,  3.63it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  91% Completed | 1090/1199 [07:13<00:30,  3.62it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  91% Completed | 1090/1199 [07:30<00:30,  3.62it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  92% Completed | 1104/1199 [07:43<01:38,  1.04s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  92% Completed | 1106/1199 [07:46<01:39,  1.07s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  93% Completed | 1112/1199 [07:53<01:36,  1.11s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  93% Completed | 1112/1199 [08:10<01:36,  1.11s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  93% Completed | 1113/1199 [08:11<02:51,  1.99s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  93% Completed | 1120/1199 [08:13<01:49,  1.38s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  93% Completed | 1120/1199 [08:30<01:49,  1.38s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  94% Completed | 1124/1199 [08:31<02:39,  2.13s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  94% Completed | 1129/1199 [08:39<02:17,  1.97s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  94% Completed | 1129/1199 [08:50<02:17,  1.97s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  94% Completed | 1131/1199 [08:50<02:45,  2.44s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  95% Completed | 1136/1199 [08:53<01:56,  1.85s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  95% Completed | 1140/1199 [09:09<02:23,  2.44s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  95% Completed | 1143/1199 [09:11<01:55,  2.06s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  96% Completed | 1147/1199 [09:29<02:22,  2.74s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  96% Completed | 1149/1199 [09:31<02:04,  2.49s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  96% Completed | 1153/1199 [09:34<01:24,  1.84s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  96% Completed | 1157/1199 [09:47<01:37,  2.31s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  97% Completed | 1159/1199 [09:50<01:26,  2.15s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  97% Completed | 1162/1199 [09:55<01:14,  2.02s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  97% Completed | 1165/1199 [09:59<01:02,  1.85s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  97% Completed | 1167/1199 [10:07<01:13,  2.29s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  98% Completed | 1172/1199 [10:12<00:46,  1.73s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  98% Completed | 1174/1199 [10:18<00:50,  2.03s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  98% Completed | 1176/1199 [10:22<00:46,  2.02s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  98% Completed | 1179/1199 [10:24<00:31,  1.60s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  98% Completed | 1181/1199 [10:29<00:32,  1.81s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  99% Completed | 1183/1199 [10:39<00:40,  2.53s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer:  99% Completed | 1185/1199 [10:41<00:30,  2.19s/it]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer: 100% Completed | 1196/1199 [10:43<00:02,  1.18it/s]
+(EngineCore pid=8099) Loading safetensors using Runai Model Streamer: 100% Completed | 1199/1199 [10:45<00:00,  1.86it/s]
+(EngineCore pid=8099) 
+(EngineCore pid=8099) INFO:runai_model_streamer.file_streamer.file_streamer:[RunAI Streamer] Overall time to stream 51.7 GiB of all files to cpu: 645.96s, 82.0 MiB/s
+(EngineCore pid=8099) INFO 07-09 11:37:04 [gpu_model_runner.py:4566] Model loading took 51.22 GiB memory and 646.843125 seconds
+(EngineCore pid=8099) INFO 07-09 11:37:04 [gpu_model_runner.py:5488] Encoder cache will be initialized with a budget of 16384 tokens, and profiled with 1 image items of the maximum feature size.
+(EngineCore pid=8099) /usr/local/lib/python3.10/dist-packages/vllm/v1/attention/ops/vit_attn_wrappers.py:202: UserWarning: sdpa adopt the new interface of flash-attn (Triggered internally at /home/pytorch/aten/src/ATen/native/transformers/hip/cutlassfa_adapter.h:145.)
+(EngineCore pid=8099)   output = F.scaled_dot_product_attention(
+(EngineCore pid=8099) WARNING 07-09 11:37:32 [decorators.py:304] Compiling model again due to a load failure from /public/home/xdzs2026_c166/vllm_cache/vllm_cache/torch_compile_cache/torch_aot_compile/207fa946ad16e46aa927124fbd4176efc943178dfb697c67815070d1e4ffdf7b/rank_0_0/model, reason: Source code has changed since the last compilation. Recompiling the model.
+(EngineCore pid=8099) INFO 07-09 11:37:51 [backends.py:988] Using cache directory: /public/home/xdzs2026_c166/vllm_cache/vllm_cache/torch_compile_cache/53b5735150/rank_0_0/backbone for vLLM's torch.compile
+(EngineCore pid=8099) INFO 07-09 11:37:52 [backends.py:1048] Dynamo bytecode transform time: 20.28 s
+(EngineCore pid=8099) INFO 07-09 11:38:05 [backends.py:371] Cache the graph of compile range (1, 4096) for later use
+(EngineCore pid=8099) INFO 07-09 11:44:25 [backends.py:387] Compiling a graph for compile range (1, 4096) takes 391.73 s
+(EngineCore pid=8099) INFO 07-09 11:44:26 [backends.py:1123] Saved compiler manager cache in 1.04 seconds.
+(EngineCore pid=8099) INFO 07-09 11:44:37 [decorators.py:627] saved AOT compiled function to /public/home/xdzs2026_c166/vllm_cache/vllm_cache/torch_compile_cache/torch_aot_compile/207fa946ad16e46aa927124fbd4176efc943178dfb697c67815070d1e4ffdf7b/rank_0_0/model
+(EngineCore pid=8099) INFO 07-09 11:44:37 [monitor.py:48] torch.compile took 424.70 s in total
+(EngineCore pid=8099) /usr/local/lib/python3.10/dist-packages/vllm/model_executor/layers/fla/ops/utils.py:113: UserWarning: Input tensor shape suggests potential format mismatch: seq_len (16) < num_heads (48). This may indicate the inputs were passed in head-first format [B, H, T, ...] when head_first=False was specified. Please verify your input tensor format matches the expected shape [B, T, H, ...].
+(EngineCore pid=8099)   return fn(*contiguous_args, **contiguous_kwargs)
+(EngineCore pid=8099) /usr/local/lib/python3.10/dist-packages/vllm/model_executor/layers/fla/ops/utils.py:113: UserWarning: Input tensor shape suggests potential format mismatch: seq_len (32) < num_heads (48). This may indicate the inputs were passed in head-first format [B, H, T, ...] when head_first=False was specified. Please verify your input tensor format matches the expected shape [B, T, H, ...].
+(EngineCore pid=8099)   return fn(*contiguous_args, **contiguous_kwargs)
+(EngineCore pid=8099) INFO 07-09 11:47:16 [monitor.py:76] Initial profiling/warmup run took 159.71 s
+(EngineCore pid=8099) INFO 07-09 11:47:19 [gpu_worker.py:456] Available KV cache memory: 6.75 GiB
+(EngineCore pid=8099) INFO 07-09 11:47:19 [kv_cache_utils.py:1316] GPU KV cache size: 27,440 tokens
+(EngineCore pid=8099) INFO 07-09 11:47:19 [kv_cache_utils.py:1321] Maximum concurrency for 32,768 tokens per request: 3.13x
+(EngineCore pid=8099) WARNING 07-09 11:47:19 [compilation.py:1236] Capping cudagraph capture sizes from max 256 to 136 to fit Mamba cache blocks (141 blocks available). This limits the maximum batch size that can use CUDA graphs. To increase this limit, reduce max_num_seqs or increase available GPU memory.
+(EngineCore pid=8099) Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/20 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   5%|▌         | 1/20 [00:01<00:25,  1.32s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  10%|█         | 2/20 [00:01<00:11,  1.56it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  15%|█▌        | 3/20 [00:01<00:07,  2.37it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  20%|██        | 4/20 [00:01<00:05,  3.07it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  25%|██▌       | 5/20 [00:01<00:04,  3.72it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  30%|███       | 6/20 [00:02<00:03,  4.26it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  35%|███▌      | 7/20 [00:02<00:02,  4.47it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  40%|████      | 8/20 [00:02<00:02,  4.94it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  45%|████▌     | 9/20 [00:02<00:02,  5.03it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  50%|█████     | 10/20 [00:02<00:01,  5.38it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  55%|█████▌    | 11/20 [00:03<00:01,  5.66it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  60%|██████    | 12/20 [00:03<00:01,  5.84it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  65%|██████▌   | 13/20 [00:03<00:01,  5.73it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  70%|███████   | 14/20 [00:03<00:01,  5.92it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  75%|███████▌  | 15/20 [00:03<00:00,  5.83it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  80%|████████  | 16/20 [00:03<00:00,  6.01it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  85%|████████▌ | 17/20 [00:04<00:00,  6.13it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  90%|█████████ | 18/20 [00:04<00:00,  6.24it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  95%|█████████▌| 19/20 [00:04<00:00,  6.30it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 20/20 [00:04<00:00,  6.27it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 20/20 [00:04<00:00,  4.47it/s]
+(EngineCore pid=8099) Capturing CUDA graphs (decode, FULL):   0%|          | 0/19 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):   5%|▌         | 1/19 [00:03<00:54,  3.03s/it]Capturing CUDA graphs (decode, FULL):  11%|█         | 2/19 [00:06<00:56,  3.35s/it]Capturing CUDA graphs (decode, FULL):  16%|█▌        | 3/19 [00:06<00:30,  1.91s/it]Capturing CUDA graphs (decode, FULL):  21%|██        | 4/19 [00:06<00:18,  1.23s/it]Capturing CUDA graphs (decode, FULL):  26%|██▋       | 5/19 [00:07<00:11,  1.18it/s]Capturing CUDA graphs (decode, FULL):  32%|███▏      | 6/19 [00:07<00:08,  1.58it/s]Capturing CUDA graphs (decode, FULL):  37%|███▋      | 7/19 [00:07<00:05,  2.07it/s]Capturing CUDA graphs (decode, FULL):  42%|████▏     | 8/19 [00:07<00:04,  2.54it/s]Capturing CUDA graphs (decode, FULL):  47%|████▋     | 9/19 [00:07<00:03,  3.06it/s]Capturing CUDA graphs (decode, FULL):  53%|█████▎    | 10/19 [00:08<00:02,  3.56it/s]Capturing CUDA graphs (decode, FULL):  58%|█████▊    | 11/19 [00:08<00:01,  4.01it/s]Capturing CUDA graphs (decode, FULL):  63%|██████▎   | 12/19 [00:08<00:01,  4.33it/s]Capturing CUDA graphs (decode, FULL):  68%|██████▊   | 13/19 [00:10<00:04,  1.29it/s]Capturing CUDA graphs (decode, FULL):  74%|███████▎  | 14/19 [00:12<00:05,  1.07s/it]Capturing CUDA graphs (decode, FULL):  79%|███████▉  | 15/19 [00:12<00:03,  1.24it/s]Capturing CUDA graphs (decode, FULL):  84%|████████▍ | 16/19 [00:12<00:01,  1.62it/s]Capturing CUDA graphs (decode, FULL):  89%|████████▉ | 17/19 [00:12<00:00,  2.06it/s]Capturing CUDA graphs (decode, FULL):  95%|█████████▍| 18/19 [00:12<00:00,  2.54it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 19/19 [00:16<00:00,  1.47s/it]Capturing CUDA graphs (decode, FULL): 100%|██████████| 19/19 [00:16<00:00,  1.12it/s]
+(EngineCore pid=8099) INFO 07-09 11:47:41 [gpu_model_runner.py:5746] Graph capturing finished in 22 secs, took 0.32 GiB
+(EngineCore pid=8099) INFO 07-09 11:47:41 [core.py:281] init engine (profile, create kv cache, warmup model) took 637.59 seconds
+(EngineCore pid=8099) INFO 07-09 11:47:42 [vllm.py:775] Asynchronous scheduling is enabled.
+(APIServer pid=7802) INFO 07-09 11:47:42 [api_server.py:576] Supported tasks: ['generate']
+(APIServer pid=7802) INFO 07-09 11:47:42 [parser_manager.py:202] "auto" tool choice has been enabled.
+(APIServer pid=7802) WARNING 07-09 11:47:42 [model.py:1376] Default vLLM sampling parameters have been overridden by the model's `generation_config.json`: `{'temperature': 0.6, 'top_k': 20, 'top_p': 0.95}`. If this is not intended, please relaunch vLLM instance with `--generation-config vllm`.
+(APIServer pid=7802) INFO 07-09 11:47:42 [parser_manager.py:202] "auto" tool choice has been enabled.
+(APIServer pid=7802) INFO 07-09 11:47:42 [parser_manager.py:202] "auto" tool choice has been enabled.
+(APIServer pid=7802) INFO 07-09 11:47:45 [hf.py:320] Detected the chat template content format to be 'string'. You can set `--chat-template-content-format` to override this.
+(APIServer pid=7802) INFO 07-09 11:47:53 [base.py:216] Multi-modal warmup completed in 8.156s
+(APIServer pid=7802) INFO 07-09 11:47:53 [parser_manager.py:202] "auto" tool choice has been enabled.
+(APIServer pid=7802) INFO 07-09 11:47:53 [api_server.py:580] Starting vLLM server on http://0.0.0.0:18001
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:37] Available routes are:
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /openapi.json, Methods: HEAD, GET
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /docs, Methods: HEAD, GET
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /docs/oauth2-redirect, Methods: HEAD, GET
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /redoc, Methods: HEAD, GET
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /tokenize, Methods: POST
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /detokenize, Methods: POST
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /load, Methods: GET
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /version, Methods: GET
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /health, Methods: GET
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /metrics, Methods: GET
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /v1/models, Methods: GET
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /ping, Methods: GET
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /ping, Methods: POST
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /invocations, Methods: POST
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /v1/chat/completions, Methods: POST
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /v1/responses, Methods: POST
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /v1/responses/{response_id}, Methods: GET
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /v1/responses/{response_id}/cancel, Methods: POST
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /v1/completions, Methods: POST
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /v1/messages, Methods: POST
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /v1/messages/count_tokens, Methods: POST
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /inference/v1/generate, Methods: POST
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /scale_elastic_ep, Methods: POST
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /is_scaling_elastic_ep, Methods: POST
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /v1/chat/completions/render, Methods: POST
+(APIServer pid=7802) INFO 07-09 11:47:53 [launcher.py:46] Route: /v1/completions/render, Methods: POST
+(APIServer pid=7802) INFO:     Started server process [7802]
+(APIServer pid=7802) INFO:     Waiting for application startup.
+(APIServer pid=7802) INFO:     Application startup complete.
+(APIServer pid=7802) INFO:     127.0.0.1:41752 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=7802) INFO:     127.0.0.1:41758 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=7802) INFO 07-09 11:49:24 [loggers.py:259] Engine 000: Avg prompt throughput: 757.5 tokens/s, Avg generation throughput: 0.1 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+(APIServer pid=7802) INFO 07-09 11:49:34 [loggers.py:259] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+(APIServer pid=7802) INFO:     127.0.0.1:59128 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+Named pipe /tmp/hipprof_session_0_8099 deleted successfully.
+Named pipe /tmp/hipprof_session_0_7802 deleted successfully.
+(APIServer pid=7802) INFO 07-09 11:50:14 [loggers.py:259] Engine 000: Avg prompt throughput: 2057.5 tokens/s, Avg generation throughput: 0.1 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%

@@ -1,0 +1,9 @@
+{
+  "bucket": "16-32K",
+  "prompt_chars": 59870,
+  "wall_ms": 7169.04919,
+  "response_bytes": 576,
+  "response_preview": "{\"id\":\"chatcmpl-b7caf433f2ae4280\",\"object\":\"chat.completion\",\"created\":1783569003,\"model\":\"Qwen3.5-27B\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"The\",\"refusal\":null,\"annotations\":null,\"audio\":null,\"function_call\":null,\"tool_calls\":[],\"reasoning\":null},\"logprobs\":null,\"finish_reason\":\"length\",\"stop_reason\":null,\"token_ids\":null}],\"service_tier\":null,\"system_fingerprint\":null,\"usage\":{\"prompt_tokens\":20576,\"total_tokens\":20577,\"completion_tokens\":1,\"prompt_tokens_details\":nul",
+  "plain_tokens": 20564,
+  "chat_tokens": 2
+}

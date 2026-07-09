@@ -8,7 +8,7 @@
 
 ## 一句话现状
 R3.1 flash-attn prefill candidate 已拿到官方 **AC / 74.6924**（见 `experiments/r3.1-official-ac-20260708/`），官方三档吞吐 `13.78 / 12.89 / 11.18`，SLA 扣分 `0.0`，精度扣分 `0.5644`。旧 `d29e9db3` 官方 **59.0018** 只保留为早期负优化锚点，不再代表当前 baseline。
-当前瓶颈仍是**长上下文 Prefill/TTFT**；R3.1 后 profile 显示主热点已转为 `Cijk_*` GEMM（`67.101%`）。R3.0/R2.4 通用 TunableOp/Inductor autotune 已 stop-loss，下一入口改为 [`task-r4.1-prefill-gemm-roofline.md`](task-r4.1-prefill-gemm-roofline.md)：先做 GEMM roofline + work-elimination + 低精度 compute microbench，确认还有没有可兑现增长点。**gfx936 实测 + 规则红线已钉死（见 memory/50）：decode 合规下到带宽物理顶——别碰。**
+当前瓶颈仍是**长上下文 Prefill/TTFT**。R3.0/R2.4 通用 TunableOp/Inductor autotune 已 stop-loss；R4.1 roofline 证实 `Cijk_*` GEMM 约 `317-320 TFLOPS`、约 `80-81%` of `395 TFLOPS` peak，属于黄区而非 2-3x 机会。R4.1 16-32K profile 新增关键分流：flash-attn `_fwd_kernel` 升到 `40.582%`，与 `Cijk_*` `44.715%` 同量级；下一入口改为 [`task-r3.1b-long-context-flash-attn.md`](task-r3.1b-long-context-flash-attn.md)。**gfx936 实测 + 规则红线已钉死（见 memory/50）：decode 合规下到带宽物理顶——别碰。**
 
 ## 优化优先级（已被 gfx936 实测 + 规则红线钉死，见 memory/50）
 1. **Prefill flash-attention on gfx936 —— 唯一胜负手**。注意力 O(S²) 是长档主力（codex R0.4：
@@ -117,3 +117,4 @@ R3.1 flash-attn prefill candidate 已拿到官方 **AC / 74.6924**（见 `experi
 - 2026-07-06 Claude 按 gfx936 实测+规则红线更新优先级：**prefill flash-attention 唯一战场**；decode 带宽侧到顶别碰（GEMV 92–101%、权重量化=红线）；decode 仅做 host 侧图融合；新增 ★ 待问"运行时非持久权重量化是否违规"。
 - 2026-07-08 Codex 更新当前状态：R3.1 官方 `AC / 74.6924`，旧 d29 `59.0018` 降为历史负优化锚点；R3.1 后热点转 GEMM，下一主线 R3.0/R2.4 autotune。
 - 2026-07-09 Codex 更新当前入口：R3.0 TunableOp/Inductor 均已 stop-loss；新增 `task-r4.1-prefill-gemm-roofline.md`，先用现有 profile 得到 8-16K `Cijk_*` aggregate `~320 TFLOPS`（约 `81%` of `395 TFLOPS` peak）的黄区判断，再抓 16-32K roofline 与低精度 compute microbench。
+- 2026-07-09 Codex R4.1 16-32K profile 校准：`Cijk_*` 仍是黄区（`317.396 TFLOPS`, `80.353%` peak），但 flash-attn `_fwd_kernel` 占 `40.582%`，与 GEMM `44.715%` 同量级；新增 `task-r3.1b-long-context-flash-attn.md` 作为下一增长点。
