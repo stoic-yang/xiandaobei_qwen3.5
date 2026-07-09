@@ -6,7 +6,11 @@ Run `plans/task-r4.1-prefill-gemm-roofline.md` Step 1: capture one locked `16-32
 
 ## Status
 
-Prepared locally. Remote run is launched separately with `driver.sh` on the current SCNet container.
+Launched on SCNet container `Instances_2607090940238205_0_0` / Slurm job `661607`.
+
+- launched at: `2026-07-09T11:23:19+08:00`
+- remote PID: `7677`
+- first health check: process alive, `exit` not yet written
 
 ## Remote Plan
 
