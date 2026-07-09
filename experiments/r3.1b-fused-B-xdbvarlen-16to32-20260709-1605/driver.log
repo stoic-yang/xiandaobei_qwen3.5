@@ -1,0 +1,103 @@
+=== guard benchmark ===
+run_id=r3.1b-fused-B-xdbvarlen-16to32-20260709-1605
+host=worker-0
+started_at=2026-07-09T16:40:28+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=16-32K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0 server_port=18001
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+isolated_testdata=/public/home/xdzs2026_c166/codex_runs/r3.1b-fused-B-xdbvarlen-16to32-20260709-1605/testdata server_port=18001
+repo_head=4653a56d52719dc8617d31e556e62a670ed5e6ec branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=973e64e8fb9bc54c94a0b30837c87cc94095dee60d08c7ff5208ba36d09ef964
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+vllm is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+starting vLLM server
+server_ready_at=2026-07-09T16:50:03+08:00 pid=2780
+=== warmup ===
+=== throughput bucket=16-32K rep=1 ===
+=== throughput bucket=16-32K rep=2 ===
+=== throughput bucket=16-32K rep=3 ===
+=== summary ===
+{
+  "run_id": "r3.1b-fused-B-xdbvarlen-16to32-20260709-1605",
+  "status": "pass",
+  "finished_at": "2026-07-09T16:59:00+0800",
+  "repo": {
+    "kind": "competition",
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition",
+    "branch": "contest-p1-ffn-pool-20260621",
+    "head": "4653a56d52719dc8617d31e556e62a670ed5e6ec",
+    "status_path": "/public/home/xdzs2026_c166/codex_runs/r3.1b-fused-B-xdbvarlen-16to32-20260709-1605/repo_status.txt",
+    "log_path": "/public/home/xdzs2026_c166/codex_runs/r3.1b-fused-B-xdbvarlen-16to32-20260709-1605/repo_log.txt"
+  },
+  "wheel": {
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl",
+    "sha256": "973e64e8fb9bc54c94a0b30837c87cc94095dee60d08c7ff5208ba36d09ef964"
+  },
+  "runtime_fingerprints_path": "/public/home/xdzs2026_c166/codex_runs/r3.1b-fused-B-xdbvarlen-16to32-20260709-1605/runtime_fingerprints.json",
+  "overlay": {
+    "rev": "",
+    "source_dir": "",
+    "manifest_path": null
+  },
+  "model_dir": "/public/home/xdzs2026_c166/Qwen3.5-27B",
+  "protocol": {
+    "warmup": "run_throughput.sh 4-8K 1",
+    "buckets": [
+      "16-32K"
+    ],
+    "repetitions": 3,
+    "num_prompts": 3,
+    "accuracy": "none",
+    "locked_start_script": "1",
+    "load_format": "runai_streamer",
+    "enforce_eager": "0",
+    "server_port": "18001"
+  },
+  "throughput": {
+    "16-32K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3.1b-fused-B-xdbvarlen-16to32-20260709-1605/throughput/16-32K_rep1.json",
+          "completed": 3,
+          "failed": 0,
+          "output_throughput": 4.293738784568056,
+          "p99_ttft_ms": 19279.477401929908,
+          "p99_tpot_ms": 71.54938846962136,
+          "duration": 83.37721923994832
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3.1b-fused-B-xdbvarlen-16to32-20260709-1605/throughput/16-32K_rep2.json",
+          "completed": 3,
+          "failed": 0,
+          "output_throughput": 4.297074016764771,
+          "p99_ttft_ms": 19275.181956500746,
+          "p99_tpot_ms": 71.53163420253237,
+          "duration": 83.31250488199294
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3.1b-fused-B-xdbvarlen-16to32-20260709-1605/throughput/16-32K_rep3.json",
+          "completed": 3,
+          "failed": 0,
+          "output_throughput": 4.297040916670585,
+          "p99_ttft_ms": 19287.287157010287,
+          "p99_tpot_ms": 71.4867562362455,
+          "duration": 83.31314663798548
+        }
+      ],
+      "median": {
+        "output_throughput": 4.297040916670585,
+        "p99_ttft_ms": 19279.477401929908,
+        "p99_tpot_ms": 71.53163420253237,
+        "duration": 83.31314663798548
+      }
+    }
+  },
+  "weighted_output_throughput": null,
+  "accuracy": {}
+}
+completed_at=2026-07-09T16:59:00+08:00
+stopping server pid=2780

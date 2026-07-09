@@ -1,0 +1,39 @@
+--- a/vllm/v1/attention/backends/triton_attn.py	2026-07-09 17:38:35
++++ b/vllm/v1/attention/backends/triton_attn.py	2026-07-09 17:38:46
+@@ -56,6 +56,13 @@
+     )
+ 
+ 
++def _env_int(name: str, default: int = 0) -> int:
++    try:
++        return int(os.environ.get(name, str(default)).strip())
++    except ValueError:
++        return default
++
++
+ @dataclass
+ class TritonAttentionMetadata:
+     # NOTE(sang): Definition of context_len, query_len, and seq_len.
+@@ -499,9 +506,20 @@
+         output_scale: torch.Tensor | None,
+         mm_prefix_range_tensor: torch.Tensor | None,
+     ) -> bool:
++        if not _env_flag("VLLM_TRITON_FUSED_PREFILL", default="1"):
++            return False
++
++        fused_max_seq_len = _env_int(
++            "VLLM_TRITON_FUSED_PREFILL_MAX_SEQ_LEN", 0
++        )
++        if (
++            fused_max_seq_len > 0
++            and attn_metadata.max_seq_len >= fused_max_seq_len
++        ):
++            return False
++
+         return (
+-            _env_flag("VLLM_TRITON_FUSED_PREFILL", default="1")
+-            and current_platform.is_rocm()
++            current_platform.is_rocm()
+             and attn_metadata.seq_lens.numel() == 1
+             and attn_metadata.max_query_len > 1
+             and attn_metadata.slot_mapping is not None

@@ -1,0 +1,133 @@
+(APIServer pid=8536) INFO 07-09 17:41:02 [utils.py:297] 
+(APIServer pid=8536) INFO 07-09 17:41:02 [utils.py:297]        █     █     █▄   ▄█
+(APIServer pid=8536) INFO 07-09 17:41:02 [utils.py:297]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.18.1
+(APIServer pid=8536) INFO 07-09 17:41:02 [utils.py:297]   █▄█▀ █     █     █     █  model   /root/Qwen3.5-27B
+(APIServer pid=8536) INFO 07-09 17:41:02 [utils.py:297]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀
+(APIServer pid=8536) INFO 07-09 17:41:02 [utils.py:297] 
+(APIServer pid=8536) INFO 07-09 17:41:02 [utils.py:233] non-default args: {'model_tag': '/root/Qwen3.5-27B', 'default_chat_template_kwargs': {'enable_thinking': False}, 'enable_auto_tool_choice': True, 'tool_call_parser': 'qwen3_coder', 'port': 18001, 'model': '/root/Qwen3.5-27B', 'trust_remote_code': True, 'dtype': 'bfloat16', 'max_model_len': 32768, 'served_model_name': ['Qwen3.5-27B'], 'load_format': 'runai_streamer', 'reasoning_parser': 'qwen3', 'gpu_memory_utilization': 0.95, 'max_num_batched_tokens': 4096, 'max_num_seqs': 128}
+(APIServer pid=8536) WARNING 07-09 17:41:02 [envs.py:1717] Unknown vLLM environment variable detected: VLLM_TRITON_FUSED_PREFILL_MAX_SEQ_LEN
+(APIServer pid=8536) WARNING 07-09 17:41:02 [envs.py:1717] Unknown vLLM environment variable detected: VLLM_TRITON_FUSED_PREFILL
+(APIServer pid=8536) The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+(APIServer pid=8536) `layer_type_validation` is deprecated and will be removed in v5.20. Use `PreTrainedConfig.validate_layer_type` instead
+(APIServer pid=8536) `layer_type_validation` is deprecated and will be removed in v5.20. Use `PreTrainedConfig.validate_layer_type` instead
+(APIServer pid=8536) `layer_type_validation` is deprecated and will be removed in v5.20. Use `PreTrainedConfig.validate_layer_type` instead
+(APIServer pid=8536) INFO 07-09 17:41:38 [model.py:533] Resolved architecture: Qwen3_5ForConditionalGeneration
+(APIServer pid=8536) INFO 07-09 17:41:38 [model.py:1582] Using max model len 32768
+(APIServer pid=8536) INFO 07-09 17:41:39 [scheduler.py:231] Chunked prefill is enabled with max_num_batched_tokens=4096.
+(APIServer pid=8536) `Qwen2VLImageProcessorFast` is deprecated. The `Fast` suffix for image processors has been removed; use `Qwen2VLImageProcessor` instead.
+(APIServer pid=8536) INFO 07-09 17:41:40 [config.py:212] Setting attention block size to 544 tokens to ensure that attention page size is >= mamba page size.
+(APIServer pid=8536) INFO 07-09 17:41:40 [config.py:243] Padding mamba page size by 2.64% to ensure that mamba page size and attention page size are exactly equal.
+(APIServer pid=8536) INFO 07-09 17:41:40 [vllm.py:775] Asynchronous scheduling is enabled.
+(APIServer pid=8536) The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+(APIServer pid=8536) `layer_type_validation` is deprecated and will be removed in v5.20. Use `PreTrainedConfig.validate_layer_type` instead
+(APIServer pid=8536) `layer_type_validation` is deprecated and will be removed in v5.20. Use `PreTrainedConfig.validate_layer_type` instead
+(APIServer pid=8536) `layer_type_validation` is deprecated and will be removed in v5.20. Use `PreTrainedConfig.validate_layer_type` instead
+(APIServer pid=8536) The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+(EngineCore pid=10916) INFO 07-09 17:42:27 [core.py:103] Initializing a V1 LLM engine (v0.18.1) with config: model='/root/Qwen3.5-27B', speculative_config=None, tokenizer='/root/Qwen3.5-27B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=32768, download_dir=None, load_format=runai_streamer, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=True, quantization=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='qwen3', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=0, served_model_name=Qwen3.5-27B, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['+sparse_attn_indexer', 'none'], 'splitting_ops': ['vllm::unified_attention', 'vllm::unified_attention_with_output', 'vllm::unified_mla_attention', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::kda_attention', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update'], 'compile_mm_encoder': False, 'compile_sizes': [], 'compile_ranges_endpoints': [4096], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False}, 'max_cudagraph_capture_size': 256, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': True, 'static_all_moe_layers': []}
+(EngineCore pid=10916) `Qwen2VLImageProcessorFast` is deprecated. The `Fast` suffix for image processors has been removed; use `Qwen2VLImageProcessor` instead.
+(EngineCore pid=10916) INFO 07-09 17:42:36 [parallel_state.py:1395] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://173.0.58.7:51085 backend=nccl
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+W0709 17:42:36.323365 10916 socket.cpp:207] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+(EngineCore pid=10916) INFO 07-09 17:42:38 [parallel_state.py:1717] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099] EngineCore failed to start.
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099] Traceback (most recent call last):
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099]   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/engine/core.py", line 1073, in run_engine_core
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099]     engine_core = EngineCoreProc(*args, engine_index=dp_rank, **kwargs)
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099]   File "/usr/local/lib/python3.10/dist-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099]     return func(*args, **kwargs)
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099]   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/engine/core.py", line 839, in __init__
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099]     super().__init__(
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099]   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/engine/core.py", line 112, in __init__
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099]     self.model_executor = executor_class(vllm_config)
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099]   File "/usr/local/lib/python3.10/dist-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099]     return func(*args, **kwargs)
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099]   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/executor/abstract.py", line 103, in __init__
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099]     self._init_executor()
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099]   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/executor/uniproc_executor.py", line 49, in _init_executor
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099]     self.driver_worker.init_device()
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099]   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/worker/worker_base.py", line 312, in init_device
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099]     self.worker.init_device()  # type: ignore
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099]   File "/usr/local/lib/python3.10/dist-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099]     return func(*args, **kwargs)
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099]   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/worker/gpu_worker.py", line 283, in init_device
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099]     self.requested_memory = request_memory(init_snapshot, self.cache_config)
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099]   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/worker/utils.py", line 413, in request_memory
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099]     raise ValueError(
+(EngineCore pid=10916) ERROR 07-09 17:42:39 [core.py:1099] ValueError: Free memory on device cuda:0 (59.54/63.98 GiB) on startup is less than desired GPU memory utilization (0.95, 60.79 GiB). Decrease GPU memory utilization or reduce GPU memory used by other processes.
+(EngineCore pid=10916) Process EngineCore:
+(EngineCore pid=10916) Traceback (most recent call last):
+(EngineCore pid=10916)   File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+(EngineCore pid=10916)     self.run()
+(EngineCore pid=10916)   File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+(EngineCore pid=10916)     self._target(*self._args, **self._kwargs)
+(EngineCore pid=10916)   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/engine/core.py", line 1103, in run_engine_core
+(EngineCore pid=10916)     raise e
+(EngineCore pid=10916)   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/engine/core.py", line 1073, in run_engine_core
+(EngineCore pid=10916)     engine_core = EngineCoreProc(*args, engine_index=dp_rank, **kwargs)
+(EngineCore pid=10916)   File "/usr/local/lib/python3.10/dist-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=10916)     return func(*args, **kwargs)
+(EngineCore pid=10916)   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/engine/core.py", line 839, in __init__
+(EngineCore pid=10916)     super().__init__(
+(EngineCore pid=10916)   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/engine/core.py", line 112, in __init__
+(EngineCore pid=10916)     self.model_executor = executor_class(vllm_config)
+(EngineCore pid=10916)   File "/usr/local/lib/python3.10/dist-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=10916)     return func(*args, **kwargs)
+(EngineCore pid=10916)   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/executor/abstract.py", line 103, in __init__
+(EngineCore pid=10916)     self._init_executor()
+(EngineCore pid=10916)   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/executor/uniproc_executor.py", line 49, in _init_executor
+(EngineCore pid=10916)     self.driver_worker.init_device()
+(EngineCore pid=10916)   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/worker/worker_base.py", line 312, in init_device
+(EngineCore pid=10916)     self.worker.init_device()  # type: ignore
+(EngineCore pid=10916)   File "/usr/local/lib/python3.10/dist-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=10916)     return func(*args, **kwargs)
+(EngineCore pid=10916)   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/worker/gpu_worker.py", line 283, in init_device
+(EngineCore pid=10916)     self.requested_memory = request_memory(init_snapshot, self.cache_config)
+(EngineCore pid=10916)   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/worker/utils.py", line 413, in request_memory
+(EngineCore pid=10916)     raise ValueError(
+(EngineCore pid=10916) ValueError: Free memory on device cuda:0 (59.54/63.98 GiB) on startup is less than desired GPU memory utilization (0.95, 60.79 GiB). Decrease GPU memory utilization or reduce GPU memory used by other processes.
+W0709 17:42:39.777658 10916 ProcessGroupNCCL.cpp:1553] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+(APIServer pid=8536) Traceback (most recent call last):
+(APIServer pid=8536)   File "/usr/local/bin/vllm", line 6, in <module>
+(APIServer pid=8536)     sys.exit(main())
+(APIServer pid=8536)   File "/usr/local/lib/python3.10/dist-packages/vllm/entrypoints/cli/main.py", line 75, in main
+(APIServer pid=8536)     args.dispatch_function(args)
+(APIServer pid=8536)   File "/usr/local/lib/python3.10/dist-packages/vllm/entrypoints/cli/serve.py", line 118, in cmd
+(APIServer pid=8536)     uvloop.run(run_server(args))
+(APIServer pid=8536)   File "/usr/local/lib/python3.10/dist-packages/uvloop/__init__.py", line 69, in run
+(APIServer pid=8536)     return loop.run_until_complete(wrapper())
+(APIServer pid=8536)   File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+(APIServer pid=8536)   File "/usr/local/lib/python3.10/dist-packages/uvloop/__init__.py", line 48, in wrapper
+(APIServer pid=8536)     return await main
+(APIServer pid=8536)   File "/usr/local/lib/python3.10/dist-packages/vllm/entrypoints/openai/api_server.py", line 656, in run_server
+(APIServer pid=8536)     await run_server_worker(listen_address, sock, args, **uvicorn_kwargs)
+(APIServer pid=8536)   File "/usr/local/lib/python3.10/dist-packages/vllm/entrypoints/openai/api_server.py", line 670, in run_server_worker
+(APIServer pid=8536)     async with build_async_engine_client(
+(APIServer pid=8536)   File "/usr/lib/python3.10/contextlib.py", line 199, in __aenter__
+(APIServer pid=8536)     return await anext(self.gen)
+(APIServer pid=8536)   File "/usr/local/lib/python3.10/dist-packages/vllm/entrypoints/openai/api_server.py", line 103, in build_async_engine_client
+(APIServer pid=8536)     async with build_async_engine_client_from_engine_args(
+(APIServer pid=8536)   File "/usr/lib/python3.10/contextlib.py", line 199, in __aenter__
+(APIServer pid=8536)     return await anext(self.gen)
+(APIServer pid=8536)   File "/usr/local/lib/python3.10/dist-packages/vllm/entrypoints/openai/api_server.py", line 144, in build_async_engine_client_from_engine_args
+(APIServer pid=8536)     async_llm = AsyncLLM.from_vllm_config(
+(APIServer pid=8536)   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/engine/async_llm.py", line 225, in from_vllm_config
+(APIServer pid=8536)     return cls(
+(APIServer pid=8536)   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/engine/async_llm.py", line 154, in __init__
+(APIServer pid=8536)     self.engine_core = EngineCoreClient.make_async_mp_client(
+(APIServer pid=8536)   File "/usr/local/lib/python3.10/dist-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(APIServer pid=8536)     return func(*args, **kwargs)
+(APIServer pid=8536)   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/engine/core_client.py", line 128, in make_async_mp_client
+(APIServer pid=8536)     return AsyncMPClient(*client_args)
+(APIServer pid=8536)   File "/usr/local/lib/python3.10/dist-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(APIServer pid=8536)     return func(*args, **kwargs)
+(APIServer pid=8536)   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/engine/core_client.py", line 924, in __init__
+(APIServer pid=8536)     super().__init__(
+(APIServer pid=8536)   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/engine/core_client.py", line 583, in __init__
+(APIServer pid=8536)     with launch_core_engines(
+(APIServer pid=8536)   File "/usr/lib/python3.10/contextlib.py", line 142, in __exit__
+(APIServer pid=8536)     next(self.gen)
+(APIServer pid=8536)   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/engine/utils.py", line 972, in launch_core_engines
+(APIServer pid=8536)     wait_for_engine_startup(
+(APIServer pid=8536)   File "/usr/local/lib/python3.10/dist-packages/vllm/v1/engine/utils.py", line 1031, in wait_for_engine_startup
+(APIServer pid=8536)     raise RuntimeError(
+(APIServer pid=8536) RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}

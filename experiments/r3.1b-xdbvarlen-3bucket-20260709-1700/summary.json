@@ -1,0 +1,154 @@
+{
+  "run_id": "r3.1b-xdbvarlen-3bucket-20260709-1700",
+  "status": "pass",
+  "finished_at": "2026-07-09T17:35:09+0800",
+  "repo": {
+    "kind": "competition",
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition",
+    "branch": "contest-p1-ffn-pool-20260621",
+    "head": "4653a56d52719dc8617d31e556e62a670ed5e6ec",
+    "status_path": "/public/home/xdzs2026_c166/codex_runs/r3.1b-xdbvarlen-3bucket-20260709-1700/repo_status.txt",
+    "log_path": "/public/home/xdzs2026_c166/codex_runs/r3.1b-xdbvarlen-3bucket-20260709-1700/repo_log.txt"
+  },
+  "wheel": {
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl",
+    "sha256": "973e64e8fb9bc54c94a0b30837c87cc94095dee60d08c7ff5208ba36d09ef964"
+  },
+  "runtime_fingerprints_path": "/public/home/xdzs2026_c166/codex_runs/r3.1b-xdbvarlen-3bucket-20260709-1700/runtime_fingerprints.json",
+  "overlay": {
+    "rev": "",
+    "source_dir": "",
+    "manifest_path": null
+  },
+  "model_dir": "/public/home/xdzs2026_c166/Qwen3.5-27B",
+  "protocol": {
+    "warmup": "run_throughput.sh 4-8K 1",
+    "buckets": [
+      "4-8K",
+      "8-16K",
+      "16-32K"
+    ],
+    "repetitions": 3,
+    "num_prompts": 3,
+    "accuracy": "none",
+    "locked_start_script": "1",
+    "load_format": "runai_streamer",
+    "enforce_eager": "0",
+    "server_port": "18001"
+  },
+  "throughput": {
+    "4-8K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3.1b-xdbvarlen-3bucket-20260709-1700/throughput/4-8K_rep1.json",
+          "completed": 3,
+          "failed": 0,
+          "output_throughput": 7.989659947005886,
+          "p99_ttft_ms": 4515.2884428575635,
+          "p99_tpot_ms": 68.75074282151846,
+          "duration": 30.163987153209746
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3.1b-xdbvarlen-3bucket-20260709-1700/throughput/4-8K_rep2.json",
+          "completed": 3,
+          "failed": 0,
+          "output_throughput": 8.022788113478903,
+          "p99_ttft_ms": 4514.160142522305,
+          "p99_tpot_ms": 68.77194046507731,
+          "duration": 30.039432251127437
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3.1b-xdbvarlen-3bucket-20260709-1700/throughput/4-8K_rep3.json",
+          "completed": 3,
+          "failed": 0,
+          "output_throughput": 8.02170837784207,
+          "p99_ttft_ms": 4515.446293917485,
+          "p99_tpot_ms": 68.80417609439199,
+          "duration": 30.04347560997121
+        }
+      ],
+      "median": {
+        "output_throughput": 8.02170837784207,
+        "p99_ttft_ms": 4515.2884428575635,
+        "p99_tpot_ms": 68.77194046507731,
+        "duration": 30.04347560997121
+      }
+    },
+    "8-16K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3.1b-xdbvarlen-3bucket-20260709-1700/throughput/8-16K_rep1.json",
+          "completed": 3,
+          "failed": 0,
+          "output_throughput": 8.176079964395502,
+          "p99_ttft_ms": 11727.98217897769,
+          "p99_tpot_ms": 69.95186765661946,
+          "duration": 73.50710886111483
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3.1b-xdbvarlen-3bucket-20260709-1700/throughput/8-16K_rep2.json",
+          "completed": 3,
+          "failed": 0,
+          "output_throughput": 8.174376208402606,
+          "p99_ttft_ms": 11729.474900374189,
+          "p99_tpot_ms": 69.97391394356329,
+          "duration": 73.52242968487553
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3.1b-xdbvarlen-3bucket-20260709-1700/throughput/8-16K_rep3.json",
+          "completed": 3,
+          "failed": 0,
+          "output_throughput": 8.175303690830399,
+          "p99_ttft_ms": 11726.642821566202,
+          "p99_tpot_ms": 69.95055305270049,
+          "duration": 73.51408861717209
+        }
+      ],
+      "median": {
+        "output_throughput": 8.175303690830399,
+        "p99_ttft_ms": 11727.98217897769,
+        "p99_tpot_ms": 69.95186765661946,
+        "duration": 73.51408861717209
+      }
+    },
+    "16-32K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3.1b-xdbvarlen-3bucket-20260709-1700/throughput/16-32K_rep1.json",
+          "completed": 3,
+          "failed": 0,
+          "output_throughput": 4.294669393462389,
+          "p99_ttft_ms": 19286.667601279914,
+          "p99_tpot_ms": 71.63637285473243,
+          "duration": 83.35915228887461
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3.1b-xdbvarlen-3bucket-20260709-1700/throughput/16-32K_rep2.json",
+          "completed": 3,
+          "failed": 0,
+          "output_throughput": 4.294347613518494,
+          "p99_ttft_ms": 19270.155959241092,
+          "p99_tpot_ms": 71.68451560244557,
+          "duration": 83.36539847706445
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3.1b-xdbvarlen-3bucket-20260709-1700/throughput/16-32K_rep3.json",
+          "completed": 3,
+          "failed": 0,
+          "output_throughput": 4.293920991426365,
+          "p99_ttft_ms": 19278.517464674078,
+          "p99_tpot_ms": 71.72391626403213,
+          "duration": 83.37368123792112
+        }
+      ],
+      "median": {
+        "output_throughput": 4.294347613518494,
+        "p99_ttft_ms": 19278.517464674078,
+        "p99_tpot_ms": 71.68451560244557,
+        "duration": 83.36539847706445
+      }
+    }
+  },
+  "weighted_output_throughput": 6.980297805039162,
+  "accuracy": {}
+}
