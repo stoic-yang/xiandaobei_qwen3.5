@@ -1,0 +1,41 @@
+{
+  "exp_id": "r4.1-prefill-gemm-roofline-20260709",
+  "intent": "Zero-cost roofline precheck for post-R3.1 prefill Cijk GEMM hotspot before spending a fresh container.",
+  "source_profiles": {
+    "prefill_profile": "experiments/r3.2-post-r31-prefill-profile-20260707-2210/summary.json",
+    "shape_attribution": "experiments/r3.0-gemm-shape-attribution-20260708-112017-wheel/summary.json",
+    "inductor_ab": "experiments/r3.0-inductor-ab-20260709/summary.json"
+  },
+  "input": {
+    "prompt_tokens": 13964,
+    "cijk_total_ms": 2122.873132,
+    "cijk_kernel_pct": 67.100681,
+    "external_gfx936_peak_tflops": 395.0
+  },
+  "projection_flops_tflop": {
+    "linear_attn.in_proj_qkvz": 112.45298122752,
+    "linear_attn.out_proj": 42.16986796032,
+    "mlp.gate_up_proj": 318.61678014464,
+    "mlp.down_proj": 159.30839007232,
+    "self_attn.qkv_proj": 32.79878619136,
+    "self_attn.o_proj": 14.05662265344,
+    "total_included": 679.4034282496
+  },
+  "derived": {
+    "aggregate_cijk_tflops": 320.03958126763837,
+    "peak_fraction": 0.8102267880193376,
+    "peak_fraction_pct": 81.02267880193376,
+    "zone": "yellow"
+  },
+  "context": {
+    "tunableop_status": "no target language GEMM coverage",
+    "inductor_same_container_ab": {
+      "output_throughput_pct": -0.055381664484388526,
+      "p99_ttft_ms_pct": 0.060157045508058005,
+      "p99_tpot_ms_pct": 0.3890275335463933,
+      "verdict": "stop-loss"
+    },
+    "lm_head_share": "0.24% kernel share in R3.0 shape-attribution summary, not a main score-growth target unless a new profile contradicts it"
+  },
+  "verdict": "Yellow-zone: do not write GEMM kernel from this alone. Next diagnostic is 16-32K prefill roofline confirmation and target-shape low-precision compute microbench if GEMM remains below ~360 TFLOPS."
+}
