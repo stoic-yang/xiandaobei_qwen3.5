@@ -1,0 +1,104 @@
+=== guard benchmark ===
+run_id=r3.0-baseline-8to16-port18001-20260709-0952
+host=worker-0
+started_at=2026-07-09T09:50:42+08:00
+repo_kind=competition
+repo_path=/public/home/xdzs2026_c166/vllm_cscc_competition
+num_prompts=3 repetitions=3 buckets=8-16K accuracy=none accuracy_rows= overlay_rev=
+locked_start_script=1 load_format=runai_streamer enforce_eager=0 server_port=18001
+model_dir_source=persistent MODEL_DIR=/public/home/xdzs2026_c166/Qwen3.5-27B
+isolated_testdata=/public/home/xdzs2026_c166/codex_runs/r3.0-baseline-8to16-port18001-20260709-0952/testdata server_port=18001
+repo_head=4653a56d52719dc8617d31e556e62a670ed5e6ec branch=contest-p1-ffn-pool-20260621
+wheel=/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+wheel_sha256=973e64e8fb9bc54c94a0b30837c87cc94095dee60d08c7ff5208ba36d09ef964
+Processing /public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl
+Installing collected packages: vllm
+Successfully installed vllm-0.18.1+das.dtk2604
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+starting vLLM server
+server_ready_at=2026-07-09T10:08:34+08:00 pid=249
+=== warmup ===
+=== throughput bucket=8-16K rep=1 ===
+=== throughput bucket=8-16K rep=2 ===
+=== throughput bucket=8-16K rep=3 ===
+=== summary ===
+{
+  "run_id": "r3.0-baseline-8to16-port18001-20260709-0952",
+  "status": "pass",
+  "finished_at": "2026-07-09T10:19:19+0800",
+  "repo": {
+    "kind": "competition",
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition",
+    "branch": "contest-p1-ffn-pool-20260621",
+    "head": "4653a56d52719dc8617d31e556e62a670ed5e6ec",
+    "status_path": "/public/home/xdzs2026_c166/codex_runs/r3.0-baseline-8to16-port18001-20260709-0952/repo_status.txt",
+    "log_path": "/public/home/xdzs2026_c166/codex_runs/r3.0-baseline-8to16-port18001-20260709-0952/repo_log.txt"
+  },
+  "wheel": {
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl",
+    "sha256": "973e64e8fb9bc54c94a0b30837c87cc94095dee60d08c7ff5208ba36d09ef964"
+  },
+  "runtime_fingerprints_path": "/public/home/xdzs2026_c166/codex_runs/r3.0-baseline-8to16-port18001-20260709-0952/runtime_fingerprints.json",
+  "overlay": {
+    "rev": "",
+    "source_dir": "",
+    "manifest_path": null
+  },
+  "model_dir": "/public/home/xdzs2026_c166/Qwen3.5-27B",
+  "protocol": {
+    "warmup": "run_throughput.sh 4-8K 1",
+    "buckets": [
+      "8-16K"
+    ],
+    "repetitions": 3,
+    "num_prompts": 3,
+    "accuracy": "none",
+    "locked_start_script": "1",
+    "load_format": "runai_streamer",
+    "enforce_eager": "0",
+    "server_port": "18001"
+  },
+  "throughput": {
+    "8-16K": {
+      "repetitions": [
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3.0-baseline-8to16-port18001-20260709-0952/throughput/8-16K_rep1.json",
+          "completed": 3,
+          "failed": 0,
+          "output_throughput": 8.096026242866404,
+          "p99_ttft_ms": 12779.846851984039,
+          "p99_tpot_ms": 69.7941710318125,
+          "duration": 78.31002284097485
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3.0-baseline-8to16-port18001-20260709-0952/throughput/8-16K_rep2.json",
+          "completed": 3,
+          "failed": 0,
+          "output_throughput": 8.109147474728495,
+          "p99_ttft_ms": 12777.505407044664,
+          "p99_tpot_ms": 69.74396645218654,
+          "duration": 78.18331112805754
+        },
+        {
+          "path": "/public/home/xdzs2026_c166/codex_runs/r3.0-baseline-8to16-port18001-20260709-0952/throughput/8-16K_rep3.json",
+          "completed": 3,
+          "failed": 0,
+          "output_throughput": 8.05535795643717,
+          "p99_ttft_ms": 12779.450334100984,
+          "p99_tpot_ms": 69.69903344632677,
+          "duration": 78.70537888305262
+        }
+      ],
+      "median": {
+        "output_throughput": 8.096026242866404,
+        "p99_ttft_ms": 12779.450334100984,
+        "p99_tpot_ms": 69.74396645218654,
+        "duration": 78.31002284097485
+      }
+    }
+  },
+  "weighted_output_throughput": null,
+  "accuracy": {}
+}
+completed_at=2026-07-09T10:19:20+08:00
+stopping server pid=249

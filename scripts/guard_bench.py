@@ -132,12 +132,13 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
         LOCKED_START_SCRIPT={1 if args.locked_start_script else 0}
         LOAD_FORMAT={q(args.load_format or "")}
         ENFORCE_EAGER={1 if args.enforce_eager else 0}
+        SERVER_PORT={q(args.server_port)}
         REUSE_SERVER={1 if args.reuse_server else 0}
         KEEP_SERVER={1 if args.keep_server else 0}
         STOP_EXISTING={1 if args.stop_existing else 0}
         INSTALL_WHEEL={0 if args.no_install else 1}
         SERVER_START_TIMEOUT={q(args.server_start_timeout)}
-        export NUM_PROMPTS REPETITIONS BUCKETS REPO_KIND OVERLAY_REV OVERLAY_SOURCE_DIR LOCKED_START_SCRIPT LOAD_FORMAT ENFORCE_EAGER
+        export NUM_PROMPTS REPETITIONS BUCKETS REPO_KIND OVERLAY_REV OVERLAY_SOURCE_DIR LOCKED_START_SCRIPT LOAD_FORMAT ENFORCE_EAGER SERVER_PORT
 
         mkdir -p "$RUN_DIR/raw" "$RUN_DIR/throughput" "$RUN_DIR/accuracy"
         exec > >(tee -a "$RUN_DIR/driver.log") 2>&1
@@ -149,7 +150,7 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
         echo "repo_kind={args.repo}"
         echo "repo_path=$REPO_PATH"
         echo "num_prompts=$NUM_PROMPTS repetitions=$REPETITIONS buckets=$BUCKETS accuracy=$ACCURACY accuracy_rows=$ACCURACY_ROWS overlay_rev=$OVERLAY_REV"
-        echo "locked_start_script=$LOCKED_START_SCRIPT load_format=$LOAD_FORMAT enforce_eager=$ENFORCE_EAGER"
+        echo "locked_start_script=$LOCKED_START_SCRIPT load_format=$LOAD_FORMAT enforce_eager=$ENFORCE_EAGER server_port=$SERVER_PORT"
 
         unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY ALL_PROXY all_proxy
         export no_proxy=127.0.0.1,localhost
@@ -177,6 +178,32 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
         else
           export MODEL_DIR="$PERSIST_MODEL_DIR"
           echo "model_dir_source=persistent MODEL_DIR=$MODEL_DIR"
+        fi
+
+        if [ "$SERVER_PORT" != "8001" ]; then
+          TESTDATA_COPY="$RUN_DIR/testdata"
+          rm -rf "$TESTDATA_COPY"
+          mkdir -p "$TESTDATA_COPY"
+          cp "$TESTDATA"/*.jsonl "$TESTDATA_COPY"/
+          cp "$TESTDATA"/run_throughput.sh "$TESTDATA"/run_accuracy.sh "$TESTDATA"/start_vllm.sh "$TESTDATA_COPY"/
+          TESTDATA="$TESTDATA_COPY"
+          export TESTDATA
+          python3 - "$TESTDATA" "$SERVER_PORT" <<'PY'
+        import pathlib, sys
+
+        root = pathlib.Path(sys.argv[1])
+        port = sys.argv[2]
+        throughput = root / "run_throughput.sh"
+        text = throughput.read_text(encoding="utf-8")
+        text = text.replace("--port 8001", f"--port {{port}}")
+        throughput.write_text(text, encoding="utf-8")
+
+        accuracy = root / "run_accuracy.sh"
+        text = accuracy.read_text(encoding="utf-8")
+        text = text.replace("http://127.0.0.1:8001/v1", f"http://127.0.0.1:{{port}}/v1")
+        accuracy.write_text(text, encoding="utf-8")
+        PY
+          echo "isolated_testdata=$TESTDATA server_port=$SERVER_PORT"
         fi
 
         git config --global --add safe.directory "$REPO_PATH" >/dev/null 2>&1 || true
@@ -297,7 +324,24 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
         PY
 
         health_ok() {{
-          curl -fsS http://127.0.0.1:8001/health >/dev/null 2>&1
+          curl -fsS "http://127.0.0.1:${{SERVER_PORT}}/health" >/dev/null 2>&1
+        }}
+
+        find_server_pid() {{
+          ps -eo pid=,cmd= | awk -v port="$SERVER_PORT" -v model="$MODEL_DIR" '(/[v]llm serve/ || /[v]llm.entrypoints.openai.api_server/) && index($0, model) && (index($0, "--port " port) || index($0, "--port=" port)) {{print $1; exit}}'
+        }}
+
+        server_alive() {{
+          new_pid="$(find_server_pid)"
+          if [ -n "$new_pid" ]; then
+            SERVER_PID="$new_pid"
+            echo "$SERVER_PID" > "$RUN_DIR/vllm_server.pid"
+            return 0
+          fi
+          if [ -n "${{SERVER_PID:-}}" ] && kill -0 "$SERVER_PID" 2>/dev/null; then
+            return 0
+          fi
+          return 1
         }}
 
         START_SCRIPT="$TESTDATA/start_vllm.sh"
@@ -319,7 +363,7 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
 
         vllm serve "$MODEL_DIR" \
             --served-model-name Qwen3.5-27B \
-            --port 8001 \
+            --port "${{GUARD_SERVER_PORT:-8001}}" \
             --trust-remote-code \
             --dtype bfloat16 \
             --tensor-parallel-size 1 \
@@ -337,20 +381,26 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
           chmod +x "$START_SCRIPT"
           export GUARD_LOAD_FORMAT="$LOAD_FORMAT"
           export GUARD_ENFORCE_EAGER="$ENFORCE_EAGER"
+          export GUARD_SERVER_PORT="$SERVER_PORT"
         fi
 
+        active_server_for_port() {{
+          ps -eo pid=,cmd= | awk -v port="$SERVER_PORT" '(/[v]llm serve/ || /[v]llm.entrypoints.openai.api_server/) && (index($0, "--port " port) || index($0, "--port=" port)) {{print}}'
+        }}
+
         SERVER_PID=""
+        STARTED_SERVER=0
         if [ "$REUSE_SERVER" = "1" ] && health_ok; then
           echo "reuse_server=1 health=ok"
         else
-          if pgrep -af "vllm serve|start_vllm" | grep -v -E "pgrep -af|grep -v|guard_bench" >/tmp/guard_active_vllm.txt; then
+          if active_server_for_port >/tmp/guard_active_vllm.txt && [ -s /tmp/guard_active_vllm.txt ]; then
             if [ "$STOP_EXISTING" = "1" ]; then
-              echo "stopping existing server processes"
+              echo "stopping existing server processes on port $SERVER_PORT"
               awk '{{print $1}}' /tmp/guard_active_vllm.txt | xargs -r kill || true
               sleep 5
               awk '{{print $1}}' /tmp/guard_active_vllm.txt | xargs -r kill -9 || true
             else
-              echo "existing vLLM processes found; use --reuse-server or --stop-existing" >&2
+              echo "existing vLLM processes found on port $SERVER_PORT; use --reuse-server or --stop-existing" >&2
               cat /tmp/guard_active_vllm.txt >&2
               exit 12
             fi
@@ -358,9 +408,17 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
           echo "starting vLLM server"
           (cd "$RUN_DIR" && nohup bash "$START_SCRIPT" > "$RUN_DIR/vllm_server.log" 2>&1 & echo $! > "$RUN_DIR/vllm_server.pid")
           SERVER_PID="$(cat "$RUN_DIR/vllm_server.pid")"
+          STARTED_SERVER=1
           deadline=$((SECONDS + SERVER_START_TIMEOUT))
+          server_alive_misses=0
           until health_ok; do
-            if ! kill -0 "$SERVER_PID" 2>/dev/null; then
+            if server_alive; then
+              server_alive_misses=0
+            else
+              server_alive_misses=$((server_alive_misses + 1))
+              echo "server_alive_miss=$server_alive_misses"
+            fi
+            if [ "$server_alive_misses" -ge 6 ]; then
               echo "server exited before health check" >&2
               tail -n 240 "$RUN_DIR/vllm_server.log" >&2 || true
               exit 13
@@ -372,12 +430,13 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
             fi
             sleep 10
           done
+          server_alive || true
           echo "server_ready_at=$(date -Is) pid=$SERVER_PID"
         fi
 
         cleanup() {{
           rc=$?
-          if [ "$KEEP_SERVER" != "1" ] && [ -n "$SERVER_PID" ] && kill -0 "$SERVER_PID" 2>/dev/null; then
+          if [ "$KEEP_SERVER" != "1" ] && [ "$STARTED_SERVER" = "1" ] && server_alive; then
             echo "stopping server pid=$SERVER_PID"
             kill "$SERVER_PID" 2>/dev/null || true
             sleep 3
@@ -514,6 +573,7 @@ def remote_script(args: argparse.Namespace, cfg: dict[str, Any]) -> str:
                 "locked_start_script": os.environ.get("LOCKED_START_SCRIPT", ""),
                 "load_format": os.environ.get("LOAD_FORMAT", ""),
                 "enforce_eager": os.environ.get("ENFORCE_EAGER", ""),
+                "server_port": os.environ.get("SERVER_PORT", ""),
             }},
             "throughput": throughput,
             "weighted_output_throughput": weighted,
@@ -716,6 +776,7 @@ def main() -> None:
     parser.add_argument("--locked-start-script", action="store_true", help="Start vLLM from a generated script that preserves the locked competition CLI, including --max-model-len 32768")
     parser.add_argument("--load-format", help="Optional vLLM --load-format to use with --locked-start-script, for example runai_streamer")
     parser.add_argument("--enforce-eager", action="store_true", help="Pass vLLM --enforce-eager through the generated locked start script; diagnostic only")
+    parser.add_argument("--server-port", type=int, default=8001, help="vLLM server port for this guard run; default preserves the competition script port")
     parser.add_argument("--server-start-timeout", type=int, default=900)
     parser.add_argument("--reuse-server", action="store_true")
     parser.add_argument("--keep-server", action="store_true")

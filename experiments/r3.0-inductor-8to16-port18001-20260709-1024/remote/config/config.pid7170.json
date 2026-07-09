@@ -1,0 +1,10 @@
+{
+  "pid": 7170,
+  "TORCHINDUCTOR_MAX_AUTOTUNE": "1",
+  "TORCHINDUCTOR_MAX_AUTOTUNE_GEMM": "1",
+  "TORCHINDUCTOR_MAX_AUTOTUNE_GEMM_BACKENDS": null,
+  "max_autotune": true,
+  "max_autotune_gemm": true,
+  "max_autotune_gemm_backends": "ATEN,TRITON,CPP",
+  "search_autotune_cache": false
+}

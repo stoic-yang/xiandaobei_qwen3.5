@@ -1,0 +1,53 @@
+{
+  "exp_id": "r3.0-inductor-ab-20260709",
+  "container": {
+    "instance": "Instances_2607090940238205_0_0",
+    "slurm_job": "661607",
+    "node": "e03r1n10",
+    "benchmark_port": 18001
+  },
+  "baseline_run": "r3.0-baseline-8to16-port18001-20260709-0952",
+  "candidate_run": "r3.0-inductor-8to16-port18001-20260709-1024",
+  "protocol": {
+    "guard": "scripts/guard_bench.py",
+    "locked_start_script": true,
+    "load_format": "runai_streamer",
+    "buckets": ["8-16K"],
+    "num_prompts": 3,
+    "repetitions": 3,
+    "accuracy": "none",
+    "server_port": 18001
+  },
+  "candidate_switch": {
+    "TORCHINDUCTOR_MAX_AUTOTUNE": "1",
+    "TORCHINDUCTOR_MAX_AUTOTUNE_GEMM": "1",
+    "max_autotune": true,
+    "max_autotune_gemm": true,
+    "max_autotune_gemm_backends": "ATEN,TRITON,CPP"
+  },
+  "metrics": {
+    "baseline": {
+      "output_throughput": 8.096026242866404,
+      "p99_ttft_ms": 12779.450334100984,
+      "p99_tpot_ms": 69.74396645218654,
+      "duration": 78.31002284097485
+    },
+    "candidate": {
+      "output_throughput": 8.091542528776012,
+      "p99_ttft_ms": 12787.138073854148,
+      "p99_tpot_ms": 70.01528968467291,
+      "duration": 78.35341626708396
+    },
+    "delta": {
+      "output_throughput": -0.00448371409039261,
+      "output_throughput_pct": -0.055381664484388526,
+      "p99_ttft_ms": 7.687739753164351,
+      "p99_ttft_ms_pct": 0.060157045508058005,
+      "p99_tpot_ms": 0.2713232324863668,
+      "p99_tpot_ms_pct": 0.3890275335463933,
+      "duration": 0.04339342610910535,
+      "duration_pct": 0.055412352767691964
+    }
+  },
+  "verdict": "stop-loss: no positive 8-16K throughput or TTFT signal; do not expand to three buckets, do not run accuracy, do not enter defaults"
+}

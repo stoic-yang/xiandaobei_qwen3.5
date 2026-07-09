@@ -80,22 +80,25 @@ def ssh_cmd(
     timeout: int | None = None,
     check: bool = True,
 ) -> subprocess.CompletedProcess[str]:
+    argv = ["ssh"]
+    if CONFIG.get("_generated_ssh_config"):
+        argv += ["-F", CONFIG["_generated_ssh_config"]]
+    argv += [
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectionAttempts=1",
+        "-o",
+        "ServerAliveInterval=5",
+        "-o",
+        "ServerAliveCountMax=1",
+        "-o",
+        f"ConnectTimeout={CONFIG['ssh_connect_timeout_s']}",
+        alias,
+        remote_cmd,
+    ]
     return run_local(
-        [
-            "ssh",
-            "-o",
-            "BatchMode=yes",
-            "-o",
-            "ConnectionAttempts=1",
-            "-o",
-            "ServerAliveInterval=5",
-            "-o",
-            "ServerAliveCountMax=1",
-            "-o",
-            f"ConnectTimeout={CONFIG['ssh_connect_timeout_s']}",
-            alias,
-            remote_cmd,
-        ],
+        argv,
         timeout=timeout,
         check=check,
     )
@@ -292,14 +295,39 @@ def resolve_container_ip(job: dict[str, Any]) -> dict[str, Any]:
         raise last_error or ScnetError(f"cannot resolve container ip for job={job_id}", 1)
     ip = proc.stdout.strip().splitlines()[-1] if proc.stdout.strip() else ""
     if proc.returncode != 0 or not re.match(r"^\d+\.\d+\.\d+\.\d+$", ip):
-        raise ScnetError(
-            f"cannot resolve container ip for job={job_id} node={node}\nSTDOUT:\n{proc.stdout}\nSTDERR:\n{proc.stderr}",
-            proc.returncode or 1,
-        )
+        fallback = resolve_container_ip_from_sothis_files(job)
+        if fallback:
+            ip = fallback
+        else:
+            raise ScnetError(
+                f"cannot resolve container ip for job={job_id} node={node}\nSTDOUT:\n{proc.stdout}\nSTDERR:\n{proc.stderr}",
+                proc.returncode or 1,
+            )
     out = dict(job)
     out["container_name"] = f"{job_id}_{node}"
     out["container_ip"] = ip
     return out
+
+
+def resolve_container_ip_from_sothis_files(job: dict[str, Any]) -> str:
+    job_id = job["job_id"]
+    name = job["name"]
+    remote_home = CONFIG["remote_home"]
+    remote = textwrap.dedent(
+        f"""
+        set -e
+        base={shlex.quote(remote_home)}/SothisAI/instance/ssh/{shlex.quote(name)}
+        file="$base/_dockerlist_{shlex.quote(job_id)}"
+        if [ -r "$file" ]; then
+          awk -F, '{{for (i=1; i<=NF; i++) if ($i ~ /^IPADDR=/) {{sub(/^IPADDR=/, "", $i); print $i; exit}}}}' "$file"
+        fi
+        """
+    ).strip()
+    proc = ssh_cmd(CONFIG["login_alias"], remote, check=False, timeout=20)
+    ip = proc.stdout.strip().splitlines()[-1] if proc.stdout.strip() else ""
+    if proc.returncode == 0 and re.match(r"^\d+\.\d+\.\d+\.\d+$", ip):
+        return ip
+    return ""
 
 
 def write_generated_ssh_config(resolved: dict[str, Any]) -> pathlib.Path:

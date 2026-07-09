@@ -1,0 +1,49 @@
+{
+  "wheel": {
+    "path": "/public/home/xdzs2026_c166/vllm_cscc_competition/dist/vllm-0.18.1+das.dtk2604-cp310-cp310-linux_x86_64.whl",
+    "sha256": "973e64e8fb9bc54c94a0b30837c87cc94095dee60d08c7ff5208ba36d09ef964"
+  },
+  "site_root": "/usr/local/lib/python3.10/dist-packages/vllm",
+  "files": {
+    "vllm/model_executor/models/qwen3_5.py": {
+      "wheel_sha256": "8537aa90b72eec3dece3722b3ab3b90864d1bf5d01cf66c61e014ba9fce3d432",
+      "site_sha256": "8537aa90b72eec3dece3722b3ab3b90864d1bf5d01cf66c61e014ba9fce3d432",
+      "site_path": "/usr/local/lib/python3.10/dist-packages/vllm/model_executor/models/qwen3_5.py"
+    },
+    "vllm/model_executor/models/qwen3_next.py": {
+      "wheel_sha256": "ffaaf522a3c04a2eead16f0c4308b5dd3e071251b00c7197d211e0dad17d94bd",
+      "site_sha256": "ffaaf522a3c04a2eead16f0c4308b5dd3e071251b00c7197d211e0dad17d94bd",
+      "site_path": "/usr/local/lib/python3.10/dist-packages/vllm/model_executor/models/qwen3_next.py"
+    },
+    "vllm/model_executor/layers/activation.py": {
+      "wheel_sha256": "5488b2fd4b41062cd8d649d9021d79cb733a097e66b65a28ef2b530954f351ae",
+      "site_sha256": "5488b2fd4b41062cd8d649d9021d79cb733a097e66b65a28ef2b530954f351ae",
+      "site_path": "/usr/local/lib/python3.10/dist-packages/vllm/model_executor/layers/activation.py"
+    },
+    "vllm/model_executor/layers/fla/ops/chunk.py": {
+      "wheel_sha256": "2d216415631650c76246470a8f27e069008fb26f9e2e863b7d99496ffe3262d1",
+      "site_sha256": "2d216415631650c76246470a8f27e069008fb26f9e2e863b7d99496ffe3262d1",
+      "site_path": "/usr/local/lib/python3.10/dist-packages/vllm/model_executor/layers/fla/ops/chunk.py"
+    },
+    "vllm/model_executor/layers/fla/ops/chunk_o.py": {
+      "wheel_sha256": "16903ee8486a2e7a1ea5cf10e04d38ccf5529f04fa19549c467a8809e762cbf7",
+      "site_sha256": "16903ee8486a2e7a1ea5cf10e04d38ccf5529f04fa19549c467a8809e762cbf7",
+      "site_path": "/usr/local/lib/python3.10/dist-packages/vllm/model_executor/layers/fla/ops/chunk_o.py"
+    },
+    "vllm/v1/attention/backends/triton_attn.py": {
+      "wheel_sha256": "14dcaecb4b610ed0580614ad39b3ad81ca8163e513330c372a12366986084ea4",
+      "site_sha256": "14dcaecb4b610ed0580614ad39b3ad81ca8163e513330c372a12366986084ea4",
+      "site_path": "/usr/local/lib/python3.10/dist-packages/vllm/v1/attention/backends/triton_attn.py"
+    },
+    "vllm/v1/attention/ops/triton_unified_attention.py": {
+      "wheel_sha256": "acf4b51ba9250014a08ae54f91c775d3764cbf350856a077e484a76b52cba3f8",
+      "site_sha256": "acf4b51ba9250014a08ae54f91c775d3764cbf350856a077e484a76b52cba3f8",
+      "site_path": "/usr/local/lib/python3.10/dist-packages/vllm/v1/attention/ops/triton_unified_attention.py"
+    },
+    "vllm/version.py": {
+      "wheel_sha256": "1c2fe608d932e3c38dab7e4fc617c60fadb86f5ccabb205795deac63417fdc33",
+      "site_sha256": "1c2fe608d932e3c38dab7e4fc617c60fadb86f5ccabb205795deac63417fdc33",
+      "site_path": "/usr/local/lib/python3.10/dist-packages/vllm/version.py"
+    }
+  }
+}
